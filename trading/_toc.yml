@@ -4,6 +4,4 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
 - file: momentum
-- file: markdown-notebooks

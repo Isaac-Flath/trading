@@ -112,9 +112,9 @@ print(f'''Out of {ticker_cnt} tickers:
 # Ok good thing we checked!  Let's think through what these data points mean:
 # + Not all the tickers have the same start date.  This makes some intuitive sense because some of the companies may not have been founded until after the start date of the dataset.  They also may not have fit the criteria for the ticker universe (ie too small) until after the start date.
 # + All of the tickers have an entry for 2017-06-30.  While it's not definitive proof of an issue, it is cause for concern.  This dataset may have a lookahead bias built in.
-# 
+
 # :::{note} Investopedia says "Look-ahead bias occurs by using information or data in a study or simulation that would not have been known or available during the period being analyzed."
-# 
+
 # The fact that every ticker still has a close price on the last day, means that as of the end of the dataset none of the companies in the dataset went out of business or were taken private.  A common reason this occurs in datasets is when a dataset is defined using future information.
 # 
 # For example if I look at the S&P 500 companies today and build a dataset of their stock prices over the last 5 years, every model I build will show better results than in reality.  By setting up the dataset using what is known on the last day of the period (all active S&P 500 companies), we are filtering out all companies that were in the S&P 500 but performed poorly they dropped out of the S&P 500.  We used our knowledge from today to create a historical dataset, which created bias.
@@ -129,7 +129,7 @@ print(f'''Out of {ticker_cnt} tickers:
 
 
 df = raw.pivot(index='date', columns='ticker',values='adj_close')
-df.head(3)
+df.iloc[:,:5].head(3)
 
 
 # We can use the same describe as above to see statistics about each ticker.
@@ -137,7 +137,7 @@ df.head(3)
 # In[9]:
 
 
-df.describe()
+df.iloc[:,:5].describe()
 
 
 # ## Models
