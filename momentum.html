@@ -52,8 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
-    <link rel="prev" title="Markdown Files" href="markdown.html" />
+    <link rel="prev" title="Welcome to my Trading Book" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,24 +108,14 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to my Trading Book
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Momentum
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown-notebooks.html">
-   Notebooks with MyST Markdown
   </a>
  </li>
 </ul>
@@ -188,7 +177,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/momentum.ipynb"
+        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/master?urlpath=tree/docs/momentum.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -231,7 +220,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/isaac-flath/trading"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -248,7 +237,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmomentum.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2Fmomentum.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -571,19 +560,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">fastcore.all</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -797,10 +773,10 @@ title="Print to PDF"
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Investopedia says “Look-ahead bias occurs by using information or data in a study or simulation that would not have been known or available during the period being analyzed.”</p>
+</div>
 <p>The fact that every ticker still has a close price on the last day, means that as of the end of the dataset none of the companies in the dataset went out of business or were taken private.  A common reason this occurs in datasets is when a dataset is defined using future information.</p>
 <p>For example if I look at the S&amp;P 500 companies today and build a dataset of their stock prices over the last 5 years, every model I build will show better results than in reality.  By setting up the dataset using what is known on the last day of the period (all active S&amp;P 500 companies), we are filtering out all companies that were in the S&amp;P 500 but performed poorly they dropped out of the S&amp;P 500.  We used our knowledge from today to create a historical dataset, which created bias.</p>
 <p>When we see all tickers in the universe have a stock price on the last day, it’s important to verify that this did not happen in your dataset.  When we talk about testing later, we will talk about how we can test to ensure we have accurate results.</p>
-</div>
 </section>
 <section id="reformat">
 <h3>Reformat<a class="headerlink" href="#reformat" title="Permalink to this headline">#</a></h3>
@@ -808,7 +784,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;adj_close&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -836,41 +812,9 @@ title="Print to PDF"
       <th>AAP</th>
       <th>AAPL</th>
       <th>ABBV</th>
-      <th>ABC</th>
-      <th>ABT</th>
-      <th>ACN</th>
-      <th>ADBE</th>
-      <th>ADI</th>
-      <th>...</th>
-      <th>XL</th>
-      <th>XLNX</th>
-      <th>XOM</th>
-      <th>XRAY</th>
-      <th>XRX</th>
-      <th>XYL</th>
-      <th>YUM</th>
-      <th>ZBH</th>
-      <th>ZION</th>
-      <th>ZTS</th>
     </tr>
     <tr>
       <th>date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -886,22 +830,6 @@ title="Print to PDF"
       <td>81.138217</td>
       <td>53.109173</td>
       <td>34.924478</td>
-      <td>50.863198</td>
-      <td>31.425388</td>
-      <td>64.694095</td>
-      <td>46.235</td>
-      <td>39.913360</td>
-      <td>...</td>
-      <td>27.668791</td>
-      <td>35.288928</td>
-      <td>76.320802</td>
-      <td>40.023873</td>
-      <td>22.106665</td>
-      <td>25.753386</td>
-      <td>45.480383</td>
-      <td>71.898827</td>
-      <td>27.858587</td>
-      <td>29.447893</td>
     </tr>
     <tr>
       <th>2013-07-02</th>
@@ -910,22 +838,6 @@ title="Print to PDF"
       <td>80.722073</td>
       <td>54.312247</td>
       <td>35.428076</td>
-      <td>50.696766</td>
-      <td>31.272881</td>
-      <td>64.712041</td>
-      <td>46.030</td>
-      <td>39.860576</td>
-      <td>...</td>
-      <td>27.542284</td>
-      <td>35.059033</td>
-      <td>76.608168</td>
-      <td>39.965530</td>
-      <td>22.082740</td>
-      <td>25.613675</td>
-      <td>45.402661</td>
-      <td>72.934172</td>
-      <td>28.038932</td>
-      <td>28.572441</td>
     </tr>
     <tr>
       <th>2013-07-03</th>
@@ -934,32 +846,15 @@ title="Print to PDF"
       <td>81.237299</td>
       <td>54.612043</td>
       <td>35.444862</td>
-      <td>50.937167</td>
-      <td>30.725650</td>
-      <td>65.214519</td>
-      <td>46.420</td>
-      <td>40.186077</td>
-      <td>...</td>
-      <td>27.334452</td>
-      <td>35.280086</td>
-      <td>76.650427</td>
-      <td>40.004426</td>
-      <td>22.202365</td>
-      <td>25.734758</td>
-      <td>46.063299</td>
-      <td>72.301458</td>
-      <td>28.181310</td>
-      <td>28.168387</td>
     </tr>
   </tbody>
 </table>
-<p>3 rows × 495 columns</p>
 </div></div></div>
 </div>
 <p>We can use the same describe as above to see statistics about each ticker.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -987,43 +882,11 @@ title="Print to PDF"
       <th>AAP</th>
       <th>AAPL</th>
       <th>ABBV</th>
-      <th>ABC</th>
-      <th>ABT</th>
-      <th>ACN</th>
-      <th>ADBE</th>
-      <th>ADI</th>
-      <th>...</th>
-      <th>XL</th>
-      <th>XLNX</th>
-      <th>XOM</th>
-      <th>XRAY</th>
-      <th>XRX</th>
-      <th>XYL</th>
-      <th>YUM</th>
-      <th>ZBH</th>
-      <th>ZION</th>
-      <th>ZTS</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>...</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
-      <td>1009.000000</td>
       <td>1009.000000</td>
       <td>1009.000000</td>
       <td>1009.000000</td>
@@ -1037,22 +900,6 @@ title="Print to PDF"
       <td>141.576280</td>
       <td>100.360320</td>
       <td>52.977953</td>
-      <td>80.532919</td>
-      <td>39.378583</td>
-      <td>91.911824</td>
-      <td>83.667058</td>
-      <td>54.802061</td>
-      <td>...</td>
-      <td>32.982461</td>
-      <td>44.896965</td>
-      <td>79.284822</td>
-      <td>52.880632</td>
-      <td>27.494363</td>
-      <td>37.829816</td>
-      <td>54.314774</td>
-      <td>103.846406</td>
-      <td>29.551217</td>
-      <td>42.098639</td>
     </tr>
     <tr>
       <th>std</th>
@@ -1061,22 +908,6 @@ title="Print to PDF"
       <td>26.260390</td>
       <td>22.660593</td>
       <td>7.897264</td>
-      <td>14.825833</td>
-      <td>4.220077</td>
-      <td>18.120274</td>
-      <td>23.025552</td>
-      <td>10.756394</td>
-      <td>...</td>
-      <td>3.786245</td>
-      <td>6.980720</td>
-      <td>5.380402</td>
-      <td>6.968846</td>
-      <td>3.156451</td>
-      <td>7.594851</td>
-      <td>6.998470</td>
-      <td>13.310972</td>
-      <td>5.543138</td>
-      <td>9.132582</td>
     </tr>
     <tr>
       <th>min</th>
@@ -1085,22 +916,6 @@ title="Print to PDF"
       <td>78.393647</td>
       <td>53.109173</td>
       <td>34.924478</td>
-      <td>50.696766</td>
-      <td>29.658409</td>
-      <td>63.787839</td>
-      <td>44.890000</td>
-      <td>39.302361</td>
-      <td>...</td>
-      <td>25.499120</td>
-      <td>33.031503</td>
-      <td>62.086945</td>
-      <td>39.965530</td>
-      <td>21.983381</td>
-      <td>22.530720</td>
-      <td>42.641001</td>
-      <td>71.898827</td>
-      <td>19.359069</td>
-      <td>27.499259</td>
     </tr>
     <tr>
       <th>25%</th>
@@ -1109,22 +924,6 @@ title="Print to PDF"
       <td>125.561609</td>
       <td>87.186576</td>
       <td>46.981317</td>
-      <td>68.455473</td>
-      <td>36.257115</td>
-      <td>74.314446</td>
-      <td>68.010000</td>
-      <td>46.067671</td>
-      <td>...</td>
-      <td>30.028144</td>
-      <td>39.972005</td>
-      <td>75.814593</td>
-      <td>46.430961</td>
-      <td>25.089374</td>
-      <td>33.391591</td>
-      <td>48.386304</td>
-      <td>94.717168</td>
-      <td>26.704072</td>
-      <td>31.564439</td>
     </tr>
     <tr>
       <th>50%</th>
@@ -1133,22 +932,6 @@ title="Print to PDF"
       <td>147.450711</td>
       <td>102.884811</td>
       <td>53.983957</td>
-      <td>82.431856</td>
-      <td>39.446380</td>
-      <td>91.186202</td>
-      <td>79.560000</td>
-      <td>53.037870</td>
-      <td>...</td>
-      <td>32.851363</td>
-      <td>42.884952</td>
-      <td>79.236714</td>
-      <td>51.898383</td>
-      <td>26.789874</td>
-      <td>35.404993</td>
-      <td>52.508649</td>
-      <td>102.234538</td>
-      <td>27.898173</td>
-      <td>43.758191</td>
     </tr>
     <tr>
       <th>75%</th>
@@ -1157,22 +940,6 @@ title="Print to PDF"
       <td>159.019446</td>
       <td>114.257784</td>
       <td>59.212432</td>
-      <td>90.130116</td>
-      <td>42.712025</td>
-      <td>110.162593</td>
-      <td>97.700000</td>
-      <td>59.840878</td>
-      <td>...</td>
-      <td>35.361824</td>
-      <td>47.683798</td>
-      <td>82.882907</td>
-      <td>59.584623</td>
-      <td>29.195526</td>
-      <td>44.861586</td>
-      <td>60.815220</td>
-      <td>114.674766</td>
-      <td>29.897075</td>
-      <td>48.466711</td>
     </tr>
     <tr>
       <th>max</th>
@@ -1181,26 +948,9 @@ title="Print to PDF"
       <td>199.374304</td>
       <td>153.694280</td>
       <td>70.780784</td>
-      <td>109.683917</td>
-      <td>48.305224</td>
-      <td>125.421192</td>
-      <td>145.410000</td>
-      <td>83.545806</td>
-      <td>...</td>
-      <td>43.337609</td>
-      <td>66.691500</td>
-      <td>90.679415</td>
-      <td>65.074800</td>
-      <td>35.152832</td>
-      <td>54.798961</td>
-      <td>73.578018</td>
-      <td>130.910300</td>
-      <td>45.797599</td>
-      <td>63.216442</td>
     </tr>
   </tbody>
 </table>
-<p>8 rows × 495 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1276,27 +1026,27 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>2014-07-03</th>
-      <td>82.764197</td>
-      <td>87.493636</td>
-      <td>88.069213</td>
+      <th>2015-04-24</th>
+      <td>116.018562</td>
+      <td>122.833024</td>
+      <td>122.425004</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2016-03-24</th>
+      <td>89.510349</td>
+      <td>101.470683</td>
+      <td>104.431322</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2017-03-17</th>
-      <td>128.722180</td>
-      <td>137.270813</td>
-      <td>139.978388</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>2015-12-10</th>
-      <td>107.852017</td>
-      <td>110.956134</td>
-      <td>117.134975</td>
-      <td>False</td>
+      <th>2014-01-31</th>
+      <td>66.246530</td>
+      <td>65.781340</td>
+      <td>76.540656</td>
+      <td>True</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1328,7 +1078,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/momentum_38_0.png" src="_images/momentum_38_0.png" />
+<img alt="_images/momentum_40_0.png" src="_images/momentum_40_0.png" />
 </div>
 </div>
 </section>
@@ -1374,19 +1124,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="markdown.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Markdown Files</p>
+            <p class="prev-next-title">Welcome to my Trading Book</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="markdown-notebooks.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notebooks with MyST Markdown</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
