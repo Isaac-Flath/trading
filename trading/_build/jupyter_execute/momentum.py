@@ -61,6 +61,8 @@ raw = pd.read_csv(path/'eod-quotemedia.csv',parse_dates=['date'])
 raw.head(3)
 
 
+# :::{note} A ticker is a symbol associated with a company.  For example Apple has the ticker `AAPL`.  To buy shares in Apple you would buy `AAPL`.
+
 # A good first step is to use pandas' describe method.  As we do this we see a few good pieces of information to keep in mind:
 # + Overall size of dataset - 409K rows
 # + Very big range in values (~1 - ~1K), which most of them before $100
