@@ -1167,7 +1167,7 @@ title="Print to PDF"
 <span class="n">regr</span> <span class="o">=</span> <span class="p">[</span><span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">regr_x</span><span class="p">,</span><span class="n">regr_y</span><span class="p">)]</span>
 
 
-<span class="n">regr_padded</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">sz</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">regr</span><span class="p">)]</span>
+<span class="n">regr_padded</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">-</span><span class="n">sz</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">regr</span><span class="p">)]</span>
 
 
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
@@ -1178,16 +1178,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">_</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Window Regression Lines&#39;)
 </pre></div>
 </div>
+<img alt="_images/101_Momentum_44_1.png" src="_images/101_Momentum_44_1.png" />
 </div>
 </div>
 <p>So we take the slope of best fit for the time range window.  There are very similar levers as before we can change to fine tune out approach:</p>
@@ -1228,6 +1222,124 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ticker</th>
+      <th>A</th>
+      <th>AAL</th>
+      <th>AAP</th>
+      <th>AAPL</th>
+      <th>ABBV</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-08-09</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-12</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-13</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-14</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-15</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-16</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-19</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-20</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-21</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-22</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="bollinger-bands">
@@ -1293,26 +1405,26 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>2013-09-18</th>
-      <td>59.094887</td>
-      <td>60.705838</td>
-      <td>68.219790</td>
+      <th>2017-03-14</th>
+      <td>126.055500</td>
+      <td>136.290237</td>
+      <td>140.200454</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2013-09-13</th>
-      <td>59.438692</td>
-      <td>60.734579</td>
-      <td>68.016014</td>
+      <th>2016-12-20</th>
+      <td>103.221554</td>
+      <td>114.186830</td>
+      <td>114.631686</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2016-05-10</th>
-      <td>85.514604</td>
-      <td>90.255902</td>
-      <td>113.326120</td>
+      <th>2017-01-09</th>
+      <td>106.186468</td>
+      <td>116.178631</td>
+      <td>117.591962</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -1398,39 +1510,9 @@ title="Print to PDF"
       <th>AAP</th>
       <th>AAPL</th>
       <th>ABBV</th>
-      <th>ABC</th>
-      <th>ABT</th>
-      <th>ACN</th>
-      <th>ADBE</th>
-      <th>ADI</th>
-      <th>ADM</th>
-      <th>ADP</th>
-      <th>ADS</th>
-      <th>ADSK</th>
-      <th>AEE</th>
-      <th>AEP</th>
-      <th>AES</th>
-      <th>AET</th>
-      <th>AFL</th>
-      <th>AGN</th>
     </tr>
     <tr>
       <th>date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -1446,39 +1528,9 @@ title="Print to PDF"
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-12</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -1492,21 +1544,6 @@ title="Print to PDF"
       <td>Buy</td>
       <td>Buy</td>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-14</th>
@@ -1514,21 +1551,6 @@ title="Print to PDF"
       <td>Sell</td>
       <td></td>
       <td>Buy</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -1538,21 +1560,6 @@ title="Print to PDF"
       <td></td>
       <td>Buy</td>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-16</th>
@@ -1561,21 +1568,6 @@ title="Print to PDF"
       <td>Sell</td>
       <td>Buy</td>
       <td>Sell</td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-19</th>
@@ -1583,21 +1575,6 @@ title="Print to PDF"
       <td>Sell</td>
       <td>Sell</td>
       <td>Buy</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -1607,21 +1584,6 @@ title="Print to PDF"
       <td></td>
       <td></td>
       <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-21</th>
@@ -1630,40 +1592,10 @@ title="Print to PDF"
       <td></td>
       <td></td>
       <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Sell</td>
-      <td>Sell</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-22</th>
       <td>Buy</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
       <td></td>
       <td></td>
