@@ -63,6 +63,8 @@ raw.head(3)
 
 # :::{note} A ticker is a symbol associated with a company.  For example Apple has the ticker `AAPL`.  To buy shares in Apple you would buy `AAPL`.
 
+# We have a dataframe that contains the `adjusted close price` for each day for each ticker in our universe.  After every transaction, the price of a stock changes slightly.  The `adjusted close price` is the last stock price of the day.  While this is not as detailed as having the price at a more granular level (second, minute, hour, etc.), called `tick` data, we can use daily close price to test many types of strategies.
+
 # A good first step is to use pandas' describe method.  As we do this we see a few good pieces of information to keep in mind:
 # + Overall size of dataset - 409K rows
 # + Very big range in values (~1 - ~1K), which most of them before $100
