@@ -12,3 +12,4 @@ parts:
     numbered: True
     chapters:
     - file: 201_Statistics
+    - file: 202_Backtesting
