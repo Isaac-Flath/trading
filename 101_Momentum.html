@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Momentum &#8212; Trading</title>
+    <title>1. Momentum &#8212; Trading</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Introduction" href="00_Introduction.html" />
+    <link rel="next" title="2. Statistics" href="201_Statistics.html" />
+    <link rel="prev" title="Welcome to my Trading Book" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -112,15 +113,27 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="00_Introduction.html">
-   Introduction
-  </a>
- </li>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Section 1 - Applications
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Momentum
+   1. Momentum
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Section 2 - Foundations
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="201_Statistics.html">
+   2. Statistics
   </a>
  </li>
 </ul>
@@ -182,7 +195,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/master?urlpath=tree/docs/00_Momentum.ipynb"
+        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/master?urlpath=tree/docs/101_Momentum.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -242,7 +255,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F00_Momentum.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F101_Momentum.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -270,7 +283,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/00_Momentum.ipynb"
+        <a href="_sources/101_Momentum.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -331,98 +344,98 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   Overview
+   1.1. Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intuition">
-   Intuition
+   1.2. Intuition
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#importance">
-     Importance
+     1.2.1. Importance
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#belief">
-     Belief
+     1.2.2. Belief
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hypothesis">
-     Hypothesis
+     1.2.3. Hypothesis
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-data">
-   The Data
+   1.3. The Data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#load-data">
-     Load data
+     1.3.1. Load data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#null-values">
-     Null Values
+     1.3.2. Null Values
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lookahead-bias">
-     Lookahead bias
+     1.3.3. Lookahead bias
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reformat">
-     Reformat
+     1.3.4. Reformat
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#models">
-   Models
+   1.4. Models
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-momentum">
-     Basic Momentum
+     1.4.1. Basic Momentum
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-momentum">
-     Regression Momentum
+     1.4.2. Regression Momentum
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bollinger-band">
-     Bollinger Band
+     1.4.3. Bollinger Band
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#testing">
-   Testing
+   1.5. Testing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#train-vs-valid-vs-test">
-     Train vs Valid vs Test
+     1.5.1. Train vs Valid vs Test
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#returns">
-     Returns
+     1.5.2. Returns
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-tests">
-     Statistical Tests
+     1.5.3. Statistical Tests
     </a>
    </li>
   </ul>
@@ -448,98 +461,98 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   Overview
+   1.1. Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intuition">
-   Intuition
+   1.2. Intuition
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#importance">
-     Importance
+     1.2.1. Importance
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#belief">
-     Belief
+     1.2.2. Belief
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hypothesis">
-     Hypothesis
+     1.2.3. Hypothesis
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-data">
-   The Data
+   1.3. The Data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#load-data">
-     Load data
+     1.3.1. Load data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#null-values">
-     Null Values
+     1.3.2. Null Values
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lookahead-bias">
-     Lookahead bias
+     1.3.3. Lookahead bias
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reformat">
-     Reformat
+     1.3.4. Reformat
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#models">
-   Models
+   1.4. Models
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-momentum">
-     Basic Momentum
+     1.4.1. Basic Momentum
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-momentum">
-     Regression Momentum
+     1.4.2. Regression Momentum
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bollinger-band">
-     Bollinger Band
+     1.4.3. Bollinger Band
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#testing">
-   Testing
+   1.5. Testing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#train-vs-valid-vs-test">
-     Train vs Valid vs Test
+     1.5.1. Train vs Valid vs Test
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#returns">
-     Returns
+     1.5.2. Returns
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-tests">
-     Statistical Tests
+     1.5.3. Statistical Tests
     </a>
    </li>
   </ul>
@@ -555,7 +568,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="momentum">
-<h1>Momentum<a class="headerlink" href="#momentum" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1. </span>Momentum<a class="headerlink" href="#momentum" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastcore.all</span> <span class="kn">import</span> <span class="o">*</span>
@@ -574,7 +587,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <p>In this article we will discuss basic windows for stock prices and test different methodologies for using them to make buy/sell decisions.  This is intended to be a first step in exploring quant trading and not a full fledged strategy or discussion of all apects of trading.  I hope that after reading this you will walk away understanding:</p>
 <ul class="simple">
 <li><p>What good minimal example of a trading strategy could look like that we can build ontop of</p></li>
@@ -584,13 +597,13 @@ title="Print to PDF"
 <p>There are many more concepts not covered in this article that are absolutely crucial to being a successful quant.  Future articles will cover many of those concepts, but I think this will be an interesting and informative first step!</p>
 </section>
 <section id="intuition">
-<h2>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2. </span>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">#</a></h2>
 <section id="importance">
-<h3>Importance<a class="headerlink" href="#importance" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.1. </span>Importance<a class="headerlink" href="#importance" title="Permalink to this headline">#</a></h3>
 <p>Before diving into the technical bits, it is <em>always</em> a good idea to take the time to think about things at a high level and why your idea might work.  We can generate ideas <em>much</em> faster than we can code and test them, so we need to use intuition and experience to help guide us in which ideas we want to prioritize.  Intuition is important and where I start - but intuition is not reliable enough on it’s own - we <strong>must</strong> then turn intuition into code with rigorous testing before we can decide whether to implement the strategy.  Every chapter will start with this.</p>
 </section>
 <section id="belief">
-<h3>Belief<a class="headerlink" href="#belief" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.2. </span>Belief<a class="headerlink" href="#belief" title="Permalink to this headline">#</a></h3>
 <p>I believe how a company is doing over the last month can be used to predict how how well it will do in the future.  This isn’t much of a leap, but let’s think about a few reasons as to why this may be true.</p>
 <ul class="simple">
 <li><p><strong>Available Capital:</strong> If a company is doing well, it typically means they have more profit.  More profit means more that can be reinvested.  More reinvestment can mean faster growth.</p></li>
@@ -599,14 +612,14 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="hypothesis">
-<h3>Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.3. </span>Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">#</a></h3>
 <p>The <em>hypothesis</em> for this chapter is that recent stock performance can be used on its own to predict future stock performance.  Regardless of how much we believe that to be true, we should not trade based on this belief until we have evidence.  This chapter will explore several options for using this hypothesis to make trades, and give a foundation in how we may test and determine whether this is an idea worth keeping.</p>
 </section>
 </section>
 <section id="the-data">
-<h2>The Data<a class="headerlink" href="#the-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.3. </span>The Data<a class="headerlink" href="#the-data" title="Permalink to this headline">#</a></h2>
 <section id="load-data">
-<h3>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.3.1. </span>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h3>
 <p>First let’s take a look at the data we will be using and talk a bit about it.  We can load it in with pandas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -725,7 +738,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="null-values">
-<h3>Null Values<a class="headerlink" href="#null-values" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.3.2. </span>Null Values<a class="headerlink" href="#null-values" title="Permalink to this headline">#</a></h3>
 <p>Let’s take a look and make sure we don’t have any null values to handle.  This is one of those things you should do with every dataset.  This is a great opportunity to show how you can add in simple tests into your code as you go, which will help you catch issues as you iterate and change things.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -749,7 +762,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="lookahead-bias">
-<h3>Lookahead bias<a class="headerlink" href="#lookahead-bias" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.3.3. </span>Lookahead bias<a class="headerlink" href="#lookahead-bias" title="Permalink to this headline">#</a></h3>
 <p>Let’s see if all tickers in the dataset have the same start and end date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -789,7 +802,7 @@ title="Print to PDF"
 <p>When we see all tickers in the universe have a stock price on the last day, it’s important to verify that this did not happen in your dataset.  When we talk about testing later, we will talk about how we can test to ensure we have accurate results.</p>
 </section>
 <section id="reformat">
-<h3>Reformat<a class="headerlink" href="#reformat" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.3.4. </span>Reformat<a class="headerlink" href="#reformat" title="Permalink to this headline">#</a></h3>
 <p>Now that we have an basic idea of what’s in our data we can reformat it to a format that will be easier to use for analysis.  For what we are doing we will be applying things based on ticker, so let’s give each ticker it’s own column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -966,15 +979,15 @@ title="Print to PDF"
 </section>
 </section>
 <section id="models">
-<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.4. </span>Models<a class="headerlink" href="#models" title="Permalink to this headline">#</a></h2>
 <section id="basic-momentum">
-<h3>Basic Momentum<a class="headerlink" href="#basic-momentum" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.4.1. </span>Basic Momentum<a class="headerlink" href="#basic-momentum" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="regression-momentum">
-<h3>Regression Momentum<a class="headerlink" href="#regression-momentum" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.4.2. </span>Regression Momentum<a class="headerlink" href="#regression-momentum" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="bollinger-band">
-<h3>Bollinger Band<a class="headerlink" href="#bollinger-band" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.4.3. </span>Bollinger Band<a class="headerlink" href="#bollinger-band" title="Permalink to this headline">#</a></h3>
 <p>The idea of a bollinger band is to use a rolling standard deviation to determine when the stock price is unusually high or low.  In theory if the price is doing something unexpected we can capitalize on that.</p>
 <p>Let’s walk through graphing this on a few tickers so we understand what’s going on.  Then we can test some strategies using this concept and see how they perform on this dataset.</p>
 <div class="cell docutils container">
@@ -1036,28 +1049,28 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>2015-03-19</th>
-      <td>114.157103</td>
-      <td>120.207218</td>
-      <td>125.416186</td>
+      <th>2013-10-31</th>
+      <td>60.742244</td>
+      <td>68.285838</td>
+      <td>70.135534</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2014-12-17</th>
-      <td>100.149368</td>
-      <td>102.753328</td>
-      <td>112.984262</td>
-      <td>False</td>
+      <th>2016-11-14</th>
+      <td>104.123235</td>
+      <td>103.212396</td>
+      <td>117.329394</td>
+      <td>True</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2017-06-26</th>
-      <td>139.514280</td>
-      <td>143.572709</td>
-      <td>156.278639</td>
+      <th>2016-08-08</th>
+      <td>88.237513</td>
+      <td>105.263249</td>
+      <td>105.050822</td>
       <td>False</td>
-      <td>False</td>
+      <td>True</td>
     </tr>
   </tbody>
 </table>
@@ -1088,21 +1101,21 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00_Momentum_42_0.png" src="_images/00_Momentum_42_0.png" />
+<img alt="_images/101_Momentum_42_0.png" src="_images/101_Momentum_42_0.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="testing">
-<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.5. </span>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">#</a></h2>
 <section id="train-vs-valid-vs-test">
-<h3>Train vs Valid vs Test<a class="headerlink" href="#train-vs-valid-vs-test" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.5.1. </span>Train vs Valid vs Test<a class="headerlink" href="#train-vs-valid-vs-test" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.5.2. </span>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="statistical-tests">
-<h3>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.5.3. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
 </section>
@@ -1134,12 +1147,19 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="00_Introduction.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Welcome to my Trading Book</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="201_Statistics.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Statistics</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
@@ -1148,7 +1168,7 @@ title="Print to PDF"
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By Isaac Flath<br/>
+    By Isaac Flath & Felix Flath<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
