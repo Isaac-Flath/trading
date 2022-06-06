@@ -10,7 +10,7 @@ It was written in this way for two reasons:
 + We believe in learning by doing.  There is only so much you can learn from reading - my hope is that these give you a good reference in what you should be doing on your own.
 + We believe in writing to learn.  As we write this book and tutorial we learn and solidify my own knowledge.
 
-## Pre-requisites
+## Prerequisites
 
 + No finance or algorithmic trading knowledge needed!  This book assumes no knowledge in these areas.
 + This book assumes python expertise.  The entire book uses the python programming language and we do not explain or teach python programming content.  We are however happy to answer questions and help people along - feel free to communicate to us on github!
