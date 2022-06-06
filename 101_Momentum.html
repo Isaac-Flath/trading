@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Statistics" href="201_Statistics.html" />
+    <link rel="next" title="2. Introduction to Testing" href="102_BasicTesting.html" />
     <link rel="prev" title="Welcome to my Trading Book" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -124,6 +124,11 @@ const thebe_selector_output = ".output, .cell_output"
    1. Momentum
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="102_BasicTesting.html">
+   2. Introduction to Testing
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -133,12 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="201_Statistics.html">
-   2. Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="202_Backtesting.html">
-   3. Backtesting
+   3. Statistics
   </a>
  </li>
 </ul>
@@ -399,6 +399,11 @@ title="Print to PDF"
      1.3.4. Reformat
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-set">
+     1.3.5. Validation Set
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -421,34 +426,12 @@ title="Print to PDF"
      1.4.3. Bollinger Bands
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-conclusion">
-     1.4.4. Model Conclusion
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing">
-   1.5. Testing
+  <a class="reference internal nav-link" href="#momentum-conclusion">
+   1.5. Momentum Conclusion
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#train-vs-valid-vs-test">
-     1.5.1. Train vs Valid vs Test
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#returns">
-     1.5.2. Returns
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#statistical-tests">
-     1.5.3. Statistical Tests
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -521,6 +504,11 @@ title="Print to PDF"
      1.3.4. Reformat
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-set">
+     1.3.5. Validation Set
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -543,34 +531,12 @@ title="Print to PDF"
      1.4.3. Bollinger Bands
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-conclusion">
-     1.4.4. Model Conclusion
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing">
-   1.5. Testing
+  <a class="reference internal nav-link" href="#momentum-conclusion">
+   1.5. Momentum Conclusion
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#train-vs-valid-vs-test">
-     1.5.1. Train vs Valid vs Test
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#returns">
-     1.5.2. Returns
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#statistical-tests">
-     1.5.3. Statistical Tests
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -992,6 +958,19 @@ title="Print to PDF"
 </div></div></div>
 </div>
 </section>
+<section id="validation-set">
+<h3><span class="section-number">1.3.5. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">#</a></h3>
+<p>I am going to set aside some of the data and not look at it any further.  The reason I am doing this is so I have a secondary unseen dataset to test my strategies.  I want to develop models on one set up data, but evaluate them on another.  This may not seem important, but it is absolutely crucial.  The more complex your model and analysis the more important this becomes.  This will be discussed in much greater detail in the backtesting chapter, but for now just take my word for it (or go read that chapter and come back).</p>
+<p>With time series, generally you want your validation set to be the most recent data.  This reflects reality best; creating a model on data with the intent to use it on future data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2017-1-1 01:00:00&#39;</span><span class="p">)]</span>
+<span class="n">valid</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2017-1-1 01:00:00&#39;</span><span class="p">):]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="models">
 <h2><span class="section-number">1.4. </span>Models<a class="headerlink" href="#models" title="Permalink to this headline">#</a></h2>
@@ -1021,7 +1000,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_momentum_actions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">n_periods</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_momentum_actions</span><span class="p">(</span><span class="n">train</span><span class="p">,</span><span class="n">n_periods</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
 <span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1151,12 +1130,12 @@ title="Print to PDF"
 <h3><span class="section-number">1.4.2. </span>Regression Momentum<a class="headerlink" href="#regression-momentum" title="Permalink to this headline">#</a></h3>
 <p>Our previous approach was just the % change between 2 dates.  But what if one of those days is an outlier?  Should we really make a decision based on just 2 data points?  To address these concerns we will define momentum slightly differently, with the slope of a fit regression.</p>
 <p>If we look at this example below with Apple for a 10 day period, we see a bunch of data points.  Every 4 data points has a regression trend line fit to them.  In this way, we can use the slope of that line to determine how much momentum it has.  In this way we use all the recent data points to influence momentum and not just the first and last</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">values</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">_</span><span class="o">.</span><span class="n">values</span>
 
@@ -1174,14 +1153,12 @@ title="Print to PDF"
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">regr</span><span class="p">)):</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">regr_padded</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Window Regression Lines&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Window Regression Lines&#39;)
-</pre></div>
-</div>
-<img alt="_images/101_Momentum_44_1.png" src="_images/101_Momentum_44_1.png" />
+<img alt="_images/101_Momentum_47_0.png" src="_images/101_Momentum_47_0.png" />
 </div>
 </div>
 <p>So we take the slope of best fit for the time range window.  There are very similar levers as before we can change to fine tune out approach:</p>
@@ -1193,6 +1170,7 @@ title="Print to PDF"
 <p>We will use 28 days for the time range and $5 for our threshold in this example to demonstrate the concept, but in the testing section we will show how to test different parameters.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>We are assuming that every day is equally spaced in this regression.  I reality, the stock market is not open daily.  We are ignoring this for this analysis to keep things simple, but it will be something for us to revisit later in the book!</p>
 <p>In this section we are using a straight dollar threshold instead of a percentage.  This can cause difficulties because a ticker with a share price at 20 dollars increasing to 25 dollars is a HUGE increase.  If a stock goes from 500 to 505 dollars that is not nearly as big of a deal.  The point of this section is to show variety of options and get you thinking, so we will keep this one as is!</p>
 <p>Let’s codify our approach so we have a function we can use to test with later.</p>
 </div>
@@ -1217,7 +1195,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_momentum_regr_actions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">n_periods</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">.24</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_momentum_regr_actions</span><span class="p">(</span><span class="n">train</span><span class="p">,</span><span class="n">n_periods</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">.24</span><span class="p">)</span>
 <span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1365,7 +1343,7 @@ title="Print to PDF"
 
         <span class="n">out</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">=</span> <span class="n">_out</span>
     <span class="k">return</span> <span class="n">out</span>
-<span class="n">calculate_bollinger</span><span class="p">(</span><span class="n">df</span><span class="p">,[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="s1">&#39;MSFT&#39;</span><span class="p">,</span><span class="s1">&#39;GOOG&#39;</span><span class="p">,</span><span class="s1">&#39;AMZN&#39;</span><span class="p">])[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">calculate_bollinger</span><span class="p">(</span><span class="n">train</span><span class="p">,[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="s1">&#39;MSFT&#39;</span><span class="p">,</span><span class="s1">&#39;GOOG&#39;</span><span class="p">,</span><span class="s1">&#39;AMZN&#39;</span><span class="p">])[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1405,26 +1383,26 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>2017-03-14</th>
-      <td>126.055500</td>
-      <td>136.290237</td>
-      <td>140.200454</td>
+      <th>2016-01-26</th>
+      <td>88.701118</td>
+      <td>95.502314</td>
+      <td>107.881403</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2016-12-20</th>
-      <td>103.221554</td>
-      <td>114.186830</td>
-      <td>114.631686</td>
+      <th>2013-08-13</th>
+      <td>52.188148</td>
+      <td>63.957470</td>
+      <td>62.729771</td>
       <td>False</td>
-      <td>False</td>
+      <td>True</td>
     </tr>
     <tr>
-      <th>2017-01-09</th>
-      <td>106.186468</td>
-      <td>116.178631</td>
-      <td>117.591962</td>
+      <th>2013-10-16</th>
+      <td>59.433816</td>
+      <td>65.465579</td>
+      <td>66.544777</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -1452,12 +1430,12 @@ title="Print to PDF"
         <span class="n">_tmp</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">_d</span><span class="p">[</span><span class="n">_d</span><span class="o">.</span><span class="n">lower_limit</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">_d</span><span class="p">[</span><span class="n">_d</span><span class="o">.</span><span class="n">lower_limit</span><span class="p">]</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
         <span class="n">_tmp</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">_d</span><span class="p">[</span><span class="n">_d</span><span class="o">.</span><span class="n">upper_limit</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">_d</span><span class="p">[</span><span class="n">_d</span><span class="o">.</span><span class="n">upper_limit</span><span class="p">]</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
-<span class="n">plot_bollinger</span><span class="p">(</span><span class="n">calculate_bollinger</span><span class="p">(</span><span class="n">df</span><span class="p">),</span><span class="n">min_date</span><span class="o">=</span><span class="s1">&#39;2016-01-01&#39;</span><span class="p">)</span>
+<span class="n">plot_bollinger</span><span class="p">(</span><span class="n">calculate_bollinger</span><span class="p">(</span><span class="n">train</span><span class="p">),</span><span class="n">min_date</span><span class="o">=</span><span class="s1">&#39;2016-01-01&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/101_Momentum_51_0.png" src="_images/101_Momentum_51_0.png" />
+<img alt="_images/101_Momentum_54_0.png" src="_images/101_Momentum_54_0.png" />
 </div>
 </div>
 <p>These charts show stock prices for Apple and Microsoft over time in orange.  The green is our upper band, which in this case is 2 standard deviations above the mean, when looking at the last 28 days of the adjusted close price.  The blue is 2 standard deviations below the mean.</p>
@@ -1481,7 +1459,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_bollinger_actions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">window_sz</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">band_sz</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_bollinger_actions</span><span class="p">(</span><span class="n">train</span><span class="p">,</span><span class="n">window_sz</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">band_sz</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1606,23 +1584,11 @@ title="Print to PDF"
 </div></div></div>
 </div>
 </section>
-<section id="model-conclusion">
-<h3><span class="section-number">1.4.4. </span>Model Conclusion<a class="headerlink" href="#model-conclusion" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="momentum-conclusion">
+<h2><span class="section-number">1.5. </span>Momentum Conclusion<a class="headerlink" href="#momentum-conclusion" title="Permalink to this headline">#</a></h2>
 <p>As you can see we took a simple concept of price momentum and showed 3 different ways this could be applied in a model.  There are many more, and we encourage you to think of another approach and code that up!  The key insight here is to really think about how all the ways you might accomplish a task are and what parameters you can tweak.</p>
 <p>By all means, do your research and let what has worked from others guide your tests.  But do not discard ideas you think are valuable simply because you haven’t read about anyone else doing it yet.  You may come up with a novel approach!  Or it may be an approach that others are using that just hasn’t been published publicly before.  Try new things, see how they work, and tweak them - that’s how you build intuition.</p>
-</section>
-</section>
-<section id="testing">
-<h2><span class="section-number">1.5. </span>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">#</a></h2>
-<section id="train-vs-valid-vs-test">
-<h3><span class="section-number">1.5.1. </span>Train vs Valid vs Test<a class="headerlink" href="#train-vs-valid-vs-test" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="returns">
-<h3><span class="section-number">1.5.2. </span>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="statistical-tests">
-<h3><span class="section-number">1.5.3. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">#</a></h3>
-</section>
 </section>
 </section>
 
@@ -1660,10 +1626,10 @@ title="Print to PDF"
             <p class="prev-next-title">Welcome to my Trading Book</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="201_Statistics.html" title="next page">
+    <a class='right-next' id="next-link" href="102_BasicTesting.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Statistics</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Introduction to Testing</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

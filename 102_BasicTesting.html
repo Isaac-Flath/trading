@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; Trading</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Introduction to Testing &#8212; Trading</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,8 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Statistics" href="201_Statistics.html" />
+    <link rel="prev" title="1. Momentum" href="101_Momentum.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,14 +118,14 @@ const thebe_selector_output = ".output, .cell_output"
   Section 1 - Applications
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="101_Momentum.html">
    1. Momentum
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="102_BasicTesting.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    2. Introduction to Testing
   </a>
  </li>
@@ -189,6 +192,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/master?urlpath=tree/docs/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -228,7 +260,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F102_BasicTesting.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -248,22 +280,125 @@ title="Open an issue"
   </div>
 </div>
 
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-vs-valid-vs-test">
+   2.1. Train vs Valid vs Test
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#returns">
+   2.2. Returns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-tests">
+   2.3. Statistical Tests
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1></h1>
+                <h1>Introduction to Testing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-vs-valid-vs-test">
+   2.1. Train vs Valid vs Test
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#returns">
+   2.2. Returns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-tests">
+   2.3. Statistical Tests
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -271,13 +406,50 @@ title="Open an issue"
                 
               <div>
                 
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-testing">
+<h1><span class="section-number">2. </span>Introduction to Testing<a class="headerlink" href="#introduction-to-testing" title="Permalink to this headline">#</a></h1>
+<p>We’ve created models and created actions we want to take for multiple approaches.  The question now is, how do we know if they are useful?  This is where it is important to test properly before we put money behind them.</p>
+<p>This will be a short introduction to testing to introduce some groundwork, but testing and validation is the most important and most difficult thing to do.  There are a lot of nuances and details to consider that we will discuss throughought the book - and we also have an entire chapter dedicated to it to cover testing in more detail.</p>
+<section id="train-vs-valid-vs-test">
+<h2><span class="section-number">2.1. </span>Train vs Valid vs Test<a class="headerlink" href="#train-vs-valid-vs-test" title="Permalink to this headline">#</a></h2>
+<p>The first concept is training, validation, and test sets - and understanding what they are for.</p>
+<p>We created out model on our training set.  But how do we know it will work on unseen data?  To put simply, we test it on the validation set.  This is why we set aside our most recent data so that we had a holdout set to test on.</p>
+<p>Now ideally we have yet another set, called the test set.  This set it even more removed from the process.  While we can keep iterating and testing lots of things on the validation set, we restrict testing on our test set.  This is to add an additional layer of safety.</p>
+<p>This is very important to protect against overfitting.  We will discuss this in greater detail throughout the book.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Overfitting is when your approach works extremely well on your training set, but not on unseen data.</p>
 </div>
+<p>We already created our validation set, but where do we get our test set?</p>
+<p>We could have split our data into three groups Train, Valid, and Test initially and we would have them all.  But instead I would like to look at the most recent data available to me.  For this I am going to pull the last 6 months (as of writing this chapter) of data from yahoo finance for all the tickers in this universe.</p>
+</section>
+<section id="returns">
+<h2><span class="section-number">2.2. </span>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="statistical-tests">
+<h2><span class="section-number">2.3. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -286,6 +458,20 @@ title="Open an issue"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="101_Momentum.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Momentum</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="201_Statistics.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Statistics</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
