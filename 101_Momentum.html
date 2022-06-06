@@ -393,18 +393,13 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importance">
-     1.2.1. Importance
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#belief">
-     1.2.2. Belief
+     1.2.1. Belief
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hypothesis">
-     1.2.3. Hypothesis
+     1.2.2. Hypothesis
     </a>
    </li>
   </ul>
@@ -466,6 +461,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#momentum-conclusion">
    1.5. Momentum Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-s-next">
+   1.6. What’s next
   </a>
  </li>
 </ul>
@@ -498,18 +498,13 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importance">
-     1.2.1. Importance
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#belief">
-     1.2.2. Belief
+     1.2.1. Belief
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hypothesis">
-     1.2.3. Hypothesis
+     1.2.2. Hypothesis
     </a>
    </li>
   </ul>
@@ -573,6 +568,11 @@ title="Print to PDF"
    1.5. Momentum Conclusion
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-s-next">
+   1.6. What’s next
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -591,6 +591,8 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
 </pre></div>
 </div>
 </div>
@@ -604,22 +606,13 @@ title="Print to PDF"
 </div>
 <section id="overview">
 <h2><span class="section-number">1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
-<p>In this article we will discuss basic windows for stock prices and test different methodologies for using them to make buy/sell decisions.  This is intended to be a first step in exploring quant trading and not a full fledged strategy or discussion of all apects of trading.  I hope that after reading this you will walk away understanding:</p>
-<ul class="simple">
-<li><p>What good minimal example of a trading strategy could look like that we can build ontop of</p></li>
-<li><p>How to take a concept/idea and understand what the tunable parameters/levers are</p></li>
-<li><p>What are the most important things that should be top of mind when testing an approach</p></li>
-</ul>
-<p>There are many more concepts not covered in this article that are absolutely crucial to being a successful quant.  Future articles will cover many of those concepts, but I think this will be an interesting and informative first step!</p>
+<p>In this chapter we will use recent stock price history to make buy and sell decisions.  This is intended to be a first step in exploring quant trading.  Because we believe in learning by doing, starting in chapter 1 we will be building trading strategies!</p>
+<p>Before diving into the technical bits, it is <em>always</em> a good idea to take the time to think about things at a high level and why your idea might work.  We can generate ideas <em>much</em> faster than we can code and test them, so we need to use intuition and experience to help guide us in which ideas we want to prioritize.  Intuition is important and where I start - but intuition is not reliable enough on it’s own - we <strong>must</strong> then turn intuition into code with rigorous testing before we can decide whether to implement the strategy.  Every chapter will start with this.</p>
 </section>
 <section id="intuition">
 <h2><span class="section-number">1.2. </span>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">#</a></h2>
-<section id="importance">
-<h3><span class="section-number">1.2.1. </span>Importance<a class="headerlink" href="#importance" title="Permalink to this headline">#</a></h3>
-<p>Before diving into the technical bits, it is <em>always</em> a good idea to take the time to think about things at a high level and why your idea might work.  We can generate ideas <em>much</em> faster than we can code and test them, so we need to use intuition and experience to help guide us in which ideas we want to prioritize.  Intuition is important and where I start - but intuition is not reliable enough on it’s own - we <strong>must</strong> then turn intuition into code with rigorous testing before we can decide whether to implement the strategy.  Every chapter will start with this.</p>
-</section>
 <section id="belief">
-<h3><span class="section-number">1.2.2. </span>Belief<a class="headerlink" href="#belief" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.1. </span>Belief<a class="headerlink" href="#belief" title="Permalink to this headline">#</a></h3>
 <p>I believe how a company is doing over the last month can be used to predict how how well it will do in the future.  This isn’t much of a leap, but let’s think about a few reasons as to why this may be true.</p>
 <ul class="simple">
 <li><p><strong>Available Capital:</strong> If a company is doing well, it typically means they have more profit.  More profit means more that can be reinvested.  More reinvestment can mean faster growth.</p></li>
@@ -628,15 +621,16 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="hypothesis">
-<h3><span class="section-number">1.2.3. </span>Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">#</a></h3>
-<p>The <em>hypothesis</em> for this chapter is that recent stock performance can be used on its own to predict future stock performance.  Regardless of how much we believe that to be true, we should not trade based on this belief until we have evidence.  This chapter will explore several options for using this hypothesis to make trades, and give a foundation in how we may test and determine whether this is an idea worth keeping.</p>
+<h3><span class="section-number">1.2.2. </span>Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">#</a></h3>
+<p>The <em>hypothesis</em> for this chapter is that recent stock performance can be used on its own to predict future stock performance.  Regardless of how much we believe that to be true, we should not trade based on this belief until we have evidence.  This chapter will explore several options for using this hypothesis to make trades.</p>
+<p>The next chapter will give a foundation in testing and show how we can test and evaluate how well these approaches perform and determine if these are ideas worth keeping.</p>
 </section>
 </section>
 <section id="the-data">
 <h2><span class="section-number">1.3. </span>The Data<a class="headerlink" href="#the-data" title="Permalink to this headline">#</a></h2>
 <section id="load-data">
 <h3><span class="section-number">1.3.1. </span>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h3>
-<p>First let’s take a look at the data we will be using and talk a bit about it.  We can load it in with pandas.</p>
+<p>First let’s take a look at the data we will be using and talk a bit about it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="s1">&#39;eod-quotemedia.csv&#39;</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
@@ -691,12 +685,14 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
+<p>We can see that for each day we have a ticker.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A ticker is a symbol associated with a company.  For example Apple has the ticker <code class="docutils literal notranslate"><span class="pre">AAPL</span></code>.  To buy shares in Apple you would buy <code class="docutils literal notranslate"><span class="pre">AAPL</span></code>.</p>
 </div>
-<p>We have a dataframe that contains the <code class="docutils literal notranslate"><span class="pre">adjusted</span> <span class="pre">close</span> <span class="pre">price</span></code> for each day for each ticker in our universe.  After every transaction, the price of a stock changes slightly.  The <code class="docutils literal notranslate"><span class="pre">adjusted</span> <span class="pre">close</span> <span class="pre">price</span></code> is the last stock price of the day.  While this is not as detailed as having the price at a more granular level (second, minute, hour, etc.), called <code class="docutils literal notranslate"><span class="pre">tick</span></code> data, we can use daily close price to test many types of strategies.</p>
-<p>A good first step is to use pandas’ describe method.  As we do this we see a few good pieces of information to keep in mind:</p>
+<p>For each of these day|ticker combinations we have an <code class="docutils literal notranslate"><span class="pre">adj_close</span></code>, or adjusted close price.  After every transaction, the price of a stock changes slightly.  The <code class="docutils literal notranslate"><span class="pre">adjusted</span> <span class="pre">close</span> <span class="pre">price</span></code> is the last stock price of the day.  While this is not as detailed as having the price at a more granular level (second, minute, hour, etc.), called <code class="docutils literal notranslate"><span class="pre">tick</span></code> data, we can use daily close price to test many types of strategies.</p>
+<p>::{note} This is the stock price for the ticker.  <code class="docutils literal notranslate"><span class="pre">adjusted</span></code> means that the prices have been adjusted to account for various actions, such as stock splits (more discussion on this later).  <code class="docutils literal notranslate"><span class="pre">close</span></code> means that it is the price at close of market.</p>
+<p>A good first step after getting tabular data is to use pandas’ describe method.  As we do this we see a few good pieces of information to keep in mind:</p>
 <ul class="simple">
 <li><p>Overall size of dataset - 409K rows</p></li>
 <li><p>Very big range in values (~1 - ~1K), which most of them before $100</p></li>
@@ -755,7 +751,7 @@ title="Print to PDF"
 </section>
 <section id="null-values">
 <h3><span class="section-number">1.3.2. </span>Null Values<a class="headerlink" href="#null-values" title="Permalink to this headline">#</a></h3>
-<p>Let’s take a look and make sure we don’t have any null values to handle.  This is one of those things you should do with every dataset.  This is a great opportunity to show how you can add in simple tests into your code as you go, which will help you catch issues as you iterate and change things.</p>
+<p>Let’s take a look and make sure we don’t have any null values to handle.  This is one of those things you need to do with every dataset.  This is also a great opportunity to show how you can add in simple tests into your code as you go using an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement, which will help you catch issues as you iterate and change things.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">o</span><span class="o">==</span><span class="mi">0</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">raw</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()])</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span>
@@ -763,7 +759,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>We also want to take a quick look at the non numberic columns to get an idea of what time frame we have and how many tickers.  This is often known from the dataset, but it is good practice to look at the dataset and ensure that your understanding of the dataset aligns with what you see in the data.</p>
+</section>
+<section id="survivorship-bias">
+<h3><span class="section-number">1.3.3. </span>Survivorship bias<a class="headerlink" href="#survivorship-bias" title="Permalink to this headline">#</a></h3>
+<p>We also want to take a quick look at the non-numeric columns to get an idea of what time frame we have and how many tickers.  This is often known from the dataset, but it is good practice to look at the dataset and ensure that your understanding of the dataset aligns with what you see in the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Date column contains dates from </span><span class="si">{</span><span class="n">raw</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">raw</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -776,9 +775,6 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="survivorship-bias">
-<h3><span class="section-number">1.3.3. </span>Survivorship bias<a class="headerlink" href="#survivorship-bias" title="Permalink to this headline">#</a></h3>
 <p>Let’s see if all tickers in the dataset have the same start and end date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,25 +788,37 @@ title="Print to PDF"
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;Out of </span><span class="si">{</span><span class="n">ticker_cnt</span><span class="si">}</span><span class="s1"> tickers:</span>
 <span class="s1">  + 20 do do not start on 2013-07-01</span>
-<span class="s1">  + 0 do not have an entry for 2017-06-30.&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="s1">  + 0 do not have an entry for 2017-06-30&#39;&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Out of 495 tickers:
   + 20 do do not start on 2013-07-01
-  + 0 do not have an entry for 2017-06-30.
+  + 0 do not have an entry for 2017-06-30
 </pre></div>
 </div>
 </div>
 </div>
-<p>Ok good thing we checked!  Let’s think through what these data points mean:</p>
+<p>Good thing we checked!  Let’s think through what these two data points mean:</p>
 <ul class="simple">
-<li><p>Not all the tickers have the same start date.  This makes some intuitive sense because some of the companies may not have been founded until after the start date of the dataset.  They also may not have fit the criteria for the ticker universe (ie too small) until after the start date.</p></li>
-<li><p>All of the tickers have an entry for 2017-06-30.  While it’s not definitive proof of an issue, it is cause for concern.  This dataset may have a survivorship bias built in.</p></li>
+<li><p><strong>20 do do not start on 2013-07-01:</strong>  This makes sense because some of the companies may not have been founded or fit our criteria until after the start date of the dataset.  Maybe they were private companies that went public, or maybe they grew to a large enough size to be part of our universe.</p></li>
+<li><p><strong>0 do not have an entry for 2017-06-30:</strong>  While it’s not definitive proof of an issue, it is cause for concern.  This dataset may have a survivorship bias built in.  Let’s talk about what survivorship bias is and why this could be a problem.</p></li>
 </ul>
-<p>The fact that every ticker still has a close price on the last day, means that as of the end of the dataset none of the companies in the dataset went out of business or were taken private.  A common reason this occurs in datasets is when a dataset is defined using future information.</p>
-<p>For example if I look at the S&amp;P 500 companies today and build a dataset of their stock prices over the last 5 years, every model I build will show better results than in reality.  By setting up the dataset using what is known on the last day of the period (all active S&amp;P 500 companies), we are filtering out all companies that were in the S&amp;P 500 but performed poorly they dropped out of the S&amp;P 500.  We used our knowledge from today to create a historical dataset, which created bias.</p>
+<p>In our dataset we see that every ticker has a close price on the last day of the dataset.  This means that all of the companies are active at the end of our dataset.  What this means is that either:</p>
+<ul class="simple">
+<li><p>No company went out of business or failed in our universe between our July 2013 and June 2017 dates</p></li>
+<li><p>Some companies did fail during our universe time period and our dataset does not reflect that.</p></li>
+</ul>
+<p>While either are possible, the second option is a common problem.  Let’s talk about why failed companies not being a part of our universe is a problem.</p>
+<p>Let’s say I look at the S&amp;P 500 companies in 2022 and build a dataset of their stock prices for 2015 - 2022. We want to tests how well a strategy would have performed in that time range.  Any trade has many outcomes for example:</p>
+<ol class="simple">
+<li><p>You could buy a stock and then the company goes out of business and you lose lots of money</p></li>
+<li><p>You could buy a stock and then the price goes up and you profit</p></li>
+<li><p>You could buy a stock and then the price goes down and you lose money</p></li>
+</ol>
+<p>The problem is that option #1 is <strong>impossible</strong> in this dataset.  We know none of the business went out of business between 2015 and 2022 because they were all in the S&amp;P 500 in 2022.  Option #1 is more likely than it should be because we already know the companies on the list are among the largest companies in 2022, so regardless of what company we pick we know it ends up a large company.  Option #3 is less likely than it should be because if a company shrunk in size to the point it’s not in the S&amp;P 500 in 2022 it’s not even in the dataset.  Our strategies may perform extremely well on our dataset, but when we run it on real data with real money we could be in for a shock!</p>
+<p>Bottom line is we need <strong>point in time</strong> data, or rather data for a given date should only be as accurate as you could have known on that date.</p>
 <p>When we see all tickers in the universe have a stock price on the last day, it’s important to verify that this did not happen in your dataset.  When we talk about testing later, we will talk about how we can test to ensure we have accurate results.</p>
 </section>
 <section id="reformat">
@@ -991,12 +999,26 @@ title="Print to PDF"
 </section>
 <section id="validation-set">
 <h3><span class="section-number">1.3.5. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">#</a></h3>
-<p>I am going to set aside some of the data and not look at it any further.  The reason I am doing this is so I have a secondary unseen dataset to test my strategies.  I want to develop models on one set up data, but evaluate them on another.  This may not seem important, but it is absolutely crucial.  The more complex your model and analysis the more important this becomes.  This will be discussed in much greater detail in the backtesting chapter, but for now just take my word for it (or go read that chapter and come back).</p>
-<p>With time series, generally you want your validation set to be the most recent data.  This reflects reality best; creating a model on data with the intent to use it on future data.</p>
+<p>We are going to split our data into 2 groups.  This way we have a secondary unseen dataset to test my strategies.  I want to develop models on one set of data but evaluate them on different data.  This may not seem important but it is absolutely crucial and perhaps the most important concept in this book.  The more complex your model and analysis the more important this becomes.  This will be discussed in much greater detail in chapter 2, but for now just take my word for it.</p>
+<p>With time series you generally want your validation set to be the most recent data.  This reflects reality best; creating a model on data with the intent to use it on future data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2017-1-1 01:00:00&#39;</span><span class="p">)]</span>
 <span class="n">valid</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2017-1-1 01:00:00&#39;</span><span class="p">):]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train Dates: </span><span class="si">{</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2"> thru </span><span class="si">{</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid Dates: </span><span class="si">{</span><span class="n">valid</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2"> thru </span><span class="si">{</span><span class="n">valid</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Dates: 2013-07-01 thru 2016-12-30
+Valid Dates: 2017-01-03 thru 2017-06-30
 </pre></div>
 </div>
 </div>
@@ -1007,23 +1029,31 @@ title="Print to PDF"
 <h2><span class="section-number">1.4. </span>Models<a class="headerlink" href="#models" title="Permalink to this headline">#</a></h2>
 <section id="basic-momentum">
 <h3><span class="section-number">1.4.1. </span>Basic Momentum<a class="headerlink" href="#basic-momentum" title="Permalink to this headline">#</a></h3>
-<p>As our first model let’s do a basic momentum model.  For this we will take the percent difference between the current stock price and the stock price from a set time in the past.  As we think about this approach there are several levers we can pull time find tune our approach:</p>
+<p>As our first model let’s use percent change over recent stock price history.  We will take the percent difference between the current stock price and the stock price from a set time in the past.  As we think about this approach there are several levers we can pull time find tune our approach:</p>
 <ul class="simple">
 <li><p><strong>Time Range:</strong> We could use the past 5 days, or past 30 days, or the past year.  How far back should we be comparing?</p></li>
 <li><p><strong>Threshold:</strong> What threshold do we need to cross before we consider it momentous enough to take an action?  Is a 1%, 5%, 10%?</p></li>
 <li><p><strong>What action?</strong>  Is it just buy and sell?  Could we use this to short?</p></li>
+<li><p><strong>When do we close our position</strong>  Is it a set time period?  Or based on another threshold?</p></li>
 </ul>
-<p>We will use 28 days for the time range and 8% for our threshold in this example to demonstrate the concept, but in the testing section we will show how to test different parameners.</p>
+<p>We will use 28 days for the time range and 8% for our threshold in this example to demonstrate the concept, but in the testing section we will show how to test different parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_momentum_actions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n_periods</span><span class="p">,</span><span class="n">threshold</span><span class="p">):</span>
     <span class="n">_x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">n_periods</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate percent change</span>
     <span class="n">momentum_rate</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">n_periods</span><span class="p">))</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">n_periods</span><span class="p">))[</span><span class="n">n_periods</span><span class="p">:]</span>
 
-    <span class="n">actions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">momentum_rate</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">threshold</span><span class="p">,</span> <span class="s1">&#39;Sell&#39;</span><span class="p">,</span>
+    <span class="c1"># Select Action Based on Threshold</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">momentum_rate</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">threshold</span><span class="p">,</span> <span class="s1">&#39;Short&#39;</span><span class="p">,</span>
                            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">momentum_rate</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">,</span>  <span class="s1">&#39;Buy&#39;</span><span class="p">,</span>
                                                                  <span class="s1">&#39;&#39;</span><span class="p">)),</span>
                    <span class="n">columns</span><span class="o">=</span><span class="n">momentum_rate</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">momentum_rate</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    
+    <span class="c1"># Because we use close price, we can&#39;t make the trade action until the following day</span>
+    <span class="n">actions</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
     <span class="k">return</span> <span class="n">actions</span>
 </pre></div>
 </div>
@@ -1031,8 +1061,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_momentum_actions</span><span class="p">(</span><span class="n">train</span><span class="p">,</span><span class="n">n_periods</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
-<span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_momentum_actions</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">],</span><span class="n">n_periods</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
+<span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1072,32 +1102,24 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>2013-08-09</th>
+      <th>2013-08-10</th>
       <td></td>
       <td>Buy</td>
       <td></td>
       <td>Buy</td>
       <td>Buy</td>
-    </tr>
-    <tr>
-      <th>2013-08-12</th>
-      <td></td>
-      <td>Buy</td>
-      <td></td>
-      <td>Buy</td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-13</th>
-      <td>Buy</td>
       <td></td>
+      <td>Buy</td>
       <td></td>
       <td>Buy</td>
       <td></td>
     </tr>
     <tr>
       <th>2013-08-14</th>
-      <td></td>
+      <td>Buy</td>
       <td></td>
       <td></td>
       <td>Buy</td>
@@ -1120,9 +1142,9 @@ title="Print to PDF"
       <td></td>
     </tr>
     <tr>
-      <th>2013-08-19</th>
+      <th>2013-08-17</th>
       <td></td>
-      <td>Sell</td>
+      <td></td>
       <td></td>
       <td>Buy</td>
       <td></td>
@@ -1130,7 +1152,7 @@ title="Print to PDF"
     <tr>
       <th>2013-08-20</th>
       <td></td>
-      <td>Sell</td>
+      <td>Short</td>
       <td></td>
       <td>Buy</td>
       <td></td>
@@ -1138,7 +1160,7 @@ title="Print to PDF"
     <tr>
       <th>2013-08-21</th>
       <td></td>
-      <td>Sell</td>
+      <td>Short</td>
       <td></td>
       <td>Buy</td>
       <td></td>
@@ -1146,7 +1168,15 @@ title="Print to PDF"
     <tr>
       <th>2013-08-22</th>
       <td></td>
-      <td>Sell</td>
+      <td>Short</td>
+      <td></td>
+      <td>Buy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-23</th>
+      <td></td>
+      <td>Short</td>
       <td></td>
       <td>Buy</td>
       <td></td>
@@ -1155,70 +1185,84 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<p>This leaves us with a nice table of what actions we are going to execute each day for each stock.  Let’s look at some other options for using this momentum-esque concept, and then we can test them all and compare how they perform at the end.</p>
+<p>This leaves us with a table of what actions we are going to execute each day for each stock.  Let’s look at some other options for using this momentum-esque concept, and then we can test them all and compare how they perform at the end.</p>
 </section>
 <section id="regression-momentum">
 <h3><span class="section-number">1.4.2. </span>Regression Momentum<a class="headerlink" href="#regression-momentum" title="Permalink to this headline">#</a></h3>
-<p>Our previous approach was just the % change between 2 dates.  But what if one of those days is an outlier?  Should we really make a decision based on just 2 data points?  To address these concerns we will define momentum slightly differently, with the slope of a fit regression.</p>
-<p>If we look at this example below with Apple for a 10 day period, we see a bunch of data points.  Every 4 data points has a regression trend line fit to them.  In this way, we can use the slope of that line to determine how much momentum it has.  In this way we use all the recent data points to influence momentum and not just the first and last</p>
+<p>Our previous approach was just the percent change between 2 dates.  But what if one of those days is an outlier?  Should we really make a decision based on just 2 data points?  To address this concerns we will define momentum slightly differently with the slope of a fit regression.</p>
+<p>First, let’s understand the general concept better.  Creating these minimal examples and visuals is <em>not</em> just something educational for a book - you should do this in your own projects as well.  It will help you think more deeply about your problem.</p>
+<p>Below I took the stock price for Apple in a 10 day period and plotted it as a scatter plot.  Every 4 data points I fit a regression trend line fit to them.  We can see that in some groups the trend a very aggressive upward slope, others it’s more neutral, and in others it is a strong negative slope.  By using that slope we can determine how much momentum the group of points has.  In this way we use all the recent data points to influence momentum and not just the first and last in a period.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Figure</span>
 <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Window Regression Lines&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Get 10 data points</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> 
+
 <span class="n">x1</span> <span class="o">=</span> <span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">values</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">_</span><span class="o">.</span><span class="n">values</span>
 
-<span class="n">sz</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">sz</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># Window Size</span>
+
+<span class="c1"># Get Windows for x and y</span>
 <span class="n">regr_y</span> <span class="o">=</span> <span class="p">[</span><span class="n">y1</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">sz</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">sz</span><span class="o">-</span><span class="mi">1</span><span class="p">))]</span>
 <span class="n">regr_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x1</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">sz</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">sz</span><span class="o">-</span><span class="mi">1</span><span class="p">))]</span>
 
+<span class="c1"># Create Regression lines</span>
 <span class="n">regr</span> <span class="o">=</span> <span class="p">[</span><span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">regr_x</span><span class="p">,</span><span class="n">regr_y</span><span class="p">)]</span>
 
-
+<span class="c1"># Pad Regression Lines for Plotting</span>
 <span class="n">regr_padded</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">-</span><span class="n">sz</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">regr</span><span class="p">)]</span>
 
-
+<span class="c1"># Plot</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">regr</span><span class="p">)):</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">regr_padded</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Window Regression Lines&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/101_Momentum_46_0.png" src="_images/101_Momentum_46_0.png" />
+<img alt="_images/101_Momentum_45_0.png" src="_images/101_Momentum_45_0.png" />
 </div>
 </div>
-<p>So we take the slope of best fit for the time range window.  There are very similar levers as before we can change to fine tune out approach:</p>
+<p>So we take the slope of the trend line to be our momentum.  There are very similar levers as before we can change to fine tune out approach:</p>
 <ul class="simple">
 <li><p><strong>Time Range:</strong> We could use the past 5 days, or past 30 days, or the past year.  How far back should we be comparing?</p></li>
 <li><p><strong>Threshold:</strong> What threshold do we need to cross before we consider it momentous enough to take an action?  Is a slope of 1? Slope of 10?  Should we do something other than a set value?</p></li>
 <li><p><strong>What action?</strong>  Is it just buy and sell?  Could we use this to short?</p></li>
+<li><p><strong>When do we close our position</strong>  Is it a set time period?  Or based on another threshold?</p></li>
 </ul>
 <p>We will use 28 days for the time range and $5 for our threshold in this example to demonstrate the concept, but in the testing section we will show how to test different parameters.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We are assuming that every day is equally spaced in this regression.  I reality, the stock market is not open daily.  We are ignoring this for this analysis to keep things simple, but it will be something for us to revisit later in the book!</p>
-<p>In this section we are using a straight dollar threshold instead of a percentage.  This can cause difficulties because a ticker with a share price at 20 dollars increasing to 25 dollars is a HUGE increase.  If a stock goes from 500 to 505 dollars that is not nearly as big of a deal.  The point of this section is to show variety of options and get you thinking, so we will keep this one as is!</p>
+<p>In this section we are using a straight dollar threshold instead of a percentage.  This can cause difficulties because a ticker with a share price at 20 dollars increasing to 25 dollars is a HUGE increase.  If a stock goes from 500 to 505 dollars that is not nearly as big of a deal.  The point of this chapter is to show variety of options and get you thinking so we will keep this one as is and see how it shakes out when we test it the approach.</p>
 <p>Let’s codify our approach so we have a function we can use to test with later.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_momentum_regr_actions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n_periods</span><span class="p">,</span><span class="n">threshold</span><span class="p">):</span>
     <span class="n">_x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">n_periods</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate Momentum</span>
     <span class="n">mom_window</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">n_periods</span><span class="p">)</span>
     <span class="n">mom_rate</span> <span class="o">=</span> <span class="n">mom_window</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span>
                                     <span class="n">fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_periods</span><span class="p">))</span><span class="o">.</span>
                                     <span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
     <span class="n">mom_rate</span> <span class="o">=</span> <span class="n">mom_rate</span><span class="p">[</span><span class="n">n_periods</span><span class="p">:]</span>
     
-    <span class="n">actions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mom_rate</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">threshold</span><span class="p">,</span> <span class="s1">&#39;Sell&#39;</span><span class="p">,</span>
+    <span class="c1"># Select Action Based on Threshold</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mom_rate</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">threshold</span><span class="p">,</span> <span class="s1">&#39;Short&#39;</span><span class="p">,</span>
                            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mom_rate</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">,</span>  <span class="s1">&#39;Buy&#39;</span><span class="p">,</span>
                                                                  <span class="s1">&#39;&#39;</span><span class="p">)),</span>
                    <span class="n">columns</span><span class="o">=</span><span class="n">mom_rate</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">mom_rate</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    
+    <span class="c1"># Because we use close price, we can&#39;t make the trade action until the following day</span>
+    <span class="n">actions</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
     <span class="k">return</span> <span class="n">actions</span>
 </pre></div>
 </div>
@@ -1226,8 +1270,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_momentum_regr_actions</span><span class="p">(</span><span class="n">train</span><span class="p">,</span><span class="n">n_periods</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">.24</span><span class="p">)</span>
-<span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_momentum_regr_actions</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">]],</span><span class="n">n_periods</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">.24</span><span class="p">)</span>
+<span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1250,11 +1294,11 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th>ticker</th>
-      <th>A</th>
-      <th>AAL</th>
-      <th>AAP</th>
       <th>AAPL</th>
-      <th>ABBV</th>
+      <th>ZBH</th>
+      <th>XOM</th>
+      <th>AAL</th>
+      <th>ALXN</th>
     </tr>
     <tr>
       <th>date</th>
@@ -1267,83 +1311,83 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>2013-08-09</th>
-      <td></td>
+      <th>2013-08-10</th>
+      <td>Buy</td>
+      <td>Buy</td>
       <td></td>
       <td></td>
       <td>Buy</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>2013-08-12</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Buy</td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-13</th>
-      <td></td>
+      <td>Buy</td>
+      <td>Buy</td>
       <td></td>
       <td></td>
       <td>Buy</td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-14</th>
+      <td>Buy</td>
       <td></td>
       <td></td>
       <td></td>
       <td>Buy</td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-15</th>
+      <td>Buy</td>
       <td></td>
       <td></td>
       <td></td>
       <td>Buy</td>
-      <td></td>
     </tr>
     <tr>
       <th>2013-08-16</th>
+      <td>Buy</td>
       <td></td>
       <td></td>
       <td></td>
       <td>Buy</td>
-      <td></td>
     </tr>
     <tr>
-      <th>2013-08-19</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th>2013-08-17</th>
       <td>Buy</td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
       <th>2013-08-20</th>
-      <td></td>
-      <td></td>
-      <td></td>
       <td>Buy</td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
       <th>2013-08-21</th>
-      <td></td>
-      <td></td>
-      <td></td>
       <td>Buy</td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
       <th>2013-08-22</th>
-      <td></td>
-      <td></td>
-      <td></td>
       <td>Buy</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2013-08-23</th>
+      <td>Buy</td>
+      <td></td>
+      <td>Short</td>
+      <td></td>
       <td></td>
     </tr>
   </tbody>
@@ -1353,20 +1397,25 @@ title="Print to PDF"
 </section>
 <section id="bollinger-bands">
 <h3><span class="section-number">1.4.3. </span>Bollinger Bands<a class="headerlink" href="#bollinger-bands" title="Permalink to this headline">#</a></h3>
-<p>The idea of a bollinger band is to use a rolling standard deviation to determine when the stock price is unusually high or low.  In theory if the price is doing something unexpected we can capitalize on that.</p>
-<p>Let’s walk through graphing this on a few tickers so we understand what’s going on.  Then we can test some strategies using this concept and see how they perform on this dataset.</p>
+<p>A bollinger band uses a rolling standard deviation to determine when the stock price is unusually high or low.  In theory if the price is doing something unexpected we can capitalize on that.  So rather than a percent change, or a regression line, we are now picking it based on whether it’s unusually high or low per the standard deviation.</p>
+<p>Let’s walk through graphing a bolldinger band this on a couple tickers so we understand what’s going on.  Then we can figure out how to use this to create a trading strategy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_bollinger</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="s1">&#39;MSFT&#39;</span><span class="p">],</span><span class="n">window_sz</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">band_sz</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+
     <span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="n">tickers</span><span class="p">:</span>
         <span class="n">raw</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">ticker</span><span class="p">]</span> 
+        
+        <span class="c1"># Calculate window statistics</span>
         <span class="n">_mean</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window_sz</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
         <span class="n">_std</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window_sz</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 
+        <span class="c1"># Calculate bands based on window statistics</span>
         <span class="n">upper_band</span> <span class="o">=</span> <span class="n">_mean</span> <span class="o">+</span> <span class="p">(</span><span class="n">band_sz</span><span class="o">*</span><span class="n">_std</span><span class="p">)</span>
         <span class="n">lower_band</span> <span class="o">=</span> <span class="n">_mean</span> <span class="o">-</span> <span class="p">(</span><span class="n">band_sz</span><span class="o">*</span><span class="n">_std</span><span class="p">)</span>
         
+        <span class="c1"># Combine in a dataframe</span>
         <span class="n">_out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">lower_band</span><span class="p">,</span> <span class="n">raw</span><span class="p">,</span> <span class="n">upper_band</span><span class="p">,</span> <span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">_out</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lower_band&#39;</span><span class="p">,</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span><span class="s1">&#39;upper_band&#39;</span><span class="p">]</span>
         <span class="n">_out</span><span class="p">[</span><span class="s1">&#39;lower_limit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_out</span><span class="o">.</span><span class="n">raw</span> <span class="o">&lt;</span> <span class="n">_out</span><span class="o">.</span><span class="n">lower_band</span>
@@ -1374,6 +1423,7 @@ title="Print to PDF"
 
         <span class="n">out</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">=</span> <span class="n">_out</span>
     <span class="k">return</span> <span class="n">out</span>
+
 <span class="n">calculate_bollinger</span><span class="p">(</span><span class="n">train</span><span class="p">,[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="s1">&#39;MSFT&#39;</span><span class="p">,</span><span class="s1">&#39;GOOG&#39;</span><span class="p">,</span><span class="s1">&#39;AMZN&#39;</span><span class="p">])[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1414,26 +1464,26 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>2016-04-22</th>
-      <td>99.438578</td>
-      <td>101.480285</td>
-      <td>107.965253</td>
+      <th>2016-11-14</th>
+      <td>104.123235</td>
+      <td>103.212396</td>
+      <td>117.329394</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2015-07-15</th>
+      <td>116.044501</td>
+      <td>120.067184</td>
+      <td>123.382845</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2016-05-06</th>
-      <td>87.411735</td>
-      <td>89.579610</td>
-      <td>113.569110</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>2014-05-16</th>
-      <td>65.673907</td>
-      <td>79.424990</td>
-      <td>83.692943</td>
+      <th>2014-02-24</th>
+      <td>64.904523</td>
+      <td>69.735251</td>
+      <td>75.035716</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -1444,16 +1494,21 @@ title="Print to PDF"
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_bollinger</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">min_date</span><span class="p">,</span><span class="n">plt_cols</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="c1"># Create Plot    </span>
     <span class="n">rows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">/</span><span class="n">plt_cols</span><span class="p">)</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span><span class="n">plt_cols</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="o">*</span><span class="n">rows</span><span class="p">))</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Bollinger Bands&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
+    
     <span class="k">for</span> <span class="n">i</span><span class="p">,(</span><span class="n">ticker</span><span class="p">,</span><span class="n">df</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="c1"># Determind plot location</span>
         <span class="n">row_num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">plt_cols</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">i</span>
         <span class="n">col_num</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="p">(</span><span class="n">row_num</span> <span class="o">*</span> <span class="n">plt_cols</span><span class="p">)</span>
         
+        <span class="c1"># Filter for dates</span>
         <span class="n">_d</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">&gt;=</span><span class="n">min_date</span><span class="p">]</span>
-
+        
+        <span class="c1"># Draw Plots</span>
         <span class="k">if</span> <span class="n">plt_cols</span> <span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span> <span class="n">_tmp</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">row_num</span><span class="p">,</span><span class="n">col_num</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span> <span class="n">_tmp</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">row_num</span><span class="p">]</span>
         <span class="n">_tmp</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
@@ -1466,23 +1521,30 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/101_Momentum_53_0.png" src="_images/101_Momentum_53_0.png" />
+<img alt="_images/101_Momentum_52_0.png" src="_images/101_Momentum_52_0.png" />
 </div>
 </div>
-<p>These charts show stock prices for Apple and Microsoft over time in orange.  The green is our upper band, which in this case is 2 standard deviations above the mean, when looking at the last 28 days of the adjusted close price.  The blue is 2 standard deviations below the mean.</p>
+<p>These charts show stock prices for Apple and Microsoft over time in orange.  The green is our upper band, which in this case is 2 standard deviations above the mean when looking at the last 28 days of the adjusted close price.  The blue is 2 standard deviations below the mean.</p>
 <p>We’ve plotted red dots anywhere the stock price crosses these bounds.  This can only happen if there is a significant enough shift for it to be 2 standard deviations from the mean.  Let’s code up this third momentum-esque approach as well so we have a 3rd method to test.  Where the price crosses a bollinger band we will take an action!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_bollinger_actions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">window_sz</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">band_sz</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     
+    <span class="c1"># Calculate Statistics</span>
     <span class="n">bollinger_data</span> <span class="o">=</span> <span class="n">calculate_bollinger</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">tickers</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="n">window_sz</span><span class="o">=</span><span class="n">window_sz</span><span class="p">,</span><span class="n">band_sz</span><span class="o">=</span><span class="n">band_sz</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate Actions</span>
     <span class="n">_d</span> <span class="o">=</span> <span class="n">L</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span><span class="n">dataframe</span> <span class="ow">in</span> <span class="n">bollinger_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">_d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;lower_limit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Sell&#39;</span><span class="p">,</span>
+        <span class="n">_d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;lower_limit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Short&#39;</span><span class="p">,</span>
                            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;upper_limit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span>  <span class="s1">&#39;Buy&#39;</span><span class="p">,</span>
                                                                  <span class="s1">&#39;&#39;</span><span class="p">)),</span>
                    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">ticker</span><span class="p">],</span><span class="n">index</span><span class="o">=</span><span class="n">dataframe</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
     <span class="n">bollinger_actions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">_d</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Because we use close price, we can&#39;t make the trade action until the following day</span>
+    <span class="n">actions</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
     <span class="k">return</span> <span class="n">bollinger_actions</span><span class="p">[</span><span class="n">window_sz</span><span class="p">:]</span>
 </pre></div>
 </div>
@@ -1490,8 +1552,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_bollinger_actions</span><span class="p">(</span><span class="n">train</span><span class="p">,</span><span class="n">window_sz</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">band_sz</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">get_bollinger_actions</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">],</span><span class="n">window_sz</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span><span class="n">band_sz</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">actions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1549,7 +1611,7 @@ title="Print to PDF"
     <tr>
       <th>2013-08-13</th>
       <td></td>
-      <td>Sell</td>
+      <td>Short</td>
       <td>Buy</td>
       <td>Buy</td>
       <td></td>
@@ -1557,7 +1619,7 @@ title="Print to PDF"
     <tr>
       <th>2013-08-14</th>
       <td></td>
-      <td>Sell</td>
+      <td>Short</td>
       <td></td>
       <td>Buy</td>
       <td></td>
@@ -1565,7 +1627,7 @@ title="Print to PDF"
     <tr>
       <th>2013-08-15</th>
       <td></td>
-      <td>Sell</td>
+      <td>Short</td>
       <td></td>
       <td>Buy</td>
       <td></td>
@@ -1573,16 +1635,16 @@ title="Print to PDF"
     <tr>
       <th>2013-08-16</th>
       <td></td>
-      <td>Sell</td>
-      <td>Sell</td>
+      <td>Short</td>
+      <td>Short</td>
       <td>Buy</td>
-      <td>Sell</td>
+      <td>Short</td>
     </tr>
     <tr>
       <th>2013-08-19</th>
       <td></td>
-      <td>Sell</td>
-      <td>Sell</td>
+      <td>Short</td>
+      <td>Short</td>
       <td>Buy</td>
       <td></td>
     </tr>
@@ -1592,7 +1654,7 @@ title="Print to PDF"
       <td></td>
       <td></td>
       <td></td>
-      <td>Sell</td>
+      <td>Short</td>
     </tr>
     <tr>
       <th>2013-08-21</th>
@@ -1600,7 +1662,7 @@ title="Print to PDF"
       <td></td>
       <td></td>
       <td></td>
-      <td>Sell</td>
+      <td>Short</td>
     </tr>
     <tr>
       <th>2013-08-22</th>
@@ -1618,8 +1680,14 @@ title="Print to PDF"
 </section>
 <section id="momentum-conclusion">
 <h2><span class="section-number">1.5. </span>Momentum Conclusion<a class="headerlink" href="#momentum-conclusion" title="Permalink to this headline">#</a></h2>
-<p>As you can see we took a simple concept of price momentum and showed 3 different ways this could be applied in a model.  There are many more, and we encourage you to think of another approach and code that up!  The key insight here is to really think about how all the ways you might accomplish a task are and what parameters you can tweak.</p>
-<p>By all means, do your research and let what has worked from others guide your tests.  But do not discard ideas you think are valuable simply because you haven’t read about anyone else doing it yet.  You may come up with a novel approach!  Or it may be an approach that others are using that just hasn’t been published publicly before.  Try new things, see how they work, and tweak them - that’s how you build intuition.</p>
+<p>In this chapter we took a simple idea of using recent stock price changes to define a trading strategy.  One key thing I hope you took is even with simple concepts there are many ways that it can be approached - we created three.  You <strong>must</strong> be able to think deeply about what your options are and experiment with different approaches and understand what are all the things in these approach you can control or tweak.  You <strong>must</strong> be able to take ideas and translate them to code.</p>
+<p>There are many more trading strategies that could be done using the same concepts in this chapter.  I encourage you to come up with one and implement it yourself.  That will be more difficult than reading the chapter was, but you will also learn more by doing that.  Once you do that write an explanation of why it might work, what you could tweak, and post post it in a github issue on our repository.  We’d love to see what you built!</p>
+<p>Learn by building + write to learn = success</p>
+</section>
+<section id="what-s-next">
+<h2><span class="section-number">1.6. </span>What’s next<a class="headerlink" href="#what-s-next" title="Permalink to this headline">#</a></h2>
+<p>In the next chapter we will introduce the most important and challenging topic in any predictive or modeling discipline, testing.  Effective testing is challenging and important because we need to be as confident as possible that the strategy we have will work “in the wild” just like we think it will.</p>
+<p>There are many horror stories of models being put into production and because they were not properly tested they failed and lost the company tons of money.  On writing this chapter, the latest was Zillow.  Google “Zillow Model Failure” if you’d like to read up on it.  When the tests performed do not provide an accurate view of how the model will perform in production, you’ve got a big problem.  Understanding testing is crucial to a quant to minimize these unexpected catastrophic failures.</p>
 </section>
 </section>
 
