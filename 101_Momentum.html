@@ -200,7 +200,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/master?urlpath=tree/docs/101_Momentum.ipynb"
+        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/101_Momentum.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -213,6 +213,24 @@ title="Launch on Binder"
     <img src="_static/images/logo_binder.svg">
   </span>
 <span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/101_Momentum.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
 </a>
 
       </li>
@@ -272,6 +290,23 @@ title="Open an issue"
   <i class="fas fa-lightbulb"></i>
   </span>
 <span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isaac-flath/trading/edit/main/trading/101_Momentum.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
 </a>
 
       </li>
@@ -390,8 +425,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lookahead-bias">
-     1.3.3. Lookahead bias
+    <a class="reference internal nav-link" href="#survivorship-bias">
+     1.3.3. Survivorship bias
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -495,8 +530,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lookahead-bias">
-     1.3.3. Lookahead bias
+    <a class="reference internal nav-link" href="#survivorship-bias">
+     1.3.3. Survivorship bias
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -742,8 +777,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="lookahead-bias">
-<h3><span class="section-number">1.3.3. </span>Lookahead bias<a class="headerlink" href="#lookahead-bias" title="Permalink to this headline">#</a></h3>
+<section id="survivorship-bias">
+<h3><span class="section-number">1.3.3. </span>Survivorship bias<a class="headerlink" href="#survivorship-bias" title="Permalink to this headline">#</a></h3>
 <p>Let’s see if all tickers in the dataset have the same start and end date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -772,12 +807,8 @@ title="Print to PDF"
 <p>Ok good thing we checked!  Let’s think through what these data points mean:</p>
 <ul class="simple">
 <li><p>Not all the tickers have the same start date.  This makes some intuitive sense because some of the companies may not have been founded until after the start date of the dataset.  They also may not have fit the criteria for the ticker universe (ie too small) until after the start date.</p></li>
-<li><p>All of the tickers have an entry for 2017-06-30.  While it’s not definitive proof of an issue, it is cause for concern.  This dataset may have a lookahead bias built in.</p></li>
+<li><p>All of the tickers have an entry for 2017-06-30.  While it’s not definitive proof of an issue, it is cause for concern.  This dataset may have a survivorship bias built in.</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Investopedia says “Look-ahead bias occurs by using information or data in a study or simulation that would not have been known or available during the period being analyzed.”</p>
-</div>
 <p>The fact that every ticker still has a close price on the last day, means that as of the end of the dataset none of the companies in the dataset went out of business or were taken private.  A common reason this occurs in datasets is when a dataset is defined using future information.</p>
 <p>For example if I look at the S&amp;P 500 companies today and build a dataset of their stock prices over the last 5 years, every model I build will show better results than in reality.  By setting up the dataset using what is known on the last day of the period (all active S&amp;P 500 companies), we are filtering out all companies that were in the S&amp;P 500 but performed poorly they dropped out of the S&amp;P 500.  We used our knowledge from today to create a historical dataset, which created bias.</p>
 <p>When we see all tickers in the universe have a stock price on the last day, it’s important to verify that this did not happen in your dataset.  When we talk about testing later, we will talk about how we can test to ensure we have accurate results.</p>
@@ -1158,7 +1189,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/101_Momentum_47_0.png" src="_images/101_Momentum_47_0.png" />
+<img alt="_images/101_Momentum_46_0.png" src="_images/101_Momentum_46_0.png" />
 </div>
 </div>
 <p>So we take the slope of best fit for the time range window.  There are very similar levers as before we can change to fine tune out approach:</p>
@@ -1383,26 +1414,26 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>2016-01-26</th>
-      <td>88.701118</td>
-      <td>95.502314</td>
-      <td>107.881403</td>
+      <th>2016-04-22</th>
+      <td>99.438578</td>
+      <td>101.480285</td>
+      <td>107.965253</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2013-08-13</th>
-      <td>52.188148</td>
-      <td>63.957470</td>
-      <td>62.729771</td>
+      <th>2016-05-06</th>
+      <td>87.411735</td>
+      <td>89.579610</td>
+      <td>113.569110</td>
       <td>False</td>
-      <td>True</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>2013-10-16</th>
-      <td>59.433816</td>
-      <td>65.465579</td>
-      <td>66.544777</td>
+      <th>2014-05-16</th>
+      <td>65.673907</td>
+      <td>79.424990</td>
+      <td>83.692943</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -1435,7 +1466,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/101_Momentum_54_0.png" src="_images/101_Momentum_54_0.png" />
+<img alt="_images/101_Momentum_53_0.png" src="_images/101_Momentum_53_0.png" />
 </div>
 </div>
 <p>These charts show stock prices for Apple and Microsoft over time in orange.  The green is our upper band, which in this case is 2 standard deviations above the mean, when looking at the last 28 days of the adjusted close price.  The blue is 2 standard deviations below the mean.</p>
