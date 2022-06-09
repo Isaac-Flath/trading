@@ -1,6 +1,7 @@
+fastcore
 jupyter-book
 matplotlib
 numpy
 pandas
+polygon-api-client
 scikit-learn
-fastcore
