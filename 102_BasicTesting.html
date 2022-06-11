@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. Statistics" href="201_Statistics.html" />
-    <link rel="prev" title="1. Momentum" href="101_Momentum.html" />
+    <link rel="prev" title="1. Simple Time Series (Stock Prices)" href="101_SimpleTimeSeries.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,8 +107,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="101_Momentum.html">
-   1. Momentum
+  <a class="reference internal" href="101_SimpleTimeSeries.html">
+   1. Simple Time Series (Stock Prices)
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -238,57 +240,57 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-data">
-   2.1. The Data
+  <a class="reference internal nav-link" href="#background">
+   2.1. Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-data-should-you-use-for-testing">
+   2.2. What data should you use for testing?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-set">
-     2.1.1. Training Set
+     2.2.1. Training Set
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#validation-set">
-     2.1.2. Validation Set
+     2.2.2. Validation Set
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#test-set">
-     2.1.3. Test Set
+     2.2.3. Test Set
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returns">
-   2.2. Returns
+  <a class="reference internal nav-link" href="#what-metric-should-you-use-for-testing">
+   2.3. What metric should you use for testing?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dollars">
-     2.2.1. Dollars
+     2.3.1. Dollars
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#percent-return">
-     2.2.2. Percent Return
+     2.3.2. Percent Return
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#log-return">
-     2.2.3. Log Return
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-comparisons">
-     2.2.4. Model Comparisons
+     2.3.3. Log Return
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#statistical-tests">
-   2.3. Statistical Tests
+   2.4. Statistical Tests
   </a>
  </li>
 </ul>
@@ -312,57 +314,57 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-data">
-   2.1. The Data
+  <a class="reference internal nav-link" href="#background">
+   2.1. Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-data-should-you-use-for-testing">
+   2.2. What data should you use for testing?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#training-set">
-     2.1.1. Training Set
+     2.2.1. Training Set
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#validation-set">
-     2.1.2. Validation Set
+     2.2.2. Validation Set
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#test-set">
-     2.1.3. Test Set
+     2.2.3. Test Set
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returns">
-   2.2. Returns
+  <a class="reference internal nav-link" href="#what-metric-should-you-use-for-testing">
+   2.3. What metric should you use for testing?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dollars">
-     2.2.1. Dollars
+     2.3.1. Dollars
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#percent-return">
-     2.2.2. Percent Return
+     2.3.2. Percent Return
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#log-return">
-     2.2.3. Log Return
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-comparisons">
-     2.2.4. Model Comparisons
+     2.3.3. Log Return
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#statistical-tests">
-   2.3. Statistical Tests
+   2.4. Statistical Tests
   </a>
  </li>
 </ul>
@@ -383,8 +385,8 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">polygon</span> <span class="kn">import</span> <span class="n">RESTClient</span>
-
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">view_source_code</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">date</span>
 <span class="kn">import</span> <span class="nn">time</span>
 </pre></div>
 </div>
@@ -397,15 +399,23 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="section" id="background">
+<h2><span class="section-number">2.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <p>In Chapter 1 we created models and created actions we want to take for multiple approaches.  The question now is, how do we know if they are profitable?  How should we measure them?  How do we know if we simply got lucky, or if they are reliable?</p>
-<p>As we mentioned in chapter 2, testing is the most important part of the process.  If done well you have a good way to determine what strategies should be implemented, and if done poorly you run the risk of implementing non-profitable strategies.</p>
-<p>This chapter will lay the groundwork and cover the basics of testing.  Additional information about testing will be covered throughout the book and will assume knowledge of the content in this chapter.</p>
-<p>This chapter will cover many of the rules of testing.  Many people often like to point out specific exceptions to specific scenarios, and almost nothing can be 100% true in 100% of scenarios.  But you need to understand the ideal testing setup, and you need to understand what you sacrifice when you choose to, need to, or are asked to deviate from it.</p>
-<div class="section" id="the-data">
-<h2><span class="section-number">2.1. </span>The Data<a class="headerlink" href="#the-data" title="Permalink to this headline">¶</a></h2>
+<p>As we mentioned in chapter 2, testing is the most important part of the process.  If done well you have a good way to determine what strategies should be implemented, and if done poorly you run the risk of implementing non-profitable strategies.  I believe you should strive to never sacrifice testing principles because effective testing is your <strong>only</strong> objective indication to whether you are doing something useful or not.  Without effective testing you are “flying blind”.</p>
+<p>This chapter will lay the groundwork and cover the basics of testing.  The goal of this chapter is to introduce concept and the three core things that need to be carefully considered for effective testing.</p>
+<ol class="simple">
+<li><p>What data should you use for testing?</p></li>
+<li><p>What metric should you use for testing?</p></li>
+<li><p>What test should you use?</p></li>
+</ol>
+<p>In this chapter we are going to walk through the concepts to see each step and understand the importance.  In the next chapter we are going apply our knowledge to build a better structured solution and framework that we can use through the remainder of the book.</p>
+</div>
+<div class="section" id="what-data-should-you-use-for-testing">
+<h2><span class="section-number">2.2. </span>What data should you use for testing?<a class="headerlink" href="#what-data-should-you-use-for-testing" title="Permalink to this headline">¶</a></h2>
 <p>The first question we have to ask is what data to we use for testing?  Ideally we have 3 subsets of our data (training, validation, and test).  Let’s go through what they are used for and why they are important.</p>
 <div class="section" id="training-set">
-<h3><span class="section-number">2.1.1. </span>Training Set<a class="headerlink" href="#training-set" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.1. </span>Training Set<a class="headerlink" href="#training-set" title="Permalink to this headline">¶</a></h3>
 <p>The training set is unique because it has no restrictions on what we can do with it.  We can look at any piece of data in it.  We can normalize data using values in the training set.  We can train machine learning models on the training set.  This is often the largest subset of our data.</p>
 <p>This training set is pretty explanatory - we use this for understanding our data and developing our model.</p>
 <p>We can load it in using the same method as we did in chapter 1.</p>
@@ -420,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="validation-set">
-<h3><span class="section-number">2.1.2. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">¶</a></h3>
 <p>The goal of creating a trading strategy is to have it perform well on data that it was not developed using.  We may use data from 2015 - 2020 to create a trading strategy, but the goal is to apply it to 2021 and 2022 to make a profit.</p>
 <p>Because we want our model to perform on <em>unseen</em> data, we create some restriction to how we use the validation set.  We do not train any models on it, and we do not use statistics or data from the validation set when creating our model.  It’s data our model has never seen.  The validation set is something we can only use to see how well our strategy or model performs.</p>
 <p>The entire purpose of the validation set is to give us unseen data to evaluate our approaches on.  By having this separate validation set we can more accurately determine what works and what doesn’t.</p>
@@ -434,7 +444,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="test-set">
-<h3><span class="section-number">2.1.3. </span>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.3. </span>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">¶</a></h3>
 <p>The Test set is very similar to the validation set, but it takes things a step further.  It has further restrictions in that is is the final model step before deployment.  The main difference is how often you can use it.  For the validation set, you can test anything on the validation set as many times as you want.  For the test set you only get to look at the test set once for your particular approach.</p>
 <p>For example, you may try 300 different approaches and parameter changes to your strategy to see what works best.  You can check the profitability on each of them using the validation set.  Then once you have chosen a strategy, you do a final check to ensure it also performs on the test set.  Once you have done that you need a new test set or your project is over.</p>
 <p>The reason this is important is that you want to ensure that you didn’t get lucky and find a configuration out of your 300 attempts that just happens to work on the validation set but doesn’t work elsewhere.  If you try enough combinations eventually you will find something that works, but the test set gives you confidence that your model works because it’s a good strategy and not that you just tried enough things to find something that works on coincidence.</p>
@@ -563,45 +573,58 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="returns">
-<h2><span class="section-number">2.2. </span>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h2>
-<p>Now that we understand what data we will use for testing, let’s actually start using it to calculate how well our models from chapter 1 perform.  We will walk through the process for one model.  Then at the end we will put it together to compare the different approaches with different parameters to compare them.</p>
+<div class="section" id="what-metric-should-you-use-for-testing">
+<h2><span class="section-number">2.3. </span>What metric should you use for testing?<a class="headerlink" href="#what-metric-should-you-use-for-testing" title="Permalink to this headline">¶</a></h2>
+<p>Now that we understand what data we will use for testing, let’s start figuring out how well our first model from chapter 1 performs.</p>
+<p>The next step is to figure out an appropriate metric.  There are a variety of ways to measure this and we will walk through a few first steps in this section</p>
 <div class="section" id="dollars">
-<h3><span class="section-number">2.2.1. </span>Dollars<a class="headerlink" href="#dollars" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.1. </span>Dollars<a class="headerlink" href="#dollars" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take our first model from chapter 1 and measure how well it does in terms of dollars.  After all dollars is what we want to make, so it seems like a reasonable starting point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_momentum_actions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n_periods</span><span class="p">,</span><span class="n">threshold</span><span class="p">):</span>
-    <span class="n">_x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">n_periods</span><span class="p">)</span>
-    <span class="n">momentum_rate</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">n_periods</span><span class="p">))</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">n_periods</span><span class="p">))[</span><span class="n">n_periods</span><span class="p">:]</span>
-    <span class="n">actions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">momentum_rate</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">threshold</span><span class="p">,</span> <span class="s1">&#39;Short&#39;</span><span class="p">,</span>
-                           <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">momentum_rate</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">,</span>  <span class="s1">&#39;Buy&#39;</span><span class="p">,</span>
-                                                                 <span class="s1">&#39;&#39;</span><span class="p">)),</span>
-                   <span class="n">columns</span><span class="o">=</span><span class="n">momentum_rate</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">momentum_rate</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-    <span class="n">actions</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">actions</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">SimpleTimeSeries</span> <span class="kn">import</span> <span class="n">get_momentum_actions</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">,</span><span class="s1">&#39;close_date&#39;</span><span class="p">])</span>
 
 <span class="n">valid_mom</span> <span class="o">=</span> <span class="n">get_momentum_actions</span><span class="p">(</span><span class="n">valid</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mf">0.08</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">dte</span><span class="p">,</span><span class="n">vals</span> <span class="ow">in</span> <span class="n">valid_mom</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>    
+<span class="k">for</span> <span class="n">dte</span><span class="p">,</span><span class="n">vals</span> <span class="ow">in</span> <span class="n">valid_mom</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>    
     <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">[</span><span class="n">vals</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">dte</span><span class="o">.</span><span class="n">date</span><span class="p">()]</span><span class="o">+</span><span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">val</span><span class="p">]],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">])</span>
-        <span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">transactions</span><span class="p">,</span><span class="n">row</span><span class="p">])</span>
-        
+        <span class="n">row</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;open_date&#39;</span><span class="p">:</span><span class="n">dte</span><span class="o">.</span><span class="n">date</span><span class="p">(),</span><span class="s1">&#39;ticker&#39;</span><span class="p">:</span><span class="n">val</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;action&#39;</span><span class="p">:</span><span class="n">val</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+        <span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">transactions</span><span class="p">,</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>No we have a dataframe with all the positions we are going to take and when to take them.  But we are missing one crucial piece!  When should we close those positions.  We cannot make money by simplying buying a stock (ignoring dividends for now) - the profit comes when we actually close the position and sell the stock.  Let’s close the position 28 days after opening.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;close_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">open_date</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">28</span><span class="p">)</span>
+<span class="n">transactions</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">transactions</span><span class="o">.</span><span class="n">open_date</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">transactions</span><span class="o">.</span><span class="n">open_date</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">28</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we need to get the stock price on the date of our initial action when we open to position, as well as when we close our position.  Let’s start with the price on the day we open.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_valid_long</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;adj_close&#39;</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_valid_long</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dte&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;adj_close&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">transactions</span><span class="o">.</span><span class="n">open_date</span><span class="p">)</span>
+<span class="n">df_valid_long</span><span class="p">[</span><span class="s1">&#39;dte&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_valid_long</span><span class="o">.</span><span class="n">dte</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">transactions</span><span class="p">,</span><span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">],</span>
+         <span class="n">right</span><span class="o">=</span><span class="n">df_valid_long</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dte&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">],</span>
+         <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -627,6 +650,9 @@ const thebe_selector_output = ".output, .cell_output"
       <th>open_date</th>
       <th>ticker</th>
       <th>action</th>
+      <th>close_date</th>
+      <th>dte</th>
+      <th>adj_close</th>
     </tr>
   </thead>
   <tbody>
@@ -635,60 +661,667 @@ const thebe_selector_output = ".output, .cell_output"
       <td>2017-02-14</td>
       <td>A</td>
       <td>Buy</td>
+      <td>2017-03-14</td>
+      <td>2017-02-14</td>
+      <td>49.703267</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>1</th>
       <td>2017-02-14</td>
       <td>AAPL</td>
       <td>Buy</td>
+      <td>2017-03-14</td>
+      <td>2017-02-14</td>
+      <td>132.397351</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>2</th>
       <td>2017-02-15</td>
       <td>AAPL</td>
       <td>Buy</td>
+      <td>2017-03-15</td>
+      <td>2017-02-15</td>
+      <td>132.877833</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>3</th>
       <td>2017-02-16</td>
       <td>A</td>
       <td>Buy</td>
+      <td>2017-03-16</td>
+      <td>2017-02-16</td>
+      <td>50.147135</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>4</th>
       <td>2017-02-16</td>
       <td>AAPL</td>
       <td>Buy</td>
+      <td>2017-03-16</td>
+      <td>2017-02-16</td>
+      <td>132.716038</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>5</th>
       <td>2017-02-17</td>
       <td>AAPL</td>
       <td>Buy</td>
+      <td>2017-03-17</td>
+      <td>2017-02-17</td>
+      <td>133.083754</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>6</th>
       <td>2017-02-18</td>
       <td>AAPL</td>
       <td>Buy</td>
+      <td>2017-03-18</td>
+      <td>NaT</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2017-02-22</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-22</td>
+      <td>2017-02-22</td>
+      <td>134.446754</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2017-02-23</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-23</td>
+      <td>2017-02-23</td>
+      <td>133.878020</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2017-02-24</td>
+      <td>AAP</td>
+      <td>Short</td>
+      <td>2017-03-24</td>
+      <td>2017-02-24</td>
+      <td>156.842676</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>Uh oh - We have a join that isn’t working correctly and get <code class="docutils literal notranslate"><span class="pre">NaT</span></code> and <code class="docutils literal notranslate"><span class="pre">NaN</span></code>!  We created our model assuming that we could make transactions any day we want, but the stock market is not open every day.  There are limitations to when we can trade openly in the stock market we need to start accounting for.</p>
+<p>When we trade using the adjusted close price we added a day because we wouldn’t be able to actually place the trade until the following day.  If that day ended up being a Saturday in reality we would have to wait until Monday to place that trade (assuming that monday isn’t a holiday).</p>
+<p>Let’s fix that by getting the next available trading day for each date.  Because we know this same thing applies to our <code class="docutils literal notranslate"><span class="pre">close_date</span></code>, we will fix it there as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_dates</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">valid</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">unique_dates</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_next_trading_day</span><span class="p">(</span><span class="n">dte</span><span class="p">,</span><span class="n">unique_dates</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">unique_dates</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">dte</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">get_next_trading_day</span><span class="p">,</span><span class="n">unique_dates</span><span class="o">=</span><span class="n">unique_dates</span><span class="p">)</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">open_date</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;close_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">close_date</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">transactions</span><span class="o">.</span><span class="n">open_date</span><span class="p">)</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;close_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">transactions</span><span class="o">.</span><span class="n">close_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can merge in the price correctly!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">transactions</span><span class="p">,</span><span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">],</span>
+                         <span class="n">right</span><span class="o">=</span><span class="n">df_valid_long</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dte&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">],</span>
+                          <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">transactions</span><span class="p">,</span><span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;close_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">],</span>
+                         <span class="n">right</span><span class="o">=</span><span class="n">df_valid_long</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dte&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">],</span>
+                          <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+                          <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_atOpen&#39;</span><span class="p">,</span><span class="s1">&#39;_atClose&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>open_date</th>
+      <th>ticker</th>
+      <th>action</th>
+      <th>close_date</th>
+      <th>dte_atOpen</th>
+      <th>adj_close_atOpen</th>
+      <th>dte_atClose</th>
+      <th>adj_close_atClose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-02-14</td>
+      <td>A</td>
+      <td>Buy</td>
+      <td>2017-03-14</td>
+      <td>2017-02-14</td>
+      <td>49.703267</td>
+      <td>2017-03-14</td>
+      <td>51.498464</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-02-14</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-14</td>
+      <td>2017-02-14</td>
+      <td>132.397351</td>
+      <td>2017-03-14</td>
+      <td>136.290237</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-02-15</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-15</td>
+      <td>2017-02-15</td>
+      <td>132.877833</td>
+      <td>2017-03-15</td>
+      <td>137.731683</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-02-16</td>
+      <td>A</td>
+      <td>Buy</td>
+      <td>2017-03-16</td>
+      <td>2017-02-16</td>
+      <td>50.147135</td>
+      <td>2017-03-16</td>
+      <td>52.327016</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-02-16</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-16</td>
+      <td>2017-02-16</td>
+      <td>132.716038</td>
+      <td>2017-03-16</td>
+      <td>137.957216</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2017-02-17</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-17</td>
+      <td>2017-02-17</td>
+      <td>133.083754</td>
+      <td>2017-03-17</td>
+      <td>137.270813</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2017-02-21</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-20</td>
+      <td>2017-02-21</td>
+      <td>134.044718</td>
+      <td>2017-03-20</td>
+      <td>138.712259</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2017-02-22</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-22</td>
+      <td>2017-02-22</td>
+      <td>134.446754</td>
+      <td>2017-03-22</td>
+      <td>138.673036</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2017-02-23</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-23</td>
+      <td>2017-02-23</td>
+      <td>133.878020</td>
+      <td>2017-03-23</td>
+      <td>138.182748</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2017-02-24</td>
+      <td>AAP</td>
+      <td>Short</td>
+      <td>2017-03-24</td>
+      <td>2017-02-24</td>
+      <td>156.842676</td>
+      <td>2017-03-24</td>
+      <td>149.325422</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buy_transactions</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">transactions</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;Buy&#39;</span><span class="p">]</span>
+<span class="n">short_transactions</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">transactions</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;Short&#39;</span><span class="p">]</span>
+
+<span class="n">buy_profit</span> <span class="o">=</span> <span class="p">(</span><span class="n">buy_transactions</span><span class="o">.</span><span class="n">adj_close_atClose</span> <span class="o">-</span> <span class="n">buy_transactions</span><span class="o">.</span><span class="n">adj_close_atOpen</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">short_profit</span><span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">short_transactions</span><span class="o">.</span><span class="n">adj_close_atClose</span> <span class="o">-</span> <span class="n">short_transactions</span><span class="o">.</span><span class="n">adj_close_atOpen</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">buy_profit</span><span class="p">,</span><span class="n">short_profit</span><span class="p">,</span><span class="n">buy_profit</span><span class="o">+</span><span class="n">short_profit</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(56.40339746321577, 33.86091030275433, 90.2643077659701)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great!  So according to our validation set we made $90 profit (pre-tax).  We could buy/short in higher volumes (ie Buy = 10x buys, Short = 10x shorts) to make this profit larger.</p>
+<p>However this really isn’t enough information to determine whether that is a good idea of feasible.  I would love to loan someone \<span class="math notranslate nohighlight">\(100 if they would give me \\\)</span>190 dollars back.  I would hate to loan someone \<span class="math notranslate nohighlight">\(10,000 on the promise that they would pay me \\\)</span>10,090 back.  The reward just wouldn’t be worth the risk.</p>
+<p>Let’s see if we can come up with a better metric.</p>
 </div>
 <div class="section" id="percent-return">
-<h3><span class="section-number">2.2.2. </span>Percent Return<a class="headerlink" href="#percent-return" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.2. </span>Percent Return<a class="headerlink" href="#percent-return" title="Permalink to this headline">¶</a></h3>
+<p>Instead of measuring raw dollars, lets consider how much money (capital) we needed in order to make that $90 profit.  To do this we need to keep track of our money more carefully than just looking at how much we made at the end.  Let’s track how much we have invested after each transaction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>open_date</th>
+      <th>ticker</th>
+      <th>action</th>
+      <th>close_date</th>
+      <th>dte_atOpen</th>
+      <th>adj_close_atOpen</th>
+      <th>dte_atClose</th>
+      <th>adj_close_atClose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-02-14</td>
+      <td>A</td>
+      <td>Buy</td>
+      <td>2017-03-14</td>
+      <td>2017-02-14</td>
+      <td>49.703267</td>
+      <td>2017-03-14</td>
+      <td>51.498464</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-02-14</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-14</td>
+      <td>2017-02-14</td>
+      <td>132.397351</td>
+      <td>2017-03-14</td>
+      <td>136.290237</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-02-15</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-15</td>
+      <td>2017-02-15</td>
+      <td>132.877833</td>
+      <td>2017-03-15</td>
+      <td>137.731683</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-02-16</td>
+      <td>A</td>
+      <td>Buy</td>
+      <td>2017-03-16</td>
+      <td>2017-02-16</td>
+      <td>50.147135</td>
+      <td>2017-03-16</td>
+      <td>52.327016</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-02-16</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>2017-03-16</td>
+      <td>2017-02-16</td>
+      <td>132.716038</td>
+      <td>2017-03-16</td>
+      <td>137.957216</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Each row of our transaction table is actually 2 actions.</p>
+<ol class="simple">
+<li><p>Action we take to open a position</p></li>
+<li><p>Action we take to close the position</p></li>
+</ol>
+<p>Let’s change this to be 1 action per row so we can more easily look at things sequentially.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_trans</span> <span class="o">=</span> <span class="n">transactions</span><span class="p">[[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">,</span><span class="s1">&#39;adj_close_atOpen&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">open_trans</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Open&quot;</span>
+
+<span class="n">close_trans</span> <span class="o">=</span> <span class="n">transactions</span><span class="p">[[</span><span class="s1">&#39;close_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">,</span><span class="s1">&#39;adj_close_atClose&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">close_trans</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">close_trans</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;Sell&quot;</span> <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="s2">&quot;Buy&quot;</span> <span class="k">else</span> <span class="s2">&quot;Return&quot;</span><span class="p">)</span>
+<span class="n">close_trans</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Close&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">open_trans</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">close_trans</span><span class="o">.</span><span class="n">values</span><span class="p">]),</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;trans_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">])</span>
+<span class="n">transactions</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;trans_date&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">transactions</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trans_date</th>
+      <th>ticker</th>
+      <th>action</th>
+      <th>price</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-02-14</td>
+      <td>A</td>
+      <td>Buy</td>
+      <td>49.703267</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-02-14</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>132.397351</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-02-15</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>132.877833</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-02-16</td>
+      <td>A</td>
+      <td>Buy</td>
+      <td>50.147135</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-02-16</td>
+      <td>AAPL</td>
+      <td>Buy</td>
+      <td>132.716038</td>
+      <td>Open</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Great!  So now we can go row by row by execute each action sequentially.  If <code class="docutils literal notranslate"><span class="pre">type==Open</span></code> we are opening a position (spending money), if <code class="docutils literal notranslate"><span class="pre">type==Close</span></code> we are closing the position (making or losing money).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Buy&#39;, &#39;Short&#39;, &#39;Sell&#39;, &#39;Return&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>I spend $100 to buy a stock.</p></li>
+<li><p>I sell that stock for $110</p></li>
+</ul>
+<p>I have invested 100, and have revenue of 110, for 10 dollar profit</p>
+<ul class="simple">
+<li><p>I spend 100 to sell a stock</p></li>
+<li><p>I reuturn that stock for 110</p></li>
+</ul>
+<p>I invested 110, and have revenue of 100 for a net loss of 10</p>
+<ul class="simple">
+<li><p>I spend 100 to sell a stock</p></li>
+<li><p>I reuturn that stock for 90</p></li>
+</ul>
+<p>I invested 90, and have revenue of 100 for a net profit of 10</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">invested_buy</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">revenue_buy</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">invested_short</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">revenue_short</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">vals</span> <span class="ow">in</span> <span class="n">transactions</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s2">&quot;Open&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Buy&quot;</span><span class="p">):</span>
+        <span class="n">invested_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">vals</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
+        <span class="n">revenue_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">invested_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">revenue_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s2">&quot;Close&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Sell&quot;</span><span class="p">):</span>
+        <span class="n">revenue_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">vals</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
+        <span class="n">invested_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">invested_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">revenue_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s2">&quot;Open&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Short&quot;</span><span class="p">):</span>
+        <span class="n">revenue_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">vals</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
+        <span class="n">invested_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">revenue_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">invested_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s2">&quot;Close&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Return&quot;</span><span class="p">):</span>
+        <span class="n">invested_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">vals</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
+        <span class="n">invested_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">revenue_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">revenue_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;invested_buy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">invested_buy</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;revenue_buy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">revenue_buy</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;invested_short&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">invested_short</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;revenue_short&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">revenue_short</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;profit_buy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue_buy</span> <span class="o">-</span> <span class="n">transactions</span><span class="o">.</span><span class="n">invested_buy</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;profit_short&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue_short</span> <span class="o">-</span> <span class="n">transactions</span><span class="o">.</span><span class="n">invested_short</span>
+
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;ttl_invested&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">invested_buy</span> <span class="o">+</span> <span class="n">transactions</span><span class="o">.</span><span class="n">invested_short</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;ttl_revenue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue_buy</span> <span class="o">+</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue_short</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;ttl_profit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">profit_buy</span> <span class="o">+</span> <span class="n">transactions</span><span class="o">.</span><span class="n">profit_short</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ttl_invested    10808.976839
+ttl_revenue     10899.241147
+ttl_profit         90.264308
+Name: 221, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>So now we can see several interesting things.  First, we can validate that we get the same amount of profit for buy, short, and overall (~\$90) so we know our math did the same thing.</p>
+<p>Next we can see that in order to make that \<span class="math notranslate nohighlight">\(90 of profit we had to invest \\\)</span>10,808 dollars!  Let’s calculate what our <code class="docutils literal notranslate"><span class="pre">percent</span> <span class="pre">return</span></code> is.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">ttl_revenue</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10899.241146966167
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end_values</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
+<span class="p">(</span><span class="n">end_values</span><span class="o">.</span><span class="n">ttl_revenue</span> <span class="o">-</span> <span class="n">end_values</span><span class="o">.</span><span class="n">ttl_invested</span><span class="p">)</span> <span class="o">/</span> <span class="n">end_values</span><span class="o">.</span><span class="n">ttl_invested</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00835086512893754
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ok, so we see we got 0.8% return on our investment.  That’s definitely better than 0, but how do we know if that’s good enough to use?</p>
+<p>A good first step is for us to compare to an index.  Let’s see how the S&amp;P 500 did in that time to determine if we beat the market.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time Range: </span><span class="si">{</span><span class="n">transactions</span><span class="o">.</span><span class="n">trans_date</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">transactions</span><span class="o">.</span><span class="n">trans_date</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time Range: 2017-02-14 - 2017-06-30
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>On 2/14 the S&amp;P 500 had an ajusted close price of 2,337.58</p></li>
+<li><p>On 6/30 the S&amp;P 500 had an ajdusted close price of 2,423.41</p></li>
+</ul>
+<p>If we use that to caculate percent return we get:</p>
+<div class="math notranslate nohighlight">
+\[\frac{(2423.41 - 2337.58)}{2337.58} = 3.7\%\]</div>
+<p>And compare that to out previous return</p>
+<div class="math notranslate nohighlight">
+\[\frac{3.7}{0.8} = 4.625\]</div>
+<p>So if we had just invested in the S&amp;P 500 we would have done over 4.5x better!  We may have made a profit, but we could have saved time and taken on less risk while making more money by simply investing the S&amp;P 500.  Our investment strategy isn’t looking so good after all!</p>
 </div>
 <div class="section" id="log-return">
-<h3><span class="section-number">2.2.3. </span>Log Return<a class="headerlink" href="#log-return" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="model-comparisons">
-<h3><span class="section-number">2.2.4. </span>Model Comparisons<a class="headerlink" href="#model-comparisons" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.3. </span>Log Return<a class="headerlink" href="#log-return" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="statistical-tests">
-<h2><span class="section-number">2.3. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -717,11 +1350,11 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="101_Momentum.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="101_SimpleTimeSeries.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>Momentum</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Simple Time Series (Stock Prices)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="201_Statistics.html" title="next page">
