@@ -7,7 +7,7 @@ parts:
   - caption: Section 1 - Applications
     numbered: True
     chapters:
-    - file: 101_Momentum
+    - file: 101_SimpleTimeSeries
     - file: 102_BasicTesting
   - caption: Section 2 - Foundations
     numbered: True
