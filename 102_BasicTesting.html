@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2. Introduction to Testing &#8212; Trading</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -55,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Statistics" href="201_Statistics.html" />
+    <link rel="next" title="3. Time Series" href="301_TimeSeries.html" />
     <link rel="prev" title="1. Simple Time Series (Stock Prices)" href="101_SimpleTimeSeries.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -93,14 +107,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Welcome to my Trading Book
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to my Trading Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Section 1 - Applications
  </span>
@@ -116,6 +131,11 @@ const thebe_selector_output = ".output, .cell_output"
    2. Introduction to Testing
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="301_TimeSeries.html">
+   3. Time Series
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -125,120 +145,250 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="201_Statistics.html">
-   3. Statistics
+   4. Statistics
   </a>
  </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/102_BasicTesting.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/isaac-flath/trading"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F102_BasicTesting.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/isaac-flath/trading/edit/main/trading/102_BasicTesting.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/102_BasicTesting.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/102_BasicTesting.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isaac-flath/trading"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F102_BasicTesting.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isaac-flath/trading/edit/main/trading/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#background">
    2.1. Background
@@ -295,12 +445,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Introduction to Testing</h1>
@@ -373,11 +522,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-testing">
-<h1><span class="section-number">2. </span>Introduction to Testing<a class="headerlink" href="#introduction-to-testing" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-testing">
+<h1><span class="section-number">2. </span>Introduction to Testing<a class="headerlink" href="#introduction-to-testing" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastcore.all</span> <span class="kn">import</span> <span class="o">*</span>
@@ -391,6 +541,20 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">polygon</span> <span class="kn">import</span> <span class="n">RESTClient</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">view_source_code</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">date</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;polygon&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -399,8 +563,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="background">
-<h2><span class="section-number">2.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<section id="background">
+<h2><span class="section-number">2.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
 <p>In Chapter 1 we created models and created actions we want to take for multiple approaches.  The question now is, how do we know if they are profitable?  How should we measure them?  How do we know if we simply got lucky, or if they are reliable?</p>
 <p>As we mentioned in chapter 2, testing is the most important part of the process.  If done well you have a good way to determine what strategies should be implemented, and if done poorly you run the risk of implementing non-profitable strategies.  I believe you should strive to never sacrifice testing principles because effective testing is your <strong>only</strong> objective indication to whether you are doing something useful or not.  Without effective testing you are “flying blind”.</p>
 <p>This chapter will lay the groundwork and cover the basics of testing.  The goal of this chapter is to introduce concept and the three core things that need to be carefully considered for effective testing.</p>
@@ -410,12 +574,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>What test should you use?</p></li>
 </ol>
 <p>In this chapter we are going to walk through the concepts to see each step and understand the importance.  In the next chapter we are going apply our knowledge to build a better structured solution and framework that we can use through the remainder of the book.</p>
-</div>
-<div class="section" id="what-data-should-you-use-for-testing">
-<h2><span class="section-number">2.2. </span>What data should you use for testing?<a class="headerlink" href="#what-data-should-you-use-for-testing" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-data-should-you-use-for-testing">
+<h2><span class="section-number">2.2. </span>What data should you use for testing?<a class="headerlink" href="#what-data-should-you-use-for-testing" title="Permalink to this headline">#</a></h2>
 <p>The first question we have to ask is what data to we use for testing?  Ideally we have 3 subsets of our data (training, validation, and test).  Let’s go through what they are used for and why they are important.</p>
-<div class="section" id="training-set">
-<h3><span class="section-number">2.2.1. </span>Training Set<a class="headerlink" href="#training-set" title="Permalink to this headline">¶</a></h3>
+<section id="training-set">
+<h3><span class="section-number">2.2.1. </span>Training Set<a class="headerlink" href="#training-set" title="Permalink to this headline">#</a></h3>
 <p>The training set is unique because it has no restrictions on what we can do with it.  We can look at any piece of data in it.  We can normalize data using values in the training set.  We can train machine learning models on the training set.  This is often the largest subset of our data.</p>
 <p>This training set is pretty explanatory - we use this for understanding our data and developing our model.</p>
 <p>We can load it in using the same method as we did in chapter 1.</p>
@@ -428,9 +592,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="validation-set">
-<h3><span class="section-number">2.2.2. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="validation-set">
+<h3><span class="section-number">2.2.2. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">#</a></h3>
 <p>The goal of creating a trading strategy is to have it perform well on data that it was not developed using.  We may use data from 2015 - 2020 to create a trading strategy, but the goal is to apply it to 2021 and 2022 to make a profit.</p>
 <p>Because we want our model to perform on <em>unseen</em> data, we create some restriction to how we use the validation set.  We do not train any models on it, and we do not use statistics or data from the validation set when creating our model.  It’s data our model has never seen.  The validation set is something we can only use to see how well our strategy or model performs.</p>
 <p>The entire purpose of the validation set is to give us unseen data to evaluate our approaches on.  By having this separate validation set we can more accurately determine what works and what doesn’t.</p>
@@ -442,9 +606,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="test-set">
-<h3><span class="section-number">2.2.3. </span>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="test-set">
+<h3><span class="section-number">2.2.3. </span>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">#</a></h3>
 <p>The Test set is very similar to the validation set, but it takes things a step further.  It has further restrictions in that is is the final model step before deployment.  The main difference is how often you can use it.  For the validation set, you can test anything on the validation set as many times as you want.  For the test set you only get to look at the test set once for your particular approach.</p>
 <p>For example, you may try 300 different approaches and parameter changes to your strategy to see what works best.  You can check the profitability on each of them using the validation set.  Then once you have chosen a strategy, you do a final check to ensure it also performs on the test set.  Once you have done that you need a new test set or your project is over.</p>
 <p>The reason this is important is that you want to ensure that you didn’t get lucky and find a configuration out of your 300 attempts that just happens to work on the validation set but doesn’t work elsewhere.  If you try enough combinations eventually you will find something that works, but the test set gives you confidence that your model works because it’s a good strategy and not that you just tried enough things to find something that works on coincidence.</p>
@@ -571,14 +735,14 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="what-metric-should-you-use-for-testing">
-<h2><span class="section-number">2.3. </span>What metric should you use for testing?<a class="headerlink" href="#what-metric-should-you-use-for-testing" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="what-metric-should-you-use-for-testing">
+<h2><span class="section-number">2.3. </span>What metric should you use for testing?<a class="headerlink" href="#what-metric-should-you-use-for-testing" title="Permalink to this headline">#</a></h2>
 <p>Now that we understand what data we will use for testing, let’s start figuring out how well our first model from chapter 1 performs.</p>
 <p>The next step is to figure out an appropriate metric.  There are a variety of ways to measure this and we will walk through a few first steps in this section</p>
-<div class="section" id="dollars">
-<h3><span class="section-number">2.3.1. </span>Dollars<a class="headerlink" href="#dollars" title="Permalink to this headline">¶</a></h3>
+<section id="dollars">
+<h3><span class="section-number">2.3.1. </span>Dollars<a class="headerlink" href="#dollars" title="Permalink to this headline">#</a></h3>
 <p>Let’s take our first model from chapter 1 and measure how well it does in terms of dollars.  After all dollars is what we want to make, so it seems like a reasonable starting point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -971,9 +1135,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Great!  So according to our validation set we made $90 profit (pre-tax).  We could buy/short in higher volumes (ie Buy = 10x buys, Short = 10x shorts) to make this profit larger.</p>
 <p>However this really isn’t enough information to determine whether that is a good idea of feasible.  I would love to loan someone \<span class="math notranslate nohighlight">\(100 if they would give me \\\)</span>190 dollars back.  I would hate to loan someone \<span class="math notranslate nohighlight">\(10,000 on the promise that they would pay me \\\)</span>10,090 back.  The reward just wouldn’t be worth the risk.</p>
 <p>Let’s see if we can come up with a better metric.</p>
-</div>
-<div class="section" id="percent-return">
-<h3><span class="section-number">2.3.2. </span>Percent Return<a class="headerlink" href="#percent-return" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="percent-return">
+<h3><span class="section-number">2.3.2. </span>Percent Return<a class="headerlink" href="#percent-return" title="Permalink to this headline">#</a></h3>
 <p>Instead of measuring raw dollars, lets consider how much money (capital) we needed in order to make that $90 profit.  To do this we need to keep track of our money more carefully than just looking at how much we made at the end.  Let’s track how much we have invested after each transaction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1315,15 +1479,15 @@ Name: 221, dtype: object
 <div class="math notranslate nohighlight">
 \[\frac{3.7}{0.8} = 4.625\]</div>
 <p>So if we had just invested in the S&amp;P 500 we would have done over 4.5x better!  We may have made a profit, but we could have saved time and taken on less risk while making more money by simply investing the S&amp;P 500.  Our investment strategy isn’t looking so good after all!</p>
-</div>
-<div class="section" id="log-return">
-<h3><span class="section-number">2.3.3. </span>Log Return<a class="headerlink" href="#log-return" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="statistical-tests">
-<h2><span class="section-number">2.4. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="log-return">
+<h3><span class="section-number">2.3.3. </span>Log Return<a class="headerlink" href="#log-return" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="statistical-tests">
+<h2><span class="section-number">2.4. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1347,9 +1511,11 @@ Name: 221, dtype: object
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="101_SimpleTimeSeries.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1357,32 +1523,36 @@ Name: 221, dtype: object
             <p class="prev-next-title"><span class="section-number">1. </span>Simple Time Series (Stock Prices)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="201_Statistics.html" title="next page">
+    <a class='right-next' id="next-link" href="301_TimeSeries.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Statistics</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Time Series</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Isaac Flath & Felix Flath<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Isaac Flath & Felix Flath<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
