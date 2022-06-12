@@ -9,6 +9,7 @@ parts:
     chapters:
     - file: 101_SimpleTimeSeries
     - file: 102_BasicTesting
+    - file: 301_TimeSeries
   - caption: Section 2 - Foundations
     numbered: True
     chapters:
