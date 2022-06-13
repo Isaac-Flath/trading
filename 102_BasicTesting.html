@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2. Introduction to Testing &#8212; Trading</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,13 +39,12 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -63,21 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -86,10 +73,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -107,15 +93,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Welcome to my Trading Book
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to my Trading Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Section 1 - Applications
  </span>
@@ -151,17 +136,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -169,226 +149,101 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/102_BasicTesting.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/102_BasicTesting.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/isaac-flath/trading"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F102_BasicTesting.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/isaac-flath/trading/edit/main/trading/102_BasicTesting.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/102_BasicTesting.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/102_BasicTesting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/isaac-flath/trading"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F102_BasicTesting.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/isaac-flath/trading/edit/main/trading/102_BasicTesting.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/102_BasicTesting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/102_BasicTesting.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#background">
    2.1. Background
@@ -442,14 +297,32 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#statistical-tests">
    2.4. Statistical Tests
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     2.4.1. Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-test">
+     2.4.2. Statistical Test
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#below-this-is-just-jibberish-testing-code">
+   2.5. Below this is just jibberish testing code
+  </a>
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Introduction to Testing</h1>
@@ -515,6 +388,23 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#statistical-tests">
    2.4. Statistical Tests
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     2.4.1. Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-test">
+     2.4.2. Statistical Test
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#below-this-is-just-jibberish-testing-code">
+   2.5. Below this is just jibberish testing code
+  </a>
  </li>
 </ul>
 
@@ -522,12 +412,11 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-testing">
-<h1><span class="section-number">2. </span>Introduction to Testing<a class="headerlink" href="#introduction-to-testing" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-testing">
+<h1><span class="section-number">2. </span>Introduction to Testing<a class="headerlink" href="#introduction-to-testing" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastcore.all</span> <span class="kn">import</span> <span class="o">*</span>
@@ -535,23 +424,9 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">polygon</span> <span class="kn">import</span> <span class="n">RESTClient</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">view_source_code</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">view_source_code</span><span class="p">,</span> <span class="n">get_dollars</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">date</span>
-<span class="kn">import</span> <span class="nn">time</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">polygon</span> <span class="kn">import</span> <span class="n">RESTClient</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">view_source_code</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">date</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;polygon&#39;
+<span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">time</span>
 </pre></div>
 </div>
 </div>
@@ -563,8 +438,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="background">
-<h2><span class="section-number">2.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<div class="section" id="background">
+<h2><span class="section-number">2.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <p>In Chapter 1 we created models and created actions we want to take for multiple approaches.  The question now is, how do we know if they are profitable?  How should we measure them?  How do we know if we simply got lucky, or if they are reliable?</p>
 <p>As we mentioned in chapter 2, testing is the most important part of the process.  If done well you have a good way to determine what strategies should be implemented, and if done poorly you run the risk of implementing non-profitable strategies.  I believe you should strive to never sacrifice testing principles because effective testing is your <strong>only</strong> objective indication to whether you are doing something useful or not.  Without effective testing you are “flying blind”.</p>
 <p>This chapter will lay the groundwork and cover the basics of testing.  The goal of this chapter is to introduce concept and the three core things that need to be carefully considered for effective testing.</p>
@@ -574,12 +449,12 @@ title="Print to PDF"
 <li><p>What test should you use?</p></li>
 </ol>
 <p>In this chapter we are going to walk through the concepts to see each step and understand the importance.  In the next chapter we are going apply our knowledge to build a better structured solution and framework that we can use through the remainder of the book.</p>
-</section>
-<section id="what-data-should-you-use-for-testing">
-<h2><span class="section-number">2.2. </span>What data should you use for testing?<a class="headerlink" href="#what-data-should-you-use-for-testing" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="what-data-should-you-use-for-testing">
+<h2><span class="section-number">2.2. </span>What data should you use for testing?<a class="headerlink" href="#what-data-should-you-use-for-testing" title="Permalink to this headline">¶</a></h2>
 <p>The first question we have to ask is what data to we use for testing?  Ideally we have 3 subsets of our data (training, validation, and test).  Let’s go through what they are used for and why they are important.</p>
-<section id="training-set">
-<h3><span class="section-number">2.2.1. </span>Training Set<a class="headerlink" href="#training-set" title="Permalink to this headline">#</a></h3>
+<div class="section" id="training-set">
+<h3><span class="section-number">2.2.1. </span>Training Set<a class="headerlink" href="#training-set" title="Permalink to this headline">¶</a></h3>
 <p>The training set is unique because it has no restrictions on what we can do with it.  We can look at any piece of data in it.  We can normalize data using values in the training set.  We can train machine learning models on the training set.  This is often the largest subset of our data.</p>
 <p>This training set is pretty explanatory - we use this for understanding our data and developing our model.</p>
 <p>We can load it in using the same method as we did in chapter 1.</p>
@@ -592,9 +467,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="validation-set">
-<h3><span class="section-number">2.2.2. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="validation-set">
+<h3><span class="section-number">2.2.2. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">¶</a></h3>
 <p>The goal of creating a trading strategy is to have it perform well on data that it was not developed using.  We may use data from 2015 - 2020 to create a trading strategy, but the goal is to apply it to 2021 and 2022 to make a profit.</p>
 <p>Because we want our model to perform on <em>unseen</em> data, we create some restriction to how we use the validation set.  We do not train any models on it, and we do not use statistics or data from the validation set when creating our model.  It’s data our model has never seen.  The validation set is something we can only use to see how well our strategy or model performs.</p>
 <p>The entire purpose of the validation set is to give us unseen data to evaluate our approaches on.  By having this separate validation set we can more accurately determine what works and what doesn’t.</p>
@@ -606,9 +481,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="test-set">
-<h3><span class="section-number">2.2.3. </span>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="test-set">
+<h3><span class="section-number">2.2.3. </span>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">¶</a></h3>
 <p>The Test set is very similar to the validation set, but it takes things a step further.  It has further restrictions in that is is the final model step before deployment.  The main difference is how often you can use it.  For the validation set, you can test anything on the validation set as many times as you want.  For the test set you only get to look at the test set once for your particular approach.</p>
 <p>For example, you may try 300 different approaches and parameter changes to your strategy to see what works best.  You can check the profitability on each of them using the validation set.  Then once you have chosen a strategy, you do a final check to ensure it also performs on the test set.  Once you have done that you need a new test set or your project is over.</p>
 <p>The reason this is important is that you want to ensure that you didn’t get lucky and find a configuration out of your 300 attempts that just happens to work on the validation set but doesn’t work elsewhere.  If you try enough combinations eventually you will find something that works, but the test set gives you confidence that your model works because it’s a good strategy and not that you just tried enough things to find something that works on coincidence.</p>
@@ -735,14 +610,14 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-</section>
-</section>
-<section id="what-metric-should-you-use-for-testing">
-<h2><span class="section-number">2.3. </span>What metric should you use for testing?<a class="headerlink" href="#what-metric-should-you-use-for-testing" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="what-metric-should-you-use-for-testing">
+<h2><span class="section-number">2.3. </span>What metric should you use for testing?<a class="headerlink" href="#what-metric-should-you-use-for-testing" title="Permalink to this headline">¶</a></h2>
 <p>Now that we understand what data we will use for testing, let’s start figuring out how well our first model from chapter 1 performs.</p>
 <p>The next step is to figure out an appropriate metric.  There are a variety of ways to measure this and we will walk through a few first steps in this section</p>
-<section id="dollars">
-<h3><span class="section-number">2.3.1. </span>Dollars<a class="headerlink" href="#dollars" title="Permalink to this headline">#</a></h3>
+<div class="section" id="dollars">
+<h3><span class="section-number">2.3.1. </span>Dollars<a class="headerlink" href="#dollars" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take our first model from chapter 1 and measure how well it does in terms of dollars.  After all dollars is what we want to make, so it seems like a reasonable starting point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -966,7 +841,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1033,112 +908,530 @@ title="Print to PDF"
       <td>2017-03-15</td>
       <td>137.731683</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>2017-02-16</td>
-      <td>A</td>
-      <td>Buy</td>
-      <td>2017-03-16</td>
-      <td>2017-02-16</td>
-      <td>50.147135</td>
-      <td>2017-03-16</td>
-      <td>52.327016</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2017-02-16</td>
-      <td>AAPL</td>
-      <td>Buy</td>
-      <td>2017-03-16</td>
-      <td>2017-02-16</td>
-      <td>132.716038</td>
-      <td>2017-03-16</td>
-      <td>137.957216</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2017-02-17</td>
-      <td>AAPL</td>
-      <td>Buy</td>
-      <td>2017-03-17</td>
-      <td>2017-02-17</td>
-      <td>133.083754</td>
-      <td>2017-03-17</td>
-      <td>137.270813</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2017-02-21</td>
-      <td>AAPL</td>
-      <td>Buy</td>
-      <td>2017-03-20</td>
-      <td>2017-02-21</td>
-      <td>134.044718</td>
-      <td>2017-03-20</td>
-      <td>138.712259</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2017-02-22</td>
-      <td>AAPL</td>
-      <td>Buy</td>
-      <td>2017-03-22</td>
-      <td>2017-02-22</td>
-      <td>134.446754</td>
-      <td>2017-03-22</td>
-      <td>138.673036</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2017-02-23</td>
-      <td>AAPL</td>
-      <td>Buy</td>
-      <td>2017-03-23</td>
-      <td>2017-02-23</td>
-      <td>133.878020</td>
-      <td>2017-03-23</td>
-      <td>138.182748</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2017-02-24</td>
-      <td>AAP</td>
-      <td>Short</td>
-      <td>2017-03-24</td>
-      <td>2017-02-24</td>
-      <td>156.842676</td>
-      <td>2017-03-24</td>
-      <td>149.325422</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buy_transactions</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">transactions</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;Buy&#39;</span><span class="p">]</span>
-<span class="n">short_transactions</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">transactions</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;Short&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_committed</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">action</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Buy&#39;</span><span class="p">,</span><span class="s1">&#39;Short&#39;</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">adj_close_atOpen</span>  
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;committed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f_committed</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">buy_profit</span> <span class="o">=</span> <span class="p">(</span><span class="n">buy_transactions</span><span class="o">.</span><span class="n">adj_close_atClose</span> <span class="o">-</span> <span class="n">buy_transactions</span><span class="o">.</span><span class="n">adj_close_atOpen</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">short_profit</span><span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">short_transactions</span><span class="o">.</span><span class="n">adj_close_atClose</span> <span class="o">-</span> <span class="n">short_transactions</span><span class="o">.</span><span class="n">adj_close_atOpen</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">f_revenue</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Buy&quot;</span><span class="p">:</span> <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">adj_close_atClose</span>
+    <span class="k">else</span><span class="p">:</span>               <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">adj_close_atOpen</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;revenue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f_revenue</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">buy_profit</span><span class="p">,</span><span class="n">short_profit</span><span class="p">,</span><span class="n">buy_profit</span><span class="o">+</span><span class="n">short_profit</span>
+<span class="k">def</span> <span class="nf">f_cost</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;Buy&#39;</span><span class="p">:</span> <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">adj_close_atOpen</span>  
+    <span class="k">else</span><span class="p">:</span>                 <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">adj_close_atClose</span>
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f_cost</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;profit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue</span> <span class="o">-</span> <span class="n">transactions</span><span class="o">.</span><span class="n">cost</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_dollars</span><span class="p">(</span><span class="n">transactions</span><span class="p">[</span><span class="n">transactions</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s1">&#39;Buy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> \
+<span class="n">get_dollars</span><span class="p">(</span><span class="n">transactions</span><span class="p">[</span><span class="n">transactions</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s1">&#39;Short&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> \
+<span class="n">get_dollars</span><span class="p">(</span><span class="n">transactions</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(56.40339746321577, 33.86091030275433, 90.2643077659701)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;$56.40&#39;, &#39;$33.86&#39;, &#39;$90.26&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <p>Great!  So according to our validation set we made $90 profit (pre-tax).  We could buy/short in higher volumes (ie Buy = 10x buys, Short = 10x shorts) to make this profit larger.</p>
-<p>However this really isn’t enough information to determine whether that is a good idea of feasible.  I would love to loan someone \<span class="math notranslate nohighlight">\(100 if they would give me \\\)</span>190 dollars back.  I would hate to loan someone \<span class="math notranslate nohighlight">\(10,000 on the promise that they would pay me \\\)</span>10,090 back.  The reward just wouldn’t be worth the risk.</p>
-<p>Let’s see if we can come up with a better metric.</p>
-</section>
-<section id="percent-return">
-<h3><span class="section-number">2.3.2. </span>Percent Return<a class="headerlink" href="#percent-return" title="Permalink to this headline">#</a></h3>
-<p>Instead of measuring raw dollars, lets consider how much money (capital) we needed in order to make that $90 profit.  To do this we need to keep track of our money more carefully than just looking at how much we made at the end.  Let’s track how much we have invested after each transaction.</p>
+<p>However this really isn’t enough information to determine whether that is a good idea of feasible.  I would love to loan someone \<span class="math notranslate nohighlight">\(100 if they would give me \\\)</span>190 dollars back a week later for \<span class="math notranslate nohighlight">\(90 profit.  I would hate to loan someone \\\)</span>100,000 on the promise that they would pay me \$100,090 back in 20 years.  The reward just wouldn’t be worth the risk, and I can use that money better in a 20 year span than that..</p>
+<p>Let’s see if we can come up with a better metric that accounts for this.</p>
+</div>
+<div class="section" id="percent-return">
+<h3><span class="section-number">2.3.2. </span>Percent Return<a class="headerlink" href="#percent-return" title="Permalink to this headline">¶</a></h3>
+<p>Instead of measuring raw dollars, lets consider how much money (capital) we needed in order to make that $90 profit.  To do this we need to keep track of our money more carefully than just looking at how much we made at the end.  Let’s track out financials by day instead of by transaction o calculate this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I am using “committed” to be the amount we have invested + the amount leveraged.  For now, let’s assume that we won’t take out debt and borrow stocks (shorting) if we do not have the capital to cover the initial price we borrowed at</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">cols</span> <span class="ow">in</span> <span class="p">[[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;committed&#39;</span><span class="p">],[</span><span class="s1">&#39;close_date&#39;</span><span class="p">,</span><span class="s1">&#39;profit&#39;</span><span class="p">],[</span><span class="s1">&#39;close_date&#39;</span><span class="p">,</span><span class="s1">&#39;revenue&#39;</span><span class="p">],[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;cost&#39;</span><span class="p">]]:</span>
+    <span class="n">_tmp</span> <span class="o">=</span> <span class="n">transactions</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">_tmp</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>committed</th>
+      <th>profit</th>
+      <th>revenue</th>
+      <th>cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017-02-14</th>
+      <td>182.100618</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>182.100618</td>
+    </tr>
+    <tr>
+      <th>2017-02-15</th>
+      <td>132.877833</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>132.877833</td>
+    </tr>
+    <tr>
+      <th>2017-02-16</th>
+      <td>182.863173</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>182.863173</td>
+    </tr>
+    <tr>
+      <th>2017-02-17</th>
+      <td>133.083754</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>133.083754</td>
+    </tr>
+    <tr>
+      <th>2017-02-21</th>
+      <td>134.044718</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>134.044718</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2017-06-23</th>
+      <td>0.000000</td>
+      <td>-7.068996</td>
+      <td>251.341879</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017-06-26</th>
+      <td>0.000000</td>
+      <td>-8.033424</td>
+      <td>250.513602</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017-06-28</th>
+      <td>0.000000</td>
+      <td>-6.919895</td>
+      <td>251.147637</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017-06-29</th>
+      <td>0.000000</td>
+      <td>19.157383</td>
+      <td>195.003533</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017-06-30</th>
+      <td>0.000000</td>
+      <td>-11.812290</td>
+      <td>250.469034</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>88 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>Now we can easily look at when we had the most committed.  We are subtracting revenue because once we get money back we can reinvest rather than using new money.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capital_needed</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">committed</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">revenue</span><span class="o">.</span><span class="n">cumsum</span><span class="p">())</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">capital_needed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4468.9311894957
+</pre></div>
+</div>
+</div>
+</div>
+<p>And of course our profit is still the same as we had before because we are just aggregating the data differently.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the first time we are using the <a class="reference external" href="https://fastcore.fast.ai/test.html">fastcore’s testing framework</a>.  It has several handy and easy to use testing functions, such as testing if 2 numbers are arbitrarily close (useful for floats).</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_close</span><span class="p">(</span><span class="n">transactions</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">df</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">get_dollars</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;$90.26&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we see that we needed \$4468 for earn the $90 profit.  Let’s use this to figure out the percent return.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;Percent Return: </span><span class="si">{</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">capital_needed</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Percent Return: 2.02%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have our percent return, we need to account for the time range in some way.  2% return per week would be <strong>AMAZING</strong>, 2% per year would be underwhelming.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2017-02-14 - 2017-06-30&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>For now let’s compare to the percent return of the S&amp;P 500 in that time range.</p>
+<ul class="simple">
+<li><p>On 2/14 the S&amp;P 500 had an ajusted close price of 2,337.58</p></li>
+<li><p>On 6/30 the S&amp;P 500 had an ajdusted close price of 2,423.41</p></li>
+</ul>
+<p>If we use that to calculate percent return between our start date we get:</p>
+<div class="math notranslate nohighlight">
+\[\frac{(2423.41 - 2337.58)}{2337.58} = 3.7\%\]</div>
+<p>So if we had just invested in the S&amp;P 500 we would have made more money!  We may have made a profit, but we could have saved time and taken on less risk while making more money by simply investing the S&amp;P 500.  Our investment strategy isn’t looking so good after all!</p>
+</div>
+<div class="section" id="log-return">
+<h3><span class="section-number">2.3.3. </span>Log Return<a class="headerlink" href="#log-return" title="Permalink to this headline">¶</a></h3>
+<p>More commonly rather than using the percent return we want to use the log return.  There are a lot of reasons they are advantageous to use that will be covered throughout the book as they are significant to what we are doing.  For now we will cover one that is immediately useful to us.</p>
+<p><strong>Symmetry / Additive</strong></p>
+<ul class="simple">
+<li><p>Percent Return</p>
+<ul>
+<li><p>Invest \$100</p></li>
+<li><p>Get 50% Return on investment 1 and reinvest</p></li>
+<li><p>Get -50% Return on investment 2</p></li>
+<li><p>End with <strong>\$75</strong> dollars</p></li>
+</ul>
+</li>
+<li><p>Log Return</p>
+<ul>
+<li><p>Invest \$100</p></li>
+<li><p>Get 50% Return on investment 1 and reinvest</p></li>
+<li><p>Get -50% Return on investment 2</p></li>
+<li><p>End with <strong>\$100</strong> dollars</p></li>
+</ul>
+</li>
+</ul>
+<p>This property where a positive return + a equal-sized negative return = no return makes it much easier to look at returns and figure out if you are winning or losing.  Just add up all your log returns and you have your overall log return.  You have to be much more careful with percent returns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span> <span class="o">=</span> <span class="n">capital_needed</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">pt_1</span> <span class="o">=</span> <span class="n">capital_needed</span>
+<span class="n">log_return</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pt</span><span class="o">/</span><span class="n">pt_1</span><span class="p">)</span>
+<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pt</span><span class="o">/</span><span class="n">pt_1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.00%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we calculate the log return we see we get a very similar value to our percent return, but it’s not exactly the same.  The advantage of using the log return however is we can accurate get an estimated annualized return.</p>
+<p>This is great because we can easily have everything thought of as an annualized return so that we have a common time frame to compare investment strategies more easily.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_period</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">())</span><span class="o">.</span><span class="n">days</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">log_return</span><span class="o">/</span><span class="n">time_period</span> <span class="o">*</span> <span class="mi">365</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;5.37%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can just convert to normal return to compare very simply to S&amp;P 500 annual return</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_return</span><span class="o">/</span><span class="n">time_period</span> <span class="o">*</span> <span class="mi">365</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;5.51%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Go ahead an look up S&amp;P 500 annual returns for each year online and compare.  How does this fare?</p>
+</div>
+</div>
+<div class="section" id="statistical-tests">
+<h2><span class="section-number">2.4. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="motivation">
+<h3><span class="section-number">2.4.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
+<p>If you bought 2 \$1.50 lottery tickets and won 10 million dollars in the lottery, what could you say about your chances to win?  Well let’s calculate our rate of return.</p>
+<div class="math notranslate nohighlight">
+\[\frac{10,000,000 - 3}{3} = 3,333,332.33\]</div>
+<p>So based on our calculations, the rate of return for playing the lottery is fantastic.  But we know that this doesn’t really reflect reality or mean that it’s a good safe investment strategy.  We know that you would’ve just gotten lucky.</p>
+<p>So how do we determine if our trading strategy is a good strategy, or if it just got lucky on that dataset?  This is where statistical testing comes in.</p>
+</div>
+<div class="section" id="statistical-test">
+<h3><span class="section-number">2.4.2. </span>Statistical Test<a class="headerlink" href="#statistical-test" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ticker</th>
+      <th>A</th>
+      <th>AAL</th>
+      <th>AAP</th>
+      <th>AAPL</th>
+      <th>ABBV</th>
+      <th>ABC</th>
+      <th>ABT</th>
+      <th>ACN</th>
+      <th>ADBE</th>
+      <th>ADI</th>
+      <th>...</th>
+      <th>XL</th>
+      <th>XLNX</th>
+      <th>XOM</th>
+      <th>XRAY</th>
+      <th>XRX</th>
+      <th>XYL</th>
+      <th>YUM</th>
+      <th>ZBH</th>
+      <th>ZION</th>
+      <th>ZTS</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017-01-03</th>
+      <td>45.856418</td>
+      <td>45.704924</td>
+      <td>170.071573</td>
+      <td>113.405731</td>
+      <td>59.148722</td>
+      <td>80.498934</td>
+      <td>37.810043</td>
+      <td>113.139753</td>
+      <td>103.48</td>
+      <td>70.247806</td>
+      <td>...</td>
+      <td>36.600691</td>
+      <td>57.236079</td>
+      <td>85.801688</td>
+      <td>58.078807</td>
+      <td>26.168629</td>
+      <td>48.733902</td>
+      <td>61.584910</td>
+      <td>102.066617</td>
+      <td>42.425041</td>
+      <td>53.041571</td>
+    </tr>
+    <tr>
+      <th>2017-01-04</th>
+      <td>46.458105</td>
+      <td>46.099783</td>
+      <td>171.467236</td>
+      <td>113.278803</td>
+      <td>59.982737</td>
+      <td>82.496547</td>
+      <td>38.110199</td>
+      <td>113.411771</td>
+      <td>104.14</td>
+      <td>70.107320</td>
+      <td>...</td>
+      <td>36.726800</td>
+      <td>56.819429</td>
+      <td>84.857671</td>
+      <td>58.554375</td>
+      <td>27.156124</td>
+      <td>49.460248</td>
+      <td>61.808997</td>
+      <td>103.005002</td>
+      <td>43.034201</td>
+      <td>53.556250</td>
+    </tr>
+    <tr>
+      <th>2017-01-05</th>
+      <td>45.905737</td>
+      <td>45.300194</td>
+      <td>171.347608</td>
+      <td>113.854863</td>
+      <td>60.437654</td>
+      <td>81.541590</td>
+      <td>38.439403</td>
+      <td>111.711663</td>
+      <td>105.91</td>
+      <td>69.099697</td>
+      <td>...</td>
+      <td>36.309670</td>
+      <td>56.131472</td>
+      <td>83.592688</td>
+      <td>57.791484</td>
+      <td>27.042182</td>
+      <td>49.008736</td>
+      <td>62.013598</td>
+      <td>103.666810</td>
+      <td>42.336614</td>
+      <td>53.378092</td>
+    </tr>
+    <tr>
+      <th>2017-01-06</th>
+      <td>47.335975</td>
+      <td>45.616081</td>
+      <td>169.104577</td>
+      <td>115.124148</td>
+      <td>60.456609</td>
+      <td>82.632969</td>
+      <td>39.485110</td>
+      <td>112.984315</td>
+      <td>108.30</td>
+      <td>69.370980</td>
+      <td>...</td>
+      <td>36.270868</td>
+      <td>57.216700</td>
+      <td>83.545488</td>
+      <td>57.751853</td>
+      <td>26.624396</td>
+      <td>48.665194</td>
+      <td>62.763801</td>
+      <td>103.676687</td>
+      <td>42.611719</td>
+      <td>53.546352</td>
+    </tr>
+    <tr>
+      <th>2017-01-09</th>
+      <td>47.483931</td>
+      <td>46.474899</td>
+      <td>169.004887</td>
+      <td>116.178631</td>
+      <td>60.854661</td>
+      <td>83.295592</td>
+      <td>39.446380</td>
+      <td>111.721378</td>
+      <td>108.57</td>
+      <td>69.700395</td>
+      <td>...</td>
+      <td>35.659724</td>
+      <td>57.226389</td>
+      <td>82.167223</td>
+      <td>57.930192</td>
+      <td>26.472474</td>
+      <td>48.459069</td>
+      <td>62.939174</td>
+      <td>105.691745</td>
+      <td>42.149936</td>
+      <td>53.397887</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 495 columns</p>
+</div></div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1172,6 +1465,10 @@ title="Print to PDF"
       <th>adj_close_atOpen</th>
       <th>dte_atClose</th>
       <th>adj_close_atClose</th>
+      <th>committed</th>
+      <th>revenue</th>
+      <th>cost</th>
+      <th>profit</th>
     </tr>
   </thead>
   <tbody>
@@ -1185,6 +1482,10 @@ title="Print to PDF"
       <td>49.703267</td>
       <td>2017-03-14</td>
       <td>51.498464</td>
+      <td>49.703267</td>
+      <td>51.498464</td>
+      <td>49.703267</td>
+      <td>1.795196</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1196,6 +1497,10 @@ title="Print to PDF"
       <td>132.397351</td>
       <td>2017-03-14</td>
       <td>136.290237</td>
+      <td>132.397351</td>
+      <td>136.290237</td>
+      <td>132.397351</td>
+      <td>3.892886</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1207,6 +1512,10 @@ title="Print to PDF"
       <td>132.877833</td>
       <td>2017-03-15</td>
       <td>137.731683</td>
+      <td>132.877833</td>
+      <td>137.731683</td>
+      <td>132.877833</td>
+      <td>4.853850</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1218,6 +1527,10 @@ title="Print to PDF"
       <td>50.147135</td>
       <td>2017-03-16</td>
       <td>52.327016</td>
+      <td>50.147135</td>
+      <td>52.327016</td>
+      <td>50.147135</td>
+      <td>2.179881</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1229,265 +1542,139 @@ title="Print to PDF"
       <td>132.716038</td>
       <td>2017-03-16</td>
       <td>137.957216</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>Each row of our transaction table is actually 2 actions.</p>
-<ol class="simple">
-<li><p>Action we take to open a position</p></li>
-<li><p>Action we take to close the position</p></li>
-</ol>
-<p>Let’s change this to be 1 action per row so we can more easily look at things sequentially.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_trans</span> <span class="o">=</span> <span class="n">transactions</span><span class="p">[[</span><span class="s1">&#39;open_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">,</span><span class="s1">&#39;adj_close_atOpen&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">open_trans</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Open&quot;</span>
-
-<span class="n">close_trans</span> <span class="o">=</span> <span class="n">transactions</span><span class="p">[[</span><span class="s1">&#39;close_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">,</span><span class="s1">&#39;adj_close_atClose&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">close_trans</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">close_trans</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;Sell&quot;</span> <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="s2">&quot;Buy&quot;</span> <span class="k">else</span> <span class="s2">&quot;Return&quot;</span><span class="p">)</span>
-<span class="n">close_trans</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Close&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">open_trans</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">close_trans</span><span class="o">.</span><span class="n">values</span><span class="p">]),</span>
-                        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;trans_date&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">])</span>
-<span class="n">transactions</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;trans_date&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">transactions</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>trans_date</th>
-      <th>ticker</th>
-      <th>action</th>
-      <th>price</th>
-      <th>type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2017-02-14</td>
-      <td>A</td>
-      <td>Buy</td>
-      <td>49.703267</td>
-      <td>Open</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017-02-14</td>
-      <td>AAPL</td>
-      <td>Buy</td>
-      <td>132.397351</td>
-      <td>Open</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2017-02-15</td>
-      <td>AAPL</td>
-      <td>Buy</td>
-      <td>132.877833</td>
-      <td>Open</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2017-02-16</td>
-      <td>A</td>
-      <td>Buy</td>
-      <td>50.147135</td>
-      <td>Open</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2017-02-16</td>
-      <td>AAPL</td>
-      <td>Buy</td>
       <td>132.716038</td>
-      <td>Open</td>
+      <td>137.957216</td>
+      <td>132.716038</td>
+      <td>5.241178</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Great!  So now we can go row by row by execute each action sequentially.  If <code class="docutils literal notranslate"><span class="pre">type==Open</span></code> we are opening a position (spending money), if <code class="docutils literal notranslate"><span class="pre">type==Close</span></code> we are closing the position (making or losing money).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Buy&#39;, &#39;Short&#39;, &#39;Sell&#39;, &#39;Return&#39;], dtype=object)
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>I spend $100 to buy a stock.</p></li>
-<li><p>I sell that stock for $110</p></li>
-</ul>
-<p>I have invested 100, and have revenue of 110, for 10 dollar profit</p>
-<ul class="simple">
-<li><p>I spend 100 to sell a stock</p></li>
-<li><p>I reuturn that stock for 110</p></li>
-</ul>
-<p>I invested 110, and have revenue of 100 for a net loss of 10</p>
-<ul class="simple">
-<li><p>I spend 100 to sell a stock</p></li>
-<li><p>I reuturn that stock for 90</p></li>
-</ul>
-<p>I invested 90, and have revenue of 100 for a net profit of 10</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">invested_buy</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">revenue_buy</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">invested_short</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">revenue_short</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from scipy import stats</span>
 
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">vals</span> <span class="ow">in</span> <span class="n">transactions</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s2">&quot;Open&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Buy&quot;</span><span class="p">):</span>
-        <span class="n">invested_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">vals</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
-        <span class="n">revenue_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">invested_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">revenue_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s2">&quot;Close&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Sell&quot;</span><span class="p">):</span>
-        <span class="n">revenue_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">vals</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
-        <span class="n">invested_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">invested_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">revenue_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s2">&quot;Open&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Short&quot;</span><span class="p">):</span>
-        <span class="n">revenue_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">vals</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
-        <span class="n">invested_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">revenue_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">invested_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">type</span><span class="o">==</span><span class="s2">&quot;Close&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">action</span><span class="o">==</span><span class="s2">&quot;Return&quot;</span><span class="p">):</span>
-        <span class="n">invested_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">vals</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
-        <span class="n">invested_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">invested_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">revenue_buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_buy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">revenue_short</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">revenue_short</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># t_stastic, p_value = stats.ttest_1samp(expected_portfolio_returns, 0)</span>
+<span class="c1"># t_stastic, p_value / 2 # one tailed</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="below-this-is-just-jibberish-testing-code">
+<h2><span class="section-number">2.5. </span>Below this is just jibberish testing code<a class="headerlink" href="#below-this-is-just-jibberish-testing-code" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># np.log(valid/valid.shift(28)).iloc[28:]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;invested_buy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">invested_buy</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;revenue_buy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">revenue_buy</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;invested_short&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">invested_short</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;revenue_short&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">revenue_short</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df = raw.pivot(index=&#39;date&#39;, columns=&#39;ticker&#39;,values=&#39;adj_close&#39;)</span>
+<span class="c1"># valid = df.loc[pd.Timestamp(&#39;2017-1-1&#39;):]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># exp_daily_return.sum(axis=1)/len(valid.columns)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># .sum(axis=1)/len(valid.columns)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (np.log(valid/valid.shift(1)).dropna().sum(axis=1)/len(valid.columns)).sum()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># portfolio_ret_mean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># portfolio_ret_mean = exp_daily_return.mean()</span>
+<span class="c1"># portfolio_ret_ste = exp_daily_return.sem()</span>
+<span class="c1"># portfolio_ret_annual_rate = (np.exp(portfolio_ret_mean * 365)-1)*100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from scipy import stats</span>
 
-<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;profit_buy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue_buy</span> <span class="o">-</span> <span class="n">transactions</span><span class="o">.</span><span class="n">invested_buy</span>
-<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;profit_short&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue_short</span> <span class="o">-</span> <span class="n">transactions</span><span class="o">.</span><span class="n">invested_short</span>
-
-<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;ttl_invested&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">invested_buy</span> <span class="o">+</span> <span class="n">transactions</span><span class="o">.</span><span class="n">invested_short</span>
-<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;ttl_revenue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue_buy</span> <span class="o">+</span> <span class="n">transactions</span><span class="o">.</span><span class="n">revenue_short</span>
-<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;ttl_profit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">profit_buy</span> <span class="o">+</span> <span class="n">transactions</span><span class="o">.</span><span class="n">profit_short</span>
+<span class="c1"># t_stastic, p_value = stats.ttest_1samp(expected_portfolio_returns, 0)</span>
+<span class="c1"># t_stastic, p_value / 2 # one tailed</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ttl_invested    10808.976839
-ttl_revenue     10899.241147
-ttl_profit         90.264308
-Name: 221, dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<p>So now we can see several interesting things.  First, we can validate that we get the same amount of profit for buy, short, and overall (~\$90) so we know our math did the same thing.</p>
-<p>Next we can see that in order to make that \<span class="math notranslate nohighlight">\(90 of profit we had to invest \\\)</span>10,808 dollars!  Let’s calculate what our <code class="docutils literal notranslate"><span class="pre">percent</span> <span class="pre">return</span></code> is.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">ttl_revenue</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10899.241146966167
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># t_value, p_value = analyze_alpha(exp_daily_return.values)</span>
+<span class="c1"># print(&quot;&quot;&quot;</span>
+<span class="c1"># Alpha analysis:</span>
+<span class="c1">#  t-value:        {:.3f}</span>
+<span class="c1">#  p-value:        {:.6f}</span>
+<span class="c1"># &quot;&quot;&quot;.format(t_value, p_value))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end_values</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
-<span class="p">(</span><span class="n">end_values</span><span class="o">.</span><span class="n">ttl_revenue</span> <span class="o">-</span> <span class="n">end_values</span><span class="o">.</span><span class="n">ttl_invested</span><span class="p">)</span> <span class="o">/</span> <span class="n">end_values</span><span class="o">.</span><span class="n">ttl_invested</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00835086512893754
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># exp_daily_return.sum()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Ok, so we see we got 0.8% return on our investment.  That’s definitely better than 0, but how do we know if that’s good enough to use?</p>
-<p>A good first step is for us to compare to an index.  Let’s see how the S&amp;P 500 did in that time to determine if we beat the market.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time Range: </span><span class="si">{</span><span class="n">transactions</span><span class="o">.</span><span class="n">trans_date</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">transactions</span><span class="o">.</span><span class="n">trans_date</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df = None</span>
+<span class="c1"># for cols in [[&#39;open_date&#39;,&#39;ticker&#39;,&#39;committed&#39;],</span>
+<span class="c1">#              [&#39;close_date&#39;,&#39;ticker&#39;,&#39;profit&#39;],</span>
+<span class="c1">#              [&#39;close_date&#39;,&#39;ticker&#39;,&#39;revenue&#39;],</span>
+<span class="c1">#              [&#39;open_date&#39;,&#39;ticker&#39;,&#39;cost&#39;]]:</span>
+<span class="c1">#     _tmp = transactions[cols]</span>
+<span class="c1">#     _tmp.columns = [&#39;dte&#39;,cols[1],cols[2]]</span>
+<span class="c1">#     _tmp.set_index([&#39;dte&#39;,&#39;ticker&#39;],inplace=True)</span>
+<span class="c1">#     if df is None: df = _tmp</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         df = pd.merge(df,_tmp,how=&#39;outer&#39;,left_index=True,right_index=True)</span>
+<span class="c1"># df.fillna(0,inplace=True)</span>
+<span class="c1"># df.sort_index(inplace=True)</span>
+<span class="c1"># df</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time Range: 2017-02-14 - 2017-06-30
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (df.committed.cumsum()-df.revenue.cumsum()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>On 2/14 the S&amp;P 500 had an ajusted close price of 2,337.58</p></li>
-<li><p>On 6/30 the S&amp;P 500 had an ajdusted close price of 2,423.41</p></li>
-</ul>
-<p>If we use that to caculate percent return we get:</p>
-<div class="math notranslate nohighlight">
-\[\frac{(2423.41 - 2337.58)}{2337.58} = 3.7\%\]</div>
-<p>And compare that to out previous return</p>
-<div class="math notranslate nohighlight">
-\[\frac{3.7}{0.8} = 4.625\]</div>
-<p>So if we had just invested in the S&amp;P 500 we would have done over 4.5x better!  We may have made a profit, but we could have saved time and taken on less risk while making more money by simply investing the S&amp;P 500.  Our investment strategy isn’t looking so good after all!</p>
-</section>
-<section id="log-return">
-<h3><span class="section-number">2.3.3. </span>Log Return<a class="headerlink" href="#log-return" title="Permalink to this headline">#</a></h3>
-</section>
-</section>
-<section id="statistical-tests">
-<h2><span class="section-number">2.4. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">#</a></h2>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1511,11 +1698,9 @@ Name: 221, dtype: object
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="101_SimpleTimeSeries.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1531,28 +1716,24 @@ Name: 221, dtype: object
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Isaac Flath & Felix Flath<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By Isaac Flath & Felix Flath<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>
