@@ -6,3 +6,5 @@ def view_source_code(f):
     output = check_output(["pygmentize","-f","html","-O","full,style=emacs","-l","python"],
         input=inspect.getsource(f), encoding='ascii')
     display(HTML(output))
+    
+def get_dollars(x): return f"${x:.2f}"
