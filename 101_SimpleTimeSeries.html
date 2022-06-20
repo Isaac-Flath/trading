@@ -114,21 +114,16 @@ const thebe_selector_output = ".output, .cell_output"
    2. Introduction to Testing
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="301_TimeSeries.html">
-   3. Time Series
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Section 2 - Foundations
+  Section 2 - Statistics
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="201_Statistics.html">
-   4. Statistics
+  <a class="reference internal" href="200_Introduction.html">
+   3. Statistics
   </a>
  </li>
 </ul>
@@ -555,6 +550,18 @@ const thebe_selector_output = ".output, .cell_output"
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">(</span><span class="o">*</span><span class="n">raw</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(#495) [&#39;A&#39;,&#39;AAL&#39;,&#39;AAP&#39;,&#39;AAPL&#39;,&#39;ABBV&#39;,&#39;ABC&#39;,&#39;ABT&#39;,&#39;ACN&#39;,&#39;ADBE&#39;,&#39;ADI&#39;...]
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can see that for each day we have a ticker.</p>
 <div class="admonition note">
@@ -1204,7 +1211,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/101_SimpleTimeSeries_45_0.png" src="_images/101_SimpleTimeSeries_45_0.png" />
+<img alt="_images/101_SimpleTimeSeries_46_0.png" src="_images/101_SimpleTimeSeries_46_0.png" />
 </div>
 </div>
 <p>So we take the slope of the trend line to be our momentum.  There are very similar levers as before we can change to fine tune out approach:</p>
@@ -1656,28 +1663,28 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
   </thead>
   <tbody>
     <tr>
-      <th>2014-11-10</th>
-      <td>88.500419</td>
-      <td>102.208616</td>
-      <td>104.849470</td>
+      <th>2014-10-01</th>
+      <td>91.408906</td>
+      <td>92.744725</td>
+      <td>97.038781</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2016-10-19</th>
-      <td>105.329189</td>
-      <td>113.762405</td>
-      <td>116.119938</td>
+      <th>2016-12-21</th>
+      <td>103.387044</td>
+      <td>114.294231</td>
+      <td>115.112694</td>
       <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2015-02-02</th>
-      <td>98.089948</td>
-      <td>111.412370</td>
-      <td>111.191455</td>
+      <th>2015-02-19</th>
+      <td>96.278262</td>
+      <td>121.107629</td>
+      <td>123.557932</td>
       <td>False</td>
-      <td>True</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
@@ -1822,7 +1829,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/101_SimpleTimeSeries_54_0.png" src="_images/101_SimpleTimeSeries_54_0.png" />
+<img alt="_images/101_SimpleTimeSeries_55_0.png" src="_images/101_SimpleTimeSeries_55_0.png" />
 </div>
 </div>
 <p>These charts show stock prices for Apple and Microsoft over time in orange.  The green is our upper band, which in this case is 2 standard deviations above the mean when looking at the last 28 days of the adjusted close price.  The blue is 2 standard deviations below the mean.</p>
