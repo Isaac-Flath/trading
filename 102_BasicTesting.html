@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. Time Series" href="104_TimeSeries.html" />
+    <link rel="next" title="3. Time Series" href="104_TimeSeries.html" />
     <link rel="prev" title="1. Simple Time Series (Stock Prices)" href="101_SimpleTimeSeries.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="104_TimeSeries.html">
-   5. Time Series
+   3. Time Series
   </a>
  </li>
 </ul>
@@ -130,7 +130,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="200_Introduction.html">
-   6. Statistics
+   4. Statistics
   </a>
  </li>
 </ul>
@@ -244,121 +244,114 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   2. Introduction to Testing
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   2.1. Background
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#background">
-     2.1. Background
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-data-should-you-use-for-testing">
+   2.2. What data should you use for testing?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-set">
+     2.2.1. Training Set
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-data-should-you-use-for-testing">
-     2.2. What data should you use for testing?
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-set">
+     2.2.2. Validation Set
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#training-set">
-       2.2.1. Training Set
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#validation-set">
-       2.2.2. Validation Set
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#test-set">
-       2.2.3. Test Set
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-metric-should-you-use-for-testing">
-     2.3. What metric should you use for testing?
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-set">
+     2.2.3. Test Set
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dollars">
-       2.3.1. Dollars
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#percent-return">
-       2.3.2. Percent Return
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-return">
-       2.3.3. Log Return
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#statistical-tests">
-     2.4. Statistical Tests
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-metric-should-you-use-for-testing">
+   2.3. What metric should you use for testing?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dollars">
+     2.3.1. Dollars
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#percent-return">
+     2.3.2. Percent Return
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-return">
+     2.3.3. Log Return
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-tests">
+   2.4. Statistical Tests
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     2.4.1. Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bootstrapping">
+     2.4.2. Bootstrapping
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#motivation">
-       2.4.1. Motivation
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       2.4.2.1. Background
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bootstrapping">
-       2.4.2. Bootstrapping
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bootstrap-test">
+       2.4.2.2. Bootstrap Test
       </a>
       <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id1">
-         2.4.2.1. Background
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#null-hypothesis-model">
+         2.4.2.2.1. Null Hypothesis Model
         </a>
        </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#bootstrap-test">
-         2.4.2.2. Bootstrap Test
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#alternate-hypothesis-model">
+         2.4.2.2.2. Alternate Hypothesis Model
         </a>
-        <ul class="nav section-nav flex-column">
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#null-hypothesis-model">
-           2.4.2.2.1. Null Hypothesis Model
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#alternate-hypothesis-model">
-           2.4.2.2.2. Alternate Hypothesis Model
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#calculate-returns">
-           2.4.2.2.3. Calculate Returns
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#statistical-test">
-           2.4.2.2.4. Statistical Test
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#plot-experiment">
-           2.4.2.2.5. Plot Experiment
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#what-if-we-hold-for-less-time">
-           2.4.2.2.6. What if we hold for less time?
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#what-if-we-use-a-larger-period-size-for-momentum">
-           2.4.2.2.7. What if we use a larger period size for momentum?
-          </a>
-         </li>
-        </ul>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#calculate-returns">
+         2.4.2.2.3. Calculate Returns
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#statistical-test">
+         2.4.2.2.4. Statistical Test
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#plot-experiment">
+         2.4.2.2.5. Plot Experiment
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#what-if-we-hold-for-less-time">
+         2.4.2.2.6. What if we hold for less time?
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#what-if-we-use-a-larger-period-size-for-momentum">
+         2.4.2.2.7. What if we use a larger period size for momentum?
+        </a>
        </li>
       </ul>
      </li>
@@ -366,14 +359,14 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-test-set">
-   3. The Test Set
+   2.5. The Test Set
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chapter-homework">
-   4. Chapter Homework
+   2.6. Chapter Homework
   </a>
  </li>
 </ul>
@@ -396,121 +389,114 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   2. Introduction to Testing
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   2.1. Background
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#background">
-     2.1. Background
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-data-should-you-use-for-testing">
+   2.2. What data should you use for testing?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-set">
+     2.2.1. Training Set
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-data-should-you-use-for-testing">
-     2.2. What data should you use for testing?
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-set">
+     2.2.2. Validation Set
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#training-set">
-       2.2.1. Training Set
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#validation-set">
-       2.2.2. Validation Set
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#test-set">
-       2.2.3. Test Set
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-metric-should-you-use-for-testing">
-     2.3. What metric should you use for testing?
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-set">
+     2.2.3. Test Set
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dollars">
-       2.3.1. Dollars
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#percent-return">
-       2.3.2. Percent Return
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-return">
-       2.3.3. Log Return
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#statistical-tests">
-     2.4. Statistical Tests
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-metric-should-you-use-for-testing">
+   2.3. What metric should you use for testing?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dollars">
+     2.3.1. Dollars
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#percent-return">
+     2.3.2. Percent Return
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-return">
+     2.3.3. Log Return
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-tests">
+   2.4. Statistical Tests
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     2.4.1. Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bootstrapping">
+     2.4.2. Bootstrapping
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#motivation">
-       2.4.1. Motivation
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       2.4.2.1. Background
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bootstrapping">
-       2.4.2. Bootstrapping
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bootstrap-test">
+       2.4.2.2. Bootstrap Test
       </a>
       <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id1">
-         2.4.2.1. Background
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#null-hypothesis-model">
+         2.4.2.2.1. Null Hypothesis Model
         </a>
        </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#bootstrap-test">
-         2.4.2.2. Bootstrap Test
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#alternate-hypothesis-model">
+         2.4.2.2.2. Alternate Hypothesis Model
         </a>
-        <ul class="nav section-nav flex-column">
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#null-hypothesis-model">
-           2.4.2.2.1. Null Hypothesis Model
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#alternate-hypothesis-model">
-           2.4.2.2.2. Alternate Hypothesis Model
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#calculate-returns">
-           2.4.2.2.3. Calculate Returns
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#statistical-test">
-           2.4.2.2.4. Statistical Test
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#plot-experiment">
-           2.4.2.2.5. Plot Experiment
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#what-if-we-hold-for-less-time">
-           2.4.2.2.6. What if we hold for less time?
-          </a>
-         </li>
-         <li class="toc-h5 nav-item toc-entry">
-          <a class="reference internal nav-link" href="#what-if-we-use-a-larger-period-size-for-momentum">
-           2.4.2.2.7. What if we use a larger period size for momentum?
-          </a>
-         </li>
-        </ul>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#calculate-returns">
+         2.4.2.2.3. Calculate Returns
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#statistical-test">
+         2.4.2.2.4. Statistical Test
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#plot-experiment">
+         2.4.2.2.5. Plot Experiment
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#what-if-we-hold-for-less-time">
+         2.4.2.2.6. What if we hold for less time?
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#what-if-we-use-a-larger-period-size-for-momentum">
+         2.4.2.2.7. What if we use a larger period size for momentum?
+        </a>
        </li>
       </ul>
      </li>
@@ -518,14 +504,14 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-test-set">
-   3. The Test Set
+   2.5. The Test Set
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chapter-homework">
-   4. Chapter Homework
+   2.6. Chapter Homework
   </a>
  </li>
 </ul>
@@ -1286,46 +1272,18 @@ const thebe_selector_output = ".output, .cell_output"
   </thead>
   <tbody>
     <tr>
-      <th>2017-04-25</th>
-      <td>5440.469477</td>
-      <td>-29.674496</td>
-      <td>6787.886069</td>
-      <td>5413.834800</td>
+      <th>2017-03-07</th>
+      <td>12263.445771</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>12263.734441</td>
     </tr>
     <tr>
-      <th>2017-06-15</th>
-      <td>0.000000</td>
-      <td>203.997769</td>
-      <td>10639.412827</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2017-02-28</th>
-      <td>14206.416119</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>14188.158454</td>
-    </tr>
-    <tr>
-      <th>2017-06-06</th>
-      <td>0.000000</td>
-      <td>533.202088</td>
-      <td>13756.779820</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2017-05-12</th>
-      <td>12285.707410</td>
-      <td>126.725744</td>
-      <td>5053.908668</td>
-      <td>12273.770591</td>
-    </tr>
-    <tr>
-      <th>2017-02-14</th>
-      <td>12923.804188</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>12890.001789</td>
+      <th>2017-04-21</th>
+      <td>5241.531881</td>
+      <td>-39.111756</td>
+      <td>5056.231249</td>
+      <td>5215.079006</td>
     </tr>
     <tr>
       <th>2017-05-05</th>
@@ -1335,11 +1293,39 @@ const thebe_selector_output = ".output, .cell_output"
       <td>14148.408813</td>
     </tr>
     <tr>
-      <th>2017-04-12</th>
-      <td>3687.480711</td>
-      <td>-192.747736</td>
-      <td>9694.742256</td>
-      <td>3742.820575</td>
+      <th>2017-06-26</th>
+      <td>0.000000</td>
+      <td>138.832474</td>
+      <td>18019.732453</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017-06-05</th>
+      <td>0.000000</td>
+      <td>592.080365</td>
+      <td>14911.585787</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017-03-23</th>
+      <td>5542.442589</td>
+      <td>-5.773261</td>
+      <td>12103.142735</td>
+      <td>5596.748107</td>
+    </tr>
+    <tr>
+      <th>2017-05-22</th>
+      <td>10979.862236</td>
+      <td>112.880645</td>
+      <td>5323.332394</td>
+      <td>11005.641604</td>
+    </tr>
+    <tr>
+      <th>2017-06-13</th>
+      <td>0.000000</td>
+      <td>224.587117</td>
+      <td>14092.777622</td>
+      <td>0.000000</td>
     </tr>
   </tbody>
 </table>
@@ -1608,7 +1594,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.01999690938292933, 0.05164379767439737)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.01999690938292933, 0.013160033471180508)
 </pre></div>
 </div>
 </div>
@@ -1706,7 +1692,7 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.395
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.385
 </pre></div>
 </div>
 </div>
@@ -1755,7 +1741,7 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.385
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.37
 </pre></div>
 </div>
 </div>
@@ -1802,7 +1788,7 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.02
 </pre></div>
 </div>
 </div>
@@ -1823,9 +1809,8 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="the-test-set">
-<h1><span class="section-number">3. </span>The Test Set<a class="headerlink" href="#the-test-set" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-test-set">
+<h2><span class="section-number">2.5. </span>The Test Set<a class="headerlink" href="#the-test-set" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have our best model, we will test it on the test set.  This is the only time we can look at it - so while we got to try lots of things out on our validation set we only get 1 shot at our test set.  Let’s see how it performs</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1867,7 +1852,7 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.71
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.69
 </pre></div>
 </div>
 </div>
@@ -1875,8 +1860,8 @@ Model buy percentage=0.04311919191919192
 <p>Oh man, suddenly our model failed the test on the test set after it passed on the validation set.  I think it’s helpful to keep in mind this is not a “bad” result.  Testing is designed to catch errors and it did - it prevented us from deploying a bad model into production and betting real dollars on it.</p>
 <p>If a test never caught errors, there’d be no point in performing the test.  We do this step BECAUSE it catches things like this.</p>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="chapter-homework">
-<h1><span class="section-number">4. </span>Chapter Homework<a class="headerlink" href="#chapter-homework" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="chapter-homework">
+<h2><span class="section-number">2.6. </span>Chapter Homework<a class="headerlink" href="#chapter-homework" title="Permalink to this headline">¶</a></h2>
 <p>Entry-Level:</p>
 <ol class="simple">
 <li><p>Test different parameters of the model in the chapter.  What is your best model on the validation set?  Ho does it perform on our test set?</p></li>
@@ -1901,6 +1886,7 @@ Model buy percentage=0.04311919191919192
 </ul>
 </li>
 </ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1938,7 +1924,7 @@ Model buy percentage=0.04311919191919192
     <a class='right-next' id="next-link" href="104_TimeSeries.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Time Series</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Time Series</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
