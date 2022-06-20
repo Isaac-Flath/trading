@@ -130,4 +130,4 @@ dmypy.json
 
 # apple shit
 *.icloud
-.DS_Store
+*.DS_Store
