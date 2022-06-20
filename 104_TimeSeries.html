@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Statistics" href="201_Statistics.html" />
+    <link rel="next" title="4. Statistics" href="200_Introduction.html" />
     <link rel="prev" title="2. Introduction to Testing" href="102_BasicTesting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -137,12 +137,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Section 2 - Foundations
+  Section 2 - Statistics
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="201_Statistics.html">
+  <a class="reference internal" href="200_Introduction.html">
    4. Statistics
   </a>
  </li>
@@ -205,7 +205,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/301_TimeSeries.ipynb"
+        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/104_TimeSeries.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -223,7 +223,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/301_TimeSeries.ipynb"
+        <a href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/104_TimeSeries.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -283,7 +283,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F301_TimeSeries.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F104_TimeSeries.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -300,7 +300,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/isaac-flath/trading/edit/main/trading/301_TimeSeries.ipynb"
+        <a href="https://github.com/isaac-flath/trading/edit/main/trading/104_TimeSeries.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -328,7 +328,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/301_TimeSeries.ipynb"
+        <a href="_sources/104_TimeSeries.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -430,6 +430,23 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#arima">
      3.4.1. ARIMA
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#integrated">
+       3.4.1.1. Integrated
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#auto-regressive">
+       3.4.1.2. Auto Regressive
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#moving-average">
+       3.4.1.3. Moving Average
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kalman-filters">
@@ -510,6 +527,23 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#arima">
      3.4.1. ARIMA
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#integrated">
+       3.4.1.1. Integrated
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#auto-regressive">
+       3.4.1.2. Auto Regressive
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#moving-average">
+       3.4.1.3. Moving Average
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kalman-filters">
@@ -547,6 +581,8 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span><span class="p">,</span> <span class="n">plot_pacf</span>
+
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
 </pre></div>
 </div>
@@ -570,7 +606,7 @@ title="Print to PDF"
 <p>Let us imagine that every day we stand on a scale and measure our weight.</p>
 <p>If you are on a diet maybe that number gets smaller. If you fall off the diet every day that number gets bigger. We call these trending. There is an overall directionality of the measurement.</p>
 <p>If we look at a larger time range. Maybe there is weight gain in the winter due to holiday binging and weight loss during the summer so you look good at the beach. This is seasonal data. More generally if we see regular cycles of ups and downs it is periodic.</p>
-<p>Finally you could be relatively stable. Some days you weigh a little more some days a little less. Maybe you weighed yourself in the morning vs the evening. Maybe you just had a big meal. These are stochastic.</p>
+<p>Finally you could be relatively stable. Some days you weigh a little more some days a little less. Maybe you weighed yourself in the morning vs the evening. Maybe you just had a big meal. These are stationary.</p>
 <p>These crude descriptions are the first step in time series analysis. If you can describe in accurate enough detail the price of a stock it is considered a “model”. If you can describe how a stock price changes over time this information will be helpful when trying to make a buy or sell decision.</p>
 <section id="belief">
 <h3><span class="section-number">3.2.1. </span>Belief<a class="headerlink" href="#belief" title="Permalink to this headline">#</a></h3>
@@ -674,7 +710,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/301_TimeSeries_14_0.png" src="_images/301_TimeSeries_14_0.png" />
+<img alt="_images/104_TimeSeries_14_0.png" src="_images/104_TimeSeries_14_0.png" />
 </div>
 </div>
 <p>Seems like its getting bigger. Trending.</p>
@@ -698,60 +734,98 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/301_TimeSeries_16_0.png" src="_images/301_TimeSeries_16_0.png" />
+<img alt="_images/104_TimeSeries_16_0.png" src="_images/104_TimeSeries_16_0.png" />
 </div>
 </div>
-<p>Looks stochastic.</p>
+<p>Looks stationary.</p>
 </section>
 </section>
 <section id="models">
 <h2><span class="section-number">3.4. </span>Models<a class="headerlink" href="#models" title="Permalink to this headline">#</a></h2>
 <section id="arima">
 <h3><span class="section-number">3.4.1. </span>ARIMA<a class="headerlink" href="#arima" title="Permalink to this headline">#</a></h3>
-<p>ARIMA is a bit of a mouthful. Auto Regressive integrated moving average. ARIMA consists of three pieces. Lets start with the easiest the I. The plot on the left is the stock price of apple. The plot on the right is the integrated stock price of apple. Integrating the time series converted it from a trending timeseries into a stochastic one.</p>
-<p>What did we actually do? The magic line</p>
-<p><code class="docutils literal notranslate"><span class="pre">_t=apple-apple.shift(1)</span></code></p>
-<p>starts with the original series. Shifts its values one index location. And subtracts. The integrated plot is showing how much the price changed every day. Some days it goes up some days it goes down.</p>
+<p>ARIMA stands for Auto Regressive integrated moving average. Conceptually arima is very simple. We want to answer the question what is the price of a stock today. According to arima the price any given day is the real value of the price plus some error due to uncertainty. Both the price and the error are treated the same. The price component as a combination of the price component on previous days. The error component is a combination of the error on previous days.</p>
+<p>This seems pretty reasonable, the price today and the price yesterday seem like they should be related.</p>
+<p>Similar with error. If there is a lot of uncertainty about the price of a stock its unlikely that the next day everyone will know exactly how much it is worth.</p>
+<p>There are three paramters that you can adjust for arima models. Using arima requires you to select values for these paramaters. Do a good job selecting these and you get a better answer.</p>
+<section id="integrated">
+<h4><span class="section-number">3.4.1.1. </span>Integrated<a class="headerlink" href="#integrated" title="Permalink to this headline">#</a></h4>
+<p>The first we consider is I - integrated. ARIMA models work on stationary data. The integrated parameter is a knob that controls this. If you start with a trending series you can dial the knob up and get a stationary series out. Turn it too much and you get junk.</p>
+<p>The series of plots below starts with the original series. Each plot cranks up the knob a little more. We want to stop when we think it is stationary. There is a statistical test we can use. For now we will use our eyeballs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2017-1-1 01:00:00&#39;</span><span class="p">)]</span>
-<span class="n">valid</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2017-1-1 01:00:00&#39;</span><span class="p">):]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+
 <span class="c1"># Create Figure</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Stock Price Apple&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="c1"># Get data points</span>
 <span class="n">apple</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">]</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="n">apple</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="n">apple</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
-
-<span class="c1"># magic here</span>
-<span class="n">_t</span><span class="o">=</span><span class="n">apple</span><span class="o">-</span><span class="n">apple</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">y2</span> <span class="o">=</span> <span class="n">_t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">_</span><span class="o">.</span><span class="n">values</span>
 <span class="n">sz</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># Window Size</span>
+<span class="n">_t</span><span class="o">=</span><span class="n">_</span><span class="o">-</span><span class="n">_</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
 <span class="c1"># Plot</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">:],</span><span class="n">_</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">:],</span><span class="n">_</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">_</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span><span class="n">_</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/301_TimeSeries_21_0.png" src="_images/301_TimeSeries_21_0.png" />
+<img alt="_images/104_TimeSeries_21_0.png" src="_images/104_TimeSeries_21_0.png" />
 </div>
 </div>
+<p>It looks fine after the first one. Our integration parameter will be 1. A non-statistical test is to look at the y axis. In the top right plot it goes from -6 to 6.</p>
+</section>
+<section id="auto-regressive">
+<h4><span class="section-number">3.4.1.2. </span>Auto Regressive<a class="headerlink" href="#auto-regressive" title="Permalink to this headline">#</a></h4>
+<p>The second piece we look at is the AR -  auto regressive. The parameter controls how far back we look. Should we consider yesterdays price as part of our model. Two days ago? Three?</p>
+<p>No great eyeball test for this. Instead we look at a partial correlation plot. This tells you which previous values are most highly correlated with the current value. The blue rectangular box in the rigth plot highlights all the ones that are not correlated. Which is all of them. For this series modeling this doesnt seem like it will get us anything.</p>
+<p>For this series the auto regressive term is 0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PACF plot of 1st differenced series</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">diff</span><span class="p">());</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Integrated price&#39;</span><span class="p">)</span>
+<span class="n">plot_pacf</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ywm&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;], dtype=object)
+<img alt="_images/104_TimeSeries_24_0.png" src="_images/104_TimeSeries_24_0.png" />
+</div>
+</div>
+</section>
+<section id="moving-average">
+<h4><span class="section-number">3.4.1.3. </span>Moving Average<a class="headerlink" href="#moving-average" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ACF plot of 1st differenced series</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">15</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span><span class="mi">120</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">diff</span><span class="p">());</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Integrated price&#39;</span><span class="p">)</span>
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/104_TimeSeries_26_0.png" src="_images/104_TimeSeries_26_0.png" />
 </div>
+</div>
+</section>
 </section>
 <section id="kalman-filters">
 <h3><span class="section-number">3.4.2. </span>Kalman Filters<a class="headerlink" href="#kalman-filters" title="Permalink to this headline">#</a></h3>
@@ -799,7 +873,7 @@ title="Print to PDF"
             <p class="prev-next-title"><span class="section-number">2. </span>Introduction to Testing</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="201_Statistics.html" title="next page">
+    <a class='right-next' id="next-link" href="200_Introduction.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">4. </span>Statistics</p>

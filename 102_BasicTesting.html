@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2. Introduction to Testing &#8212; Trading</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -55,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Statistics" href="200_Introduction.html" />
+    <link rel="next" title="3. Time Series" href="104_TimeSeries.html" />
     <link rel="prev" title="1. Simple Time Series (Stock Prices)" href="101_SimpleTimeSeries.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -93,14 +107,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Welcome to my Trading Book
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to my Trading Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Section 1 - Applications
  </span>
@@ -116,6 +131,11 @@ const thebe_selector_output = ".output, .cell_output"
    2. Introduction to Testing
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="104_TimeSeries.html">
+   3. Time Series
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -125,120 +145,250 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="200_Introduction.html">
-   3. Statistics
+   4. Statistics
   </a>
  </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/102_BasicTesting.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/isaac-flath/trading"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F102_BasicTesting.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/isaac-flath/trading/edit/main/trading/102_BasicTesting.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/102_BasicTesting.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/102_BasicTesting.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/isaac-flath/trading/main?urlpath=tree/trading/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/isaac-flath/trading/blob/main/trading/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isaac-flath/trading"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isaac-flath/trading/issues/new?title=Issue%20on%20page%20%2F102_BasicTesting.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isaac-flath/trading/edit/main/trading/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/102_BasicTesting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#background">
    2.1. Background
@@ -356,12 +506,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Introduction to Testing</h1>
@@ -495,11 +644,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-testing">
-<h1><span class="section-number">2. </span>Introduction to Testing<a class="headerlink" href="#introduction-to-testing" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-testing">
+<h1><span class="section-number">2. </span>Introduction to Testing<a class="headerlink" href="#introduction-to-testing" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">qqr</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
@@ -534,8 +684,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="background">
-<h2><span class="section-number">2.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<section id="background">
+<h2><span class="section-number">2.1. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
 <p>In Chapter 1 we created models and created actions we want to take for multiple approaches.  The question now is, how do we know if they are profitable?  How should we measure them?  How do we know if we simply got lucky, or if they are reliable?</p>
 <p>As we mentioned in chapter 2, testing is the most important part of the process.  If done well you have a good way to determine what strategies should be implemented, and if done poorly you run the risk of implementing non-profitable strategies.  I believe you should strive to never sacrifice testing principles because effective testing is your <strong>only</strong> objective indication to whether you are doing something useful or not.  Without effective testing you are “flying blind”.</p>
 <p>This chapter will lay the groundwork and cover the basics of testing.  The goal of this chapter is to introduce concept and the three core things that need to be carefully considered for effective testing.</p>
@@ -545,12 +695,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>What test should you use?</p></li>
 </ol>
 <p>In this chapter we are going to walk through the concepts to see each step and understand the importance.  In the next chapter we are going apply our knowledge to build a better structured solution and framework that we can use through the remainder of the book.</p>
-</div>
-<div class="section" id="what-data-should-you-use-for-testing">
-<h2><span class="section-number">2.2. </span>What data should you use for testing?<a class="headerlink" href="#what-data-should-you-use-for-testing" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-data-should-you-use-for-testing">
+<h2><span class="section-number">2.2. </span>What data should you use for testing?<a class="headerlink" href="#what-data-should-you-use-for-testing" title="Permalink to this headline">#</a></h2>
 <p>The first question we have to ask is what data to we use for testing?  Ideally we have 3 subsets of our data (training, validation, and test).  Let’s go through what they are used for and why they are important.</p>
-<div class="section" id="training-set">
-<h3><span class="section-number">2.2.1. </span>Training Set<a class="headerlink" href="#training-set" title="Permalink to this headline">¶</a></h3>
+<section id="training-set">
+<h3><span class="section-number">2.2.1. </span>Training Set<a class="headerlink" href="#training-set" title="Permalink to this headline">#</a></h3>
 <p>The training set is unique because it has no restrictions on what we can do with it.  We can look at any piece of data in it.  We can normalize data using values in the training set.  We can train machine learning models on the training set.  This is often the largest subset of our data.</p>
 <p>This training set is pretty explanatory - we use this for understanding our data and developing our model.</p>
 <p>We can load it in using the same method as we did in chapter 1.</p>
@@ -563,9 +713,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="validation-set">
-<h3><span class="section-number">2.2.2. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="validation-set">
+<h3><span class="section-number">2.2.2. </span>Validation Set<a class="headerlink" href="#validation-set" title="Permalink to this headline">#</a></h3>
 <p>The goal of creating a trading strategy is to have it perform well on data that it was not developed using.  We may use data from 2015 - 2020 to create a trading strategy, but the goal is to apply it to 2021 and 2022 to make a profit.</p>
 <p>Because we want our model to perform on <em>unseen</em> data, we create some restriction to how we use the validation set.  We do not train any models on it, and we do not use statistics or data from the validation set when creating our model.  It’s data our model has never seen.  The validation set is something we can only use to see how well our strategy or model performs.</p>
 <p>The entire purpose of the validation set is to give us unseen data to evaluate our approaches on.  By having this separate validation set we can more accurately determine what works and what doesn’t.</p>
@@ -577,9 +727,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="test-set">
-<h3><span class="section-number">2.2.3. </span>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="test-set">
+<h3><span class="section-number">2.2.3. </span>Test Set<a class="headerlink" href="#test-set" title="Permalink to this headline">#</a></h3>
 <p>The Test set is very similar to the validation set, but it takes things a step further.  It has further restrictions in that is is the final model step before deployment.  The main difference is how often you can use it.  For the validation set, you can test anything on the validation set as many times as you want.  For the test set you only get to look at the test set once for your particular approach.</p>
 <p>For example, you may try 300 different approaches and parameter changes to your strategy to see what works best.  You can check the profitability on each of them using the validation set.  Then once you have chosen a strategy, you do a final check to ensure it also performs on the test set.  Once you have done that you need a new test set or your project is over.</p>
 <p>The reason this is important is that you want to ensure that you didn’t get lucky and find a configuration out of your 300 attempts that just happens to work on the validation set but doesn’t work elsewhere.  If you try enough combinations eventually you will find something that works, but the test set gives you confidence that your model works because it’s a good strategy and not that you just tried enough things to find something that works on coincidence.</p>
@@ -706,14 +856,14 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="what-metric-should-you-use-for-testing">
-<h2><span class="section-number">2.3. </span>What metric should you use for testing?<a class="headerlink" href="#what-metric-should-you-use-for-testing" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="what-metric-should-you-use-for-testing">
+<h2><span class="section-number">2.3. </span>What metric should you use for testing?<a class="headerlink" href="#what-metric-should-you-use-for-testing" title="Permalink to this headline">#</a></h2>
 <p>Now that we understand what data we will use for testing, let’s start figuring out how well our first model from chapter 1 performs.</p>
 <p>The next step is to figure out an appropriate metric.  There are a variety of ways to measure this and we will walk through a few first steps in this section</p>
-<div class="section" id="dollars">
-<h3><span class="section-number">2.3.1. </span>Dollars<a class="headerlink" href="#dollars" title="Permalink to this headline">¶</a></h3>
+<section id="dollars">
+<h3><span class="section-number">2.3.1. </span>Dollars<a class="headerlink" href="#dollars" title="Permalink to this headline">#</a></h3>
 <p>Let’s take our first model from chapter 1 and measure how well it does in terms of dollars.  After all dollars is what we want to make, so it seems like a reasonable starting point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1321,9 +1471,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <p>Great!  So according to our validation set we made a good chunk of profit (pre-tax).  We could buy/short in higher volumes (ie Buy = 10x buys, Short = 10x shorts) to make this profit larger.</p>
 <p>However, this really isn’t enough information to determine whether that is a good idea of feasible.  I would love to loan someone 100 dollars if they would give me one-thousand dollars back a week later.  I would hate to loan someone 1,000,000 dollars on the promise that they would pay me 1,000,900 dollars back in 20 years.  The reward just wouldn’t be worth the risk, and I can use that money better in a 20-year span than that.</p>
 <p>Let’s see if we can come up with a better metric that accounts for this.</p>
-</div>
-<div class="section" id="percent-return">
-<h3><span class="section-number">2.3.2. </span>Percent Return<a class="headerlink" href="#percent-return" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="percent-return">
+<h3><span class="section-number">2.3.2. </span>Percent Return<a class="headerlink" href="#percent-return" title="Permalink to this headline">#</a></h3>
 <p>Instead of measuring raw dollars, lets consider how much money (capital) we needed in order to make that 90 dollars profit.  To do this we need to keep track of our money more carefully than just looking at how much we made at the end.  Let’s track out financials by day instead of by transaction o calculate this.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1368,60 +1518,60 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
   </thead>
   <tbody>
     <tr>
-      <th>2017-06-19</th>
+      <th>2017-06-05</th>
       <td>0.000000</td>
-      <td>224.757635</td>
-      <td>11230.399239</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2017-06-20</th>
-      <td>0.000000</td>
-      <td>267.104692</td>
-      <td>13199.298027</td>
+      <td>592.080365</td>
+      <td>14911.585787</td>
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>2017-02-27</th>
-      <td>12836.142757</td>
+      <th>2017-05-08</th>
+      <td>14339.022800</td>
+      <td>32.304898</td>
+      <td>3399.317397</td>
+      <td>14319.505423</td>
+    </tr>
+    <tr>
+      <th>2017-04-07</th>
+      <td>4412.945734</td>
+      <td>-123.014397</td>
+      <td>9870.114203</td>
+      <td>4442.112622</td>
+    </tr>
+    <tr>
+      <th>2017-05-26</th>
+      <td>17276.320469</td>
+      <td>205.866797</td>
+      <td>6563.956562</td>
+      <td>17278.061712</td>
+    </tr>
+    <tr>
+      <th>2017-04-12</th>
+      <td>3687.480711</td>
+      <td>-192.747736</td>
+      <td>9694.742256</td>
+      <td>3742.820575</td>
+    </tr>
+    <tr>
+      <th>2017-06-14</th>
+      <td>0.000000</td>
+      <td>439.297530</td>
+      <td>14335.640007</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017-03-06</th>
+      <td>14327.219162</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>12778.403961</td>
+      <td>14312.335144</td>
     </tr>
     <tr>
-      <th>2017-04-11</th>
-      <td>5014.274493</td>
-      <td>-125.564332</td>
-      <td>10907.909502</td>
-      <td>5023.897841</td>
-    </tr>
-    <tr>
-      <th>2017-03-09</th>
-      <td>11015.775912</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>11061.728947</td>
-    </tr>
-    <tr>
-      <th>2017-04-06</th>
-      <td>3504.219147</td>
-      <td>-97.430053</td>
-      <td>10964.298895</td>
-      <td>3578.414630</td>
-    </tr>
-    <tr>
-      <th>2017-04-20</th>
-      <td>6014.974953</td>
-      <td>-34.557251</td>
-      <td>5562.190856</td>
-      <td>5957.498164</td>
-    </tr>
-    <tr>
-      <th>2017-05-12</th>
-      <td>12285.707410</td>
-      <td>126.725744</td>
-      <td>5053.908668</td>
-      <td>12273.770591</td>
+      <th>2017-05-22</th>
+      <td>10979.862236</td>
+      <td>112.880645</td>
+      <td>5323.332394</td>
+      <td>11005.641604</td>
     </tr>
   </tbody>
 </table>
@@ -1459,7 +1609,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 </div>
-<p>Now we see that we needed 4468 dollars for earn the 90 dollars profit.  Let’s use this to figure out the percent return.</p>
+<p>Now that we see our capital needed and our profit, let’s calculate a percent return</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;Percent Return: </span><span class="si">{</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">capital_needed</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span>
@@ -1472,22 +1622,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 </div>
-<p>Now that we have our percent return, we need to account for the time range in some way.  2% return per week would be <strong>AMAZING</strong>, 2% per year would be underwhelming.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2017-02-14 - 2017-06-30&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="log-return">
-<h3><span class="section-number">2.3.3. </span>Log Return<a class="headerlink" href="#log-return" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="log-return">
+<h3><span class="section-number">2.3.3. </span>Log Return<a class="headerlink" href="#log-return" title="Permalink to this headline">#</a></h3>
 <p>More commonly rather than using the percent return we want to use the log return.  There are a lot of reasons they are advantageous to use that will be covered throughout the book as they are significant to what we are doing.  For now we will cover one that is immediately useful to us.</p>
 <p><strong>Symmetry / Additive</strong></p>
 <ul class="simple">
@@ -1559,23 +1696,23 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 <p>Go ahead an look up S&amp;P 500 annual returns for each year online and compare.  How does this fare?</p>
-</div>
-</div>
-<div class="section" id="statistical-tests">
-<h2><span class="section-number">2.4. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="motivation">
-<h3><span class="section-number">2.4.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="statistical-tests">
+<h2><span class="section-number">2.4. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">#</a></h2>
+<section id="motivation">
+<h3><span class="section-number">2.4.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h3>
 <p>If you bought fifty 1.50 dollar lottery tickets and won 10 million dollars in the lottery, what could you say about your chances to win?  Well let’s calculate our rate of return.</p>
 <div class="math notranslate nohighlight">
 \[\frac{10,000,000 - 75}{75} = 133,332.33\]</div>
 <p>So based on our calculations, the rate of return for playing the lottery is fantastic.  But we know that this doesn’t really reflect reality or mean that it’s a good safe investment strategy.  We know that you would’ve just gotten lucky.</p>
 <p>So how do we determine if our trading strategy is a good strategy, or we just got lucky this time?  This is where statistical testing comes in.</p>
 <p>I will cover the basics that I think are key, but if you’d like more detail and practice I reading <a class="reference external" href="https://www.lock5stat.com/">Statistics: Unlocking the Power of Data</a>.  Unlike most statistics book it is extremely applied and focused on data, with lots of real world examples.</p>
-</div>
-<div class="section" id="bootstrapping">
-<h3><span class="section-number">2.4.2. </span>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id1">
-<h4><span class="section-number">2.4.2.1. </span>Background<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="bootstrapping">
+<h3><span class="section-number">2.4.2. </span>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">#</a></h3>
+<section id="id1">
+<h4><span class="section-number">2.4.2.1. </span>Background<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <p>Statistical testing can be done be done using 2 general approaches.  The first is the classical approach with is the most widely known.  The second is through bootstrapping.  This chapter will focus on bootstrapping because in my opinion it is the first that should be learned.</p>
 <p>Bootstrapping is less commonly accepted but is the more powerful and flexible of the two.  In bootstrapping you create a sampling distribution by by taking many samples and performing an experiment.  In traditional testing you use clever algebra to approximate a sampling distribution.  With todays computer you can almost always use bootstrapping and I believe it it the more powerful and flexible approach.</p>
 <p>With Bootstrapping you start with just the data and make no other assumptions about the data.  With classical methods you start with the data and some assumptions about the data in order to arrive at an answer.  If you make incorrect assumptions then you get an incorrect answer - and determining which assumptions are safe to make is not always trivial.</p>
@@ -1587,9 +1724,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <p>However while these methods were tedious in 1936, they are trivial thanks to modern computers.  We no longer have to do clever algebraic tricks to approximate a sampling distribution - we can just create a sampling distribution.</p>
 <p>That said, I do believe it’s good and useful to have the ability to use both approaches.  Luckily, traditional testing is just algebraic tricks to approximate what we will do here and so it will not be too hard to pick that up on top of bootstrapping.  In this section we will focus on Bootstrapping because in my opinion it is the one that should be learned first.</p>
 <p>Please see our chapter on “Bootstrapping vs Classical Statistics” for more detail and understanding on both methods and information on how traditional statistics are really just estimations of a sampling distribution for when you do not have enough compute to actually create the sampling distributions.</p>
-</div>
-<div class="section" id="bootstrap-test">
-<h4><span class="section-number">2.4.2.2. </span>Bootstrap Test<a class="headerlink" href="#bootstrap-test" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="bootstrap-test">
+<h4><span class="section-number">2.4.2.2. </span>Bootstrap Test<a class="headerlink" href="#bootstrap-test" title="Permalink to this headline">#</a></h4>
 <p>With any type of testing we need to understand what we are testing.  We are going to have 2 competing hypothesis.  The first in the <strong>null hypothesis</strong>.  The null hypothesis is what we assume to be true, until we have evidence otherwise.</p>
 <p>In the context of trading strategies we might make the hypothesis that our strategy will yield returns equal to that of randomly picking stocks.  If we randomly pick stocks we know that it will roughly match the market so that seems like a reasonable thing to want to beat.  The null hypothesis is important because our goal of testing is to determine whether we have sufficient evident to reject that null hypothesis.</p>
 <p>The alternate hypothesis is what we are testing for.  For example, if the null hypothesis is that our strategy will yield returns equal that that of investing in random stocks the alternate hypothesis could be that our strategy will yield returns greater than if we were to invest in random stocks.</p>
@@ -1600,8 +1737,8 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <li><p>A function to measure the statistic of each run (log return of the models)</p></li>
 </ul>
 <p>We will look in the next chapter on better ways to organize this code, how to speed it up and run in parallel, and the like, but the focus here in general concepts.  We will use our understanding of these concepts in the next chapter to structure this better.</p>
-<div class="section" id="null-hypothesis-model">
-<h5><span class="section-number">2.4.2.2.1. </span>Null Hypothesis Model<a class="headerlink" href="#null-hypothesis-model" title="Permalink to this headline">¶</a></h5>
+<section id="null-hypothesis-model">
+<h5><span class="section-number">2.4.2.2.1. </span>Null Hypothesis Model<a class="headerlink" href="#null-hypothesis-model" title="Permalink to this headline">#</a></h5>
 <p>Let’s design a Null Hypothesis.  There are many Null Hypothesis’ you can choose, and one of the beauty of bootstrapping is that you can think about it very intuitively and design the experiment exactly how you want easier.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1631,9 +1768,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="alternate-hypothesis-model">
-<h5><span class="section-number">2.4.2.2.2. </span>Alternate Hypothesis Model<a class="headerlink" href="#alternate-hypothesis-model" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="alternate-hypothesis-model">
+<h5><span class="section-number">2.4.2.2.2. </span>Alternate Hypothesis Model<a class="headerlink" href="#alternate-hypothesis-model" title="Permalink to this headline">#</a></h5>
 <p>We also need a model that we are hoping performs well that we are trying to evaluate whether it is better than our random null hypothesis or not.  For this, we will just use the model we have been working on throughout the chapter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1652,9 +1789,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculate-returns">
-<h5><span class="section-number">2.4.2.2.3. </span>Calculate Returns<a class="headerlink" href="#calculate-returns" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="calculate-returns">
+<h5><span class="section-number">2.4.2.2.3. </span>Calculate Returns<a class="headerlink" href="#calculate-returns" title="Permalink to this headline">#</a></h5>
 <p>Next, we need a function that can take our 2 different model outputs (for null and alternate hypothesis) and calculate the statistic we care about (log return).  We do this by drawing on our work earlier in the chapter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1697,14 +1834,14 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0274575941649795, 0.023346436498439493)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0274575941649795, 0.03693321219133915)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="statistical-test">
-<h5><span class="section-number">2.4.2.2.4. </span>Statistical Test<a class="headerlink" href="#statistical-test" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="statistical-test">
+<h5><span class="section-number">2.4.2.2.4. </span>Statistical Test<a class="headerlink" href="#statistical-test" title="Permalink to this headline">#</a></h5>
 <p>Now that we have the setup let’s start our test.  First for our random model we need to give it a buy and short chance probability.  Let’s assume roughly even volume of trades to keep things simple and get the probabilities from our model.  In this way our random model trades at the same volume and frequency, just using random selection instead of momentum selection.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1753,9 +1890,9 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plot-experiment">
-<h5><span class="section-number">2.4.2.2.5. </span>Plot Experiment<a class="headerlink" href="#plot-experiment" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="plot-experiment">
+<h5><span class="section-number">2.4.2.2.5. </span>Plot Experiment<a class="headerlink" href="#plot-experiment" title="Permalink to this headline">#</a></h5>
 <p>It’s always helpful to visualize whatever you can.  Visualizing the data will help you build intuition, generate additional ideas, spot outliers, and identify possible errors in your code.  Let’s start with plotting our initial parameters we are using.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1781,10 +1918,92 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa8c0c6aa00&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [41],</span> in <span class="ni">&lt;cell line: 11&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">.15</span><span class="p">,</span><span class="mf">.15</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">h0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;h0&#39;</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">.15</span><span class="p">,</span><span class="mf">.15</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">x</span> <span class="o">=</span> <span class="n">calculate_returns</span><span class="p">(</span><span class="n">model_h1</span><span class="p">(</span><span class="n">valid</span><span class="p">),</span><span class="n">valid</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">title_r1</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;h0 mean=</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">h0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="nn">File ~/miniconda3/envs/fin-bots/lib/python3.9/site-packages/fastcore/basics.py:765,</span> in <span class="ni">bind.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">_Arg</span><span class="p">):</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span> <span class="n">fargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">_Arg</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="p">]</span> <span class="o">+</span> <span class="n">args</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">maxi</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+<span class="ne">--&gt; </span><span class="mi">765</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">fargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">Input In [36],</span> in <span class="ni">run_model</span><span class="nt">(input_df, n_periods, threshold, hold_time)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">f</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">get_next_trading_day</span><span class="p">,</span><span class="n">unique_dates</span><span class="o">=</span><span class="n">L</span><span class="p">(</span><span class="o">*</span><span class="n">input_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">transactions</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;close_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">transactions</span><span class="o">.</span><span class="n">close_date</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="k">return</span> <span class="n">transactions</span>
+
+<span class="nn">File ~/miniconda3/envs/fin-bots/lib/python3.9/site-packages/pandas/core/series.py:4433,</span> in <span class="ni">Series.apply</span><span class="nt">(self, func, convert_dtype, args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4323</span> <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">4324</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4325</span>     <span class="n">func</span><span class="p">:</span> <span class="n">AggFuncType</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4328</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4329</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span> <span class="o">|</span> <span class="n">Series</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">4330</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">4331</span><span class="sd">     Invoke function on values of Series.</span>
+<span class="g g-Whitespace">   </span><span class="mi">4332</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4431</span><span class="sd">     dtype: float64</span>
+<span class="g g-Whitespace">   </span><span class="mi">4432</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">4433</span>     <span class="k">return</span> <span class="n">SeriesApply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">convert_dtype</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/fin-bots/lib/python3.9/site-packages/pandas/core/apply.py:1082,</span> in <span class="ni">SeriesApply.apply</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="c1"># if we are a string, try to dispatch</span>
+<span class="g g-Whitespace">   </span><span class="mi">1080</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_str</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1082</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_standard</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/fin-bots/lib/python3.9/site-packages/pandas/core/apply.py:1137,</span> in <span class="ni">SeriesApply.apply_standard</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1131</span>         <span class="n">values</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">_values</span>
+<span class="g g-Whitespace">   </span><span class="mi">1132</span>         <span class="c1"># error: Argument 2 to &quot;map_infer&quot; has incompatible type</span>
+<span class="g g-Whitespace">   </span><span class="mi">1133</span>         <span class="c1"># &quot;Union[Callable[..., Any], str, List[Union[Callable[..., Any], str]],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1134</span>         <span class="c1"># Dict[Hashable, Union[Union[Callable[..., Any], str],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1135</span>         <span class="c1"># List[Union[Callable[..., Any], str]]]]]&quot;; expected</span>
+<span class="g g-Whitespace">   </span><span class="mi">1136</span>         <span class="c1"># &quot;Callable[[Any], Any]&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1137</span>         <span class="n">mapped</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">map_infer</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1138</span>             <span class="n">values</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1139</span>             <span class="n">f</span><span class="p">,</span>  <span class="c1"># type: ignore[arg-type]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1140</span>             <span class="n">convert</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1141</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1143</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mapped</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ABCSeries</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="c1"># GH#43986 Need to do list(mapped) in order to get treated as nested</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>     <span class="c1">#  See also GH#25959 regarding EA support</span>
+<span class="g g-Whitespace">   </span><span class="mi">1146</span>     <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">_constructor_expanddim</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">mapped</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/fin-bots/lib/python3.9/site-packages/pandas/_libs/lib.pyx:2870,</span> in <span class="ni">pandas._libs.lib.map_infer</span><span class="nt">()</span>
+
+<span class="nn">File ~/miniconda3/envs/fin-bots/lib/python3.9/site-packages/fastcore/basics.py:765,</span> in <span class="ni">bind.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">_Arg</span><span class="p">):</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span> <span class="n">fargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">_Arg</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pargs</span><span class="p">]</span> <span class="o">+</span> <span class="n">args</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">maxi</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+<span class="ne">--&gt; </span><span class="mi">765</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">fargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">Input In [19],</span> in <span class="ni">get_next_trading_day</span><span class="nt">(dte, unique_dates)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">get_next_trading_day</span><span class="p">(</span><span class="n">dte</span><span class="p">,</span><span class="n">unique_dates</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">return</span> <span class="n">unique_dates</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">dte</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">File ~/miniconda3/envs/fin-bots/lib/python3.9/site-packages/fastcore/foundation.py:159,</span> in <span class="ni">L.filter</span><span class="nt">(self, f, negate, gen, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span> <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">noop</span><span class="p">,</span> <span class="n">negate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gen</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">159</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new</span><span class="p">(</span><span class="n">filter_ex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">negate</span><span class="o">=</span><span class="n">negate</span><span class="p">,</span> <span class="n">gen</span><span class="o">=</span><span class="n">gen</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+<span class="nn">File ~/miniconda3/envs/fin-bots/lib/python3.9/site-packages/fastcore/basics.py:603,</span> in <span class="ni">filter_ex</span><span class="nt">(iterable, f, negate, gen, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">601</span> <span class="n">res</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">iterable</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">602</span> <span class="k">if</span> <span class="n">gen</span><span class="p">:</span> <span class="k">return</span> <span class="n">res</span>
+<span class="ne">--&gt; </span><span class="mi">603</span> <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="nn">Input In [19],</span> in <span class="ni">get_next_trading_day.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(x)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">get_next_trading_day</span><span class="p">(</span><span class="n">dte</span><span class="p">,</span><span class="n">unique_dates</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">return</span> <span class="n">unique_dates</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">dte</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
-<img alt="_images/102_BasicTesting_91_1.png" src="_images/102_BasicTesting_91_1.png" />
+<img alt="_images/102_BasicTesting_89_1.png" src="_images/102_BasicTesting_89_1.png" />
 </div>
 </div>
 <p>The blue histogram is the distribution of our random sampling.  The Red is our models return.  Visually the red point seems perfectly in line with the random distribution, but let’s be a bit more scientific about it.  Let’s calculate the p-value, and talk about what that means.</p>
@@ -1796,7 +2015,7 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.395
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.405
 </pre></div>
 </div>
 </div>
@@ -1804,9 +2023,9 @@ Model buy percentage=0.04311919191919192
 <p>The p-value tells us the percentage of samples from our randomized null hypothesis trials that are more extreme than our model’s return.  Roughly 40% of the time we get a more unusual result just using our random selection - which tells us that from this look our model is pretty indistinguishable from our random model.</p>
 <p>Said in statistical jargon, we failed to reject the null hypothesis.</p>
 <p>Let’s try something else</p>
-</div>
-<div class="section" id="what-if-we-hold-for-less-time">
-<h5><span class="section-number">2.4.2.2.6. </span>What if we hold for less time?<a class="headerlink" href="#what-if-we-hold-for-less-time" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="what-if-we-hold-for-less-time">
+<h5><span class="section-number">2.4.2.2.6. </span>What if we hold for less time?<a class="headerlink" href="#what-if-we-hold-for-less-time" title="Permalink to this headline">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -1831,10 +2050,10 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa8b0be7f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x176ac3f40&gt;
 </pre></div>
 </div>
-<img alt="_images/102_BasicTesting_97_1.png" src="_images/102_BasicTesting_97_1.png" />
+<img alt="_images/102_BasicTesting_95_1.png" src="_images/102_BasicTesting_95_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1845,15 +2064,15 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.385
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.395
 </pre></div>
 </div>
 </div>
 </div>
 <p>This isn’t any better.  But that’s ok, because that’s how the process works.  Most of your experiments will fail, and this was only our first model.  Let’s try one more idea.</p>
-</div>
-<div class="section" id="what-if-we-use-a-larger-period-size-for-momentum">
-<h5><span class="section-number">2.4.2.2.7. </span>What if we use a larger period size for momentum?<a class="headerlink" href="#what-if-we-use-a-larger-period-size-for-momentum" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="what-if-we-use-a-larger-period-size-for-momentum">
+<h5><span class="section-number">2.4.2.2.7. </span>What if we use a larger period size for momentum?<a class="headerlink" href="#what-if-we-use-a-larger-period-size-for-momentum" title="Permalink to this headline">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -1878,10 +2097,10 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa8d52bc790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1767503d0&gt;
 </pre></div>
 </div>
-<img alt="_images/102_BasicTesting_101_1.png" src="_images/102_BasicTesting_101_1.png" />
+<img alt="_images/102_BasicTesting_99_1.png" src="_images/102_BasicTesting_99_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1892,13 +2111,13 @@ Model buy percentage=0.04311919191919192
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.02
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.005
 </pre></div>
 </div>
 </div>
 </div>
 <p>Now we’re talking!  A very small percentage of the values from our random model are more extreme than the one we got with our model.</p>
-<p>But now this invites a new question - how small does the p-value need to be to reject the null hypothesis?  0.05 is the most common and many people use this by default, but <strong>what your p-value threshold is is a design choice that has real implications on your testing</strong>.  This is something to carefully consider.  Remember, testing is our only objective signal for whether we are doing something right or not so it deserves the most care and consideration.</p>
+<p>But now this invites a new question - how small does the p-value need to be to reject the null hypothesis?  0.05 is the most common and many people use this by default, but <strong>what your p-value threshold is is a design choice and trede-off that has real implications on your testing</strong>.  This is something to carefully consider.  Remember, testing is our only objective signal for whether we are doing something right or not so it deserves the most care and consideration.</p>
 <p>Let’s consider the extremes so that we can easily thing about the trade-off.</p>
 <p><strong>What if the p-value threshold we pick is large (ie 0.5)?</strong>*</p>
 <p>With a p-value threshold of 0.5, we accept anything where less than 50% of the values from the randomized null hypothesis tests are more extreme.  The risk of this means that we will have a lot of false positives.  Said another way, LOTS of stuff will pass our test many of them just because of luck.</p>
@@ -1909,11 +2128,11 @@ Model buy percentage=0.04311919191919192
 <p><strong>The Tradeoff</strong></p>
 <p>So really the P value is a trade-off.  A lower P value is more cautious and safe but you will miss out on some opportunities.  A high P value is riskier and more of your approaches will turn out to fail.</p>
 <p>More details will come throughout the book on this, but it is important to understand that this is a tradeoff.  For a more detailed guide to testing read the hypothesis testing material in <a class="reference external" href="https://www.lock5stat.com/">Statistics: Unlocking the Power of Data</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1937,9 +2156,11 @@ Model buy percentage=0.04311919191919192
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="101_SimpleTimeSeries.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1947,32 +2168,36 @@ Model buy percentage=0.04311919191919192
             <p class="prev-next-title"><span class="section-number">1. </span>Simple Time Series (Stock Prices)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="200_Introduction.html" title="next page">
+    <a class='right-next' id="next-link" href="104_TimeSeries.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Statistics</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Time Series</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Isaac Flath & Felix Flath<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Isaac Flath & Felix Flath<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
