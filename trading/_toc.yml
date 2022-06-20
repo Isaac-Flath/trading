@@ -9,8 +9,8 @@ parts:
     chapters:
     - file: 101_SimpleTimeSeries
     - file: 102_BasicTesting
-    - file: 301_TimeSeries
-  - caption: Section 2 - Foundations
+    - file: 104_TimeSeries
+  - caption: Section 2 - Statistics
     numbered: True
     chapters:
-    - file: 201_Statistics
+    - file: 200_Introduction
